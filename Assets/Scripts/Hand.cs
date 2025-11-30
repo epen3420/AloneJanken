@@ -8,7 +8,7 @@ public enum HandType
 
 public abstract class Hand
 {
-    public abstract HandType Type { get; }
+    public abstract HandType HandType { get; }
     public abstract HandType StrongHand { get; }
     public abstract HandType WeekHand { get; }
 }
