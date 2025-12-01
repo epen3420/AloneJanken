@@ -9,6 +9,6 @@ public class test_Round : MonoBehaviour
 
     public void StartRound()
     {
-        roundManager.Execute(destroyCancellationToken).Forget();
+        roundManager.GameCycle(destroyCancellationToken).Forget();
     }
 }
