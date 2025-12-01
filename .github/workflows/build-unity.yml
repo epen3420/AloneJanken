@@ -78,7 +78,7 @@ jobs:
 
           elif [ "${{ inputs.build_target_name }}" == "WebGL" ]; then
             echo "build_target=WebGL" >> $GITHUB_OUTPUT
-          elif [ "${{ inputs.build_target_name }}" == "For_GitHub_Pages"]
+          elif [ "${{ inputs.build_target_name }}" == "For_GitHub_Pages"]; then
             echo "build_target=WebGL" >> $GITHUB_OUTPUT
           else
             echo "Error: Invalid build_target_name."
