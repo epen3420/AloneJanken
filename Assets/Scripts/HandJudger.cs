@@ -9,15 +9,9 @@ public enum ResultType
     Lose,
 }
 
-public struct HandResultTypePair
+public static class HandJudger
 {
-    public Hand hand;
-    public ResultType result;
-}
-
-public class HandJudger
-{
-    public IEnumerable<HandResultTypePair> Judge(IEnumerable<Hand> hands)
+    public static IEnumerable<HandResultTypePair> Judge(IEnumerable<Hand> hands)
     {
         var handList = hands.ToList();
 
@@ -33,11 +27,7 @@ public class HandJudger
         if (uniqueHandTypeCount == 1 ||
            uniqueHandTypeCount == 3)
         {
-            return handList.Select(hand => new HandResultTypePair
-            {
-                hand = hand,
-                result = ResultType.Draw,
-            });
+            return handList.Select(hand => new HandResultTypePair(hand, ResultType.Draw));
         }
 
         // この先実質二人でのじゃんけん
@@ -49,10 +39,12 @@ public class HandJudger
         var isWinHandA = handA.IsWin(typeB);
         var winnerHandType = isWinHandA ? typeA : typeB;
 
-        return handList.Select(h => new HandResultTypePair
-        {
-            hand = h,
-            result = (h.HandType == winnerHandType) ? ResultType.Win : ResultType.Lose,
-        });
+        return handList.Select(h =>
+            new HandResultTypePair
+            (
+                h,
+                (h.HandType == winnerHandType) ? ResultType.Win : ResultType.Lose
+            )
+        );
     }
 }
