@@ -1,39 +1,58 @@
-using Debug = UnityEngine.Debug;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using System.Linq;
+using UnityEngine;
 
-public class RoundManager
+public class RoundManager : MonoBehaviour
 {
-    private readonly CountDownTimer timer;
-    private readonly JankenInputManager inputs;
+    [SerializeField]
+    private int jankenBpm = 60;
+    [SerializeField]
+    private int beatsNum = 7;
+    [SerializeField]
+    private JankenInputManager inputs;
+    [SerializeField]
+    private FloatEventChannelSO changeTimeEvent;
+    [SerializeField]
+    private QuestDatabase questDb;
 
-    public RoundManager(CountDownTimer timer, JankenInputManager inputs)
+    private CountDownTimer timer;
+    private bool isPlaying = false;
+
+
+    private void Awake()
     {
-        this.timer = timer;
-        this.inputs = inputs;
+        timer = new CountDownTimer(changeTimeEvent, null);
     }
 
-    public async UniTask Execute(JankenQuestBase quest, CancellationToken ctn)
+    public async UniTask Execute(CancellationToken ctn)
     {
-        inputs.Enable();
-        timer.Init(3f);
-        await timer.Resume(ctn);
-        inputs.Disable();
+        if (isPlaying) return;
+        isPlaying = true;
 
-        var inputResult = inputs.GetCurrentInputHand();
-        bool isWin = false;
-        if (inputResult.Count() > 0)
+        int roundCount = 0;
+        while (questDb.Quests.Count() > roundCount)
         {
-            var resultHands = HandJudger.Judge(inputResult);
-            isWin = quest.Judge(resultHands);
+            inputs.Enable();
+            timer.Init(jankenBpm / 60 * beatsNum);
+            await timer.Resume(ctn);
+            inputs.Disable();
 
-            foreach (var hand in resultHands)
+            var inputResult = inputs.GetCurrentInputHand();
+            bool isWin = false;
+            if (inputResult.Count() > 0)
             {
-                Debug.Log(hand.ToString());
-            }
-        }
+                var resultHands = HandJudger.Judge(inputResult);
+                isWin = questDb.Quests[roundCount].Judge(resultHands);
 
-        Debug.Log(isWin);
+                foreach (var hand in resultHands)
+                {
+                    Debug.Log(hand.ToString());
+                }
+            }
+
+            Debug.Log(isWin);
+            roundCount++;
+        }
     }
 }
