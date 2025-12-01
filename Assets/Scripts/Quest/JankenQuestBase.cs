@@ -18,6 +18,7 @@ public abstract class JankenQuestBase : ScriptableObject
 
     private HandPosType currentTargetHandPos;
 
+    public string QuestName => questName;
     public HandPosType CurrentTargetHandPos => currentTargetHandPos;
     public HandType TargetHand => targetHand;
     public bool IsAllTarget => isAllTarget;

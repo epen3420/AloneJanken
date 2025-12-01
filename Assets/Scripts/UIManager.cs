@@ -31,11 +31,11 @@ public class UIManager : MonoBehaviour
 
     private void ShowQuest(JankenQuestBase quest)
     {
-        questText.SetText(quest.name);
+        questText.SetText(quest.QuestName);
     }
 
     private void ShowTargetHand(JankenQuestBase quest)
     {
-        targetHandText.SetText($"{quest.CurrentTargetHandPos}");
+        targetHandText.SetText($"{HandTypeUtil.GetHandPosName(quest.CurrentTargetHandPos)}");
     }
 }

@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   questName: "\u30B0\u30FC\u3092\u4F7F\u3063\u3066\u52DD\u3066"
   description: "\u6700\u4F4E\u4E00\u3064\u30B0\u30FC\u3092\u4F7F\u3046"
-  isAllTarget: 1
-  targetHand: 0
+  isAllTarget: 0
+  targetHand: 1
