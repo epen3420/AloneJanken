@@ -12,6 +12,7 @@ public static class HandTypeUtil
 
     private static readonly Dictionary<HandPosType, string> handPosTypeNameDict = new Dictionary<HandPosType, string>
     {
+        {HandPosType.None, "None"},
         {HandPosType.LeftDown, "左下"},
         {HandPosType.LeftUp, "左上"},
         {HandPosType.RightDown, "右下"},
