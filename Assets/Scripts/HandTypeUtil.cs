@@ -1,6 +1,7 @@
 using System.Collections.Generic;
+using System.Linq;
 
-public static class HandNameParser
+public static class HandTypeUtil
 {
     private static readonly Dictionary<HandType, string> handTypeNameDict = new Dictionary<HandType, string>
     {
@@ -17,6 +18,13 @@ public static class HandNameParser
         {HandPosType.RightUp, "右上"},
     };
 
+    private static readonly HandPosType[] handPosTypes = (HandPosType[])System.Enum.GetValues(typeof(HandPosType));
+
+    private static readonly HandPosType[] handPosTypesWithoutNone = handPosTypes.Where(pos => pos != HandPosType.None).ToArray();
+
+
+    public static int HandPosCount => handPosTypes.Length - 1; // Noneの文を引く
+    public static HandPosType[] GetHandPosTypes() => handPosTypesWithoutNone;
 
     public static string GetHandName(HandType type) => handTypeNameDict[type];
 

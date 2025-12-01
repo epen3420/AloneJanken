@@ -88,6 +88,7 @@ public class JankenInputManager : MonoBehaviour
 
     public void Enable()
     {
+        currentInputHands.Clear();
         inputActions.Enable();
 
         Debug.Log("入力受付を開始");

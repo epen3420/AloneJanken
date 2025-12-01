@@ -42,6 +42,8 @@ public class RoundManager : MonoBehaviour
             for (int roundCount = 0; roundCount < totalRounds; roundCount++)
             {
                 var currentQuest = questDb.Quests[roundCount];
+                if (!currentQuest.IsAllTarget)
+                    currentQuest.LotteryTargetHandPos();
 
                 // キャンセルされているかチェック
                 ctn.ThrowIfCancellationRequested();
@@ -64,7 +66,7 @@ public class RoundManager : MonoBehaviour
                 var inputResult = inputs.GetCurrentInputHand();
 
                 bool isWin = false;
-                if (inputResult.Any())
+                if (inputResult.Count() == HandTypeUtil.HandPosCount)
                 {
                     var resultHands = HandJudger.Judge(inputResult);
                     isWin = currentQuest.Judge(resultHands);

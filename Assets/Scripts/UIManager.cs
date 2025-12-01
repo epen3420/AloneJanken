@@ -36,8 +36,6 @@ public class UIManager : MonoBehaviour
 
     private void ShowTargetHand(JankenQuestBase quest)
     {
-        string targetStr = string.Join("", quest.HandPair.Select(pair => $"{pair.OwnerPos}, {pair.HandType} \n"));
-
-        targetHandText.SetText($"{targetStr}");
+        targetHandText.SetText($"{quest.CurrentTargetHandPos}");
     }
 }

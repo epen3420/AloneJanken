@@ -1,6 +1,6 @@
 public enum HandPosType
 {
-    None = -1,
+    None,
     LeftUp,
     LeftDown,
     RightUp,
@@ -9,7 +9,7 @@ public enum HandPosType
 
 public enum HandType
 {
-    None = -1,
+    None,
     Rock,
     Scissors,
     Paper,
