@@ -192,7 +192,7 @@ public partial class @GameInputActions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""RighDownPaper"",
+                    ""name"": ""RightDownPaper"",
                     ""type"": ""Button"",
                     ""id"": ""fdeca27b-5f64-41fd-9ea8-8594c46251a2"",
                     ""expectedControlType"": """",
@@ -330,7 +330,7 @@ public partial class @GameInputActions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""RighDownPaper"",
+                    ""action"": ""RightDownPaper"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -352,7 +352,7 @@ public partial class @GameInputActions: IInputActionCollection2, IDisposable
         m_Janken_RightUpPaper = m_Janken.FindAction("RightUpPaper", throwIfNotFound: true);
         m_Janken_RightDownRock = m_Janken.FindAction("RightDownRock", throwIfNotFound: true);
         m_Janken_RightDownScissors = m_Janken.FindAction("RightDownScissors", throwIfNotFound: true);
-        m_Janken_RighDownPaper = m_Janken.FindAction("RighDownPaper", throwIfNotFound: true);
+        m_Janken_RightDownPaper = m_Janken.FindAction("RightDownPaper", throwIfNotFound: true);
     }
 
     ~@GameInputActions()
@@ -444,7 +444,7 @@ public partial class @GameInputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Janken_RightUpPaper;
     private readonly InputAction m_Janken_RightDownRock;
     private readonly InputAction m_Janken_RightDownScissors;
-    private readonly InputAction m_Janken_RighDownPaper;
+    private readonly InputAction m_Janken_RightDownPaper;
     /// <summary>
     /// Provides access to input actions defined in input action map "Janken".
     /// </summary>
@@ -501,9 +501,9 @@ public partial class @GameInputActions: IInputActionCollection2, IDisposable
         /// </summary>
         public InputAction @RightDownScissors => m_Wrapper.m_Janken_RightDownScissors;
         /// <summary>
-        /// Provides access to the underlying input action "Janken/RighDownPaper".
+        /// Provides access to the underlying input action "Janken/RightDownPaper".
         /// </summary>
-        public InputAction @RighDownPaper => m_Wrapper.m_Janken_RighDownPaper;
+        public InputAction @RightDownPaper => m_Wrapper.m_Janken_RightDownPaper;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -563,9 +563,9 @@ public partial class @GameInputActions: IInputActionCollection2, IDisposable
             @RightDownScissors.started += instance.OnRightDownScissors;
             @RightDownScissors.performed += instance.OnRightDownScissors;
             @RightDownScissors.canceled += instance.OnRightDownScissors;
-            @RighDownPaper.started += instance.OnRighDownPaper;
-            @RighDownPaper.performed += instance.OnRighDownPaper;
-            @RighDownPaper.canceled += instance.OnRighDownPaper;
+            @RightDownPaper.started += instance.OnRightDownPaper;
+            @RightDownPaper.performed += instance.OnRightDownPaper;
+            @RightDownPaper.canceled += instance.OnRightDownPaper;
         }
 
         /// <summary>
@@ -610,9 +610,9 @@ public partial class @GameInputActions: IInputActionCollection2, IDisposable
             @RightDownScissors.started -= instance.OnRightDownScissors;
             @RightDownScissors.performed -= instance.OnRightDownScissors;
             @RightDownScissors.canceled -= instance.OnRightDownScissors;
-            @RighDownPaper.started -= instance.OnRighDownPaper;
-            @RighDownPaper.performed -= instance.OnRighDownPaper;
-            @RighDownPaper.canceled -= instance.OnRighDownPaper;
+            @RightDownPaper.started -= instance.OnRightDownPaper;
+            @RightDownPaper.performed -= instance.OnRightDownPaper;
+            @RightDownPaper.canceled -= instance.OnRightDownPaper;
         }
 
         /// <summary>
@@ -731,11 +731,11 @@ public partial class @GameInputActions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnRightDownScissors(InputAction.CallbackContext context);
         /// <summary>
-        /// Method invoked when associated input action "RighDownPaper" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// Method invoked when associated input action "RightDownPaper" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnRighDownPaper(InputAction.CallbackContext context);
+        void OnRightDownPaper(InputAction.CallbackContext context);
     }
 }
