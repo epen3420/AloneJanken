@@ -478,11 +478,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1433768754}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e02a711b2bee1f469f7f860f7a34c5e, type: 3}
+  m_Script: {fileID: 11500000, guid: 5d94b1766c7b65046a78f0dececc7e03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputManager: {fileID: 1433768756}
-  questDb: {fileID: 11400000, guid: e3fdd489df6d9c145ae47eefe3fa0037, type: 2}
+  jankenBpm: 60
+  beatsNum: 7
+  inputs: {fileID: 1433768756}
+  startRound: {fileID: 0}
+  changeTimeEvent: {fileID: 0}
+  questDb: {fileID: 0}
 --- !u!114 &1433768756
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -522,6 +526,7 @@ GameObject:
   - component: {fileID: 1607023497}
   - component: {fileID: 1607023496}
   - component: {fileID: 1607023495}
+  - component: {fileID: 1607023498}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -593,7 +598,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1433768755}
+      - m_Target: {fileID: 1607023498}
         m_TargetAssemblyTypeName: test_Round, Assembly-CSharp
         m_MethodName: StartRound
         m_Mode: 1
@@ -643,6 +648,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1607023493}
   m_CullTransparentMesh: 1
+--- !u!114 &1607023498
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1607023493}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e02a711b2bee1f469f7f860f7a34c5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roundManager: {fileID: 1433768755}
 --- !u!1 &1758799807
 GameObject:
   m_ObjectHideFlags: 0
