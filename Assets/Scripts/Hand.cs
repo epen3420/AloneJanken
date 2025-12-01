@@ -6,6 +6,7 @@ public enum HandType
     Paper,
 }
 
+[System.Serializable]
 public class Hand
 {
     public readonly string OwnerName;
