@@ -2,6 +2,8 @@ using System.Threading;
 using Cysharp.Threading.Tasks;
 using System.Linq;
 using UnityEngine;
+using TMPro;
+using UnityEngine.UI;
 
 public class RoundManager : MonoBehaviour
 {
@@ -11,6 +13,14 @@ public class RoundManager : MonoBehaviour
     private int beatsNum = 7;
     [SerializeField]
     private JankenInputManager inputs;
+    // Test
+    [SerializeField]
+    private TMP_Text logText;
+    [SerializeField]
+    private TMP_Dropdown dropdown;
+    [SerializeField]
+    private Button startButton;
+    //
 
     [Header("Events")]
     [SerializeField]
@@ -29,6 +39,12 @@ public class RoundManager : MonoBehaviour
     private void Awake()
     {
         timer = new CountDownTimer(changeTimeEvent, null);
+
+        // Test
+        var options = questDb.Quests.Select(quest => new TMP_Dropdown.OptionData(quest.QuestName));
+        dropdown.AddOptions(options.ToList());
+
+        startButton.onClick.AddListener(async () => await StartRound(questDb.Quests[dropdown.value], destroyCancellationToken));
     }
 
     public async UniTaskVoid GameCycle(CancellationToken ctn)
@@ -58,6 +74,7 @@ public class RoundManager : MonoBehaviour
         // キャンセルされているかチェック
         ctn.ThrowIfCancellationRequested();
 
+        logText.SetText("");
         startRound.Raise(quest);
 
         inputs.Enable();
@@ -83,11 +100,15 @@ public class RoundManager : MonoBehaviour
 
             foreach (var hand in resultHands)
             {
-                Debug.Log($"Hand: {hand}");
+                logText.text += $"{hand}\n";
             }
         }
+        else
+        {
+            logText.text += $"入力キーの数が手の数と異なります\n\tinput: {inputResult.Count()}\n\n";
+        }
 
-        Debug.Log(isWin);
+        logText.text += $"Win: {isWin}\n";
         endRound.Raise(isWin);
     }
 }
