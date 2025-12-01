@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -7,7 +8,7 @@ public class JankenInputManager : MonoBehaviour
     private GameInputActions inputActions;
     // InputActionをキーにしてctx.actionで値を取れるようにしている
     private Dictionary<InputAction, (HandPosType, HandType)> actionMap;
-    private HashSet<Hand> hands = new HashSet<Hand>();
+    private HashSet<(HandPosType, HandType)> currentInputHands = new HashSet<(HandPosType, HandType)>();
 
     private void Awake()
     {
@@ -53,15 +54,19 @@ public class JankenInputManager : MonoBehaviour
     {
         if (actionMap.TryGetValue(ctx.action, out var value))
         {
-            var (pos, type) = value;
-            RegisterHand(pos, type);
+            if (ctx.canceled)
+            {
+                currentInputHands.Remove(value);
+            }
+            else
+            {
+                currentInputHands.Add(value);
+            }
         }
     }
 
-    private void RegisterHand(HandPosType posType, HandType handType)
+    public IEnumerable<Hand> GetCurrentInputHand()
     {
-        // ここに実際のロジック
-        Debug.Log($"Input: {posType}, {handType}");
-        // hands.Add(...);
+        return currentInputHands.Select((pair) => new Hand(pair.Item2, pair.Item1));
     }
 }
