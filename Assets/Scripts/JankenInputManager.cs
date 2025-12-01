@@ -15,8 +15,25 @@ public class JankenInputManager : MonoBehaviour
         inputActions = new GameInputActions();
         actionMap = new Dictionary<InputAction, (HandPosType, HandType)>();
 
-        AddActionMap(inputActions.Janken.LeftDownPaper, HandPosType.LeftDown, HandType.Paper);
+        // --- LeftUp (左上) ---
+        AddActionMap(inputActions.Janken.LeftUpRock, HandPosType.LeftUp, HandType.Rock);
+        AddActionMap(inputActions.Janken.LeftUpScissors, HandPosType.LeftUp, HandType.Scissors);
+        AddActionMap(inputActions.Janken.LeftUpPaper, HandPosType.LeftUp, HandType.Paper);
+
+        // --- LeftDown (左下) ---
         AddActionMap(inputActions.Janken.LeftDownRock, HandPosType.LeftDown, HandType.Rock);
+        AddActionMap(inputActions.Janken.LeftDownScissors, HandPosType.LeftDown, HandType.Scissors);
+        AddActionMap(inputActions.Janken.LeftDownPaper, HandPosType.LeftDown, HandType.Paper);
+
+        // --- RightUp (右上) ---
+        AddActionMap(inputActions.Janken.RightUpRock, HandPosType.RightUp, HandType.Rock);
+        AddActionMap(inputActions.Janken.RightUpScissors, HandPosType.RightUp, HandType.Scissors);
+        AddActionMap(inputActions.Janken.RightUpPaper, HandPosType.RightUp, HandType.Paper);
+
+        // --- RightDown (右下) ---
+        AddActionMap(inputActions.Janken.RightDownRock, HandPosType.RightDown, HandType.Rock);
+        AddActionMap(inputActions.Janken.RightDownScissors, HandPosType.RightDown, HandType.Scissors);
+        AddActionMap(inputActions.Janken.RightDownPaper, HandPosType.RightDown, HandType.Paper);
     }
 
     /// <summary>
