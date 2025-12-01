@@ -484,9 +484,10 @@ MonoBehaviour:
   jankenBpm: 60
   beatsNum: 7
   inputs: {fileID: 1433768756}
-  startRound: {fileID: 0}
-  changeTimeEvent: {fileID: 0}
-  questDb: {fileID: 0}
+  startRound: {fileID: 11400000, guid: 4a82f8c22b448f5418f24830a5105a0c, type: 2}
+  endRound: {fileID: 11400000, guid: c66a0c8af2342684388e93dd2cf2e02f, type: 2}
+  changeTimeEvent: {fileID: 11400000, guid: 6028f655783da6842ba3421acdb2af1f, type: 2}
+  questDb: {fileID: 11400000, guid: e3fdd489df6d9c145ae47eefe3fa0037, type: 2}
 --- !u!114 &1433768756
 MonoBehaviour:
   m_ObjectHideFlags: 0
