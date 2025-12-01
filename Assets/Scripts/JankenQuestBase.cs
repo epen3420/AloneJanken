@@ -1,10 +1,13 @@
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
 
-public abstract class JankenQuestBase
+public abstract class JankenQuestBase : ScriptableObject
 {
-    public abstract string Name { get; }
-    public abstract string DisplayDescription { get; }
+    [SerializeField]
+    private string questName;
+    [SerializeField]
+    private string description;
 
     protected abstract bool InternalJudge(List<HandResultTypePair> handResultPairs);
 
