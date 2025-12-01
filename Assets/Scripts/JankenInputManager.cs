@@ -65,6 +65,20 @@ public class JankenInputManager : MonoBehaviour
         }
     }
 
+    public void Enable()
+    {
+        inputActions.Enable();
+
+        Debug.Log("入力受付を開始");
+    }
+
+    public void Disable()
+    {
+        inputActions.Disable();
+
+        Debug.Log("入力受付を終了");
+    }
+
     public IEnumerable<Hand> GetCurrentInputHand()
     {
         return currentInputHands.Select((pair) => new Hand(pair.Item2, pair.Item1));
