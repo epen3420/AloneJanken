@@ -14,7 +14,9 @@ public class RoundManager : MonoBehaviour
 
     [Header("Events")]
     [SerializeField]
-    private VoidEventChannelSO startRound;
+    private QuestEventChannelSO startRound;
+    [SerializeField]
+    private BoolEventChannelSO endRound;
     [SerializeField]
     private FloatEventChannelSO changeTimeEvent;
 
@@ -44,7 +46,7 @@ public class RoundManager : MonoBehaviour
                 // キャンセルされているかチェック
                 ctn.ThrowIfCancellationRequested();
 
-                startRound.Raise();
+                startRound.Raise(currentQuest);
 
                 inputs.Enable();
                 try
@@ -73,7 +75,7 @@ public class RoundManager : MonoBehaviour
                     }
                 }
 
-                Debug.Log($"Round {roundCount + 1}: Win = {isWin}");
+                endRound.Raise(isWin);
             }
         }
         finally
