@@ -4,7 +4,8 @@ using System.Linq;
 public enum ResultType
 {
     None = -1,
-    Draw,
+    DrawOne,
+    DrawAll,
     Win,
     Lose,
 }
@@ -24,10 +25,14 @@ public static class HandJudger
 
         var results = new List<HandResultTypePair>();
         // 一種類か三種類全部か
-        if (uniqueHandTypeCount == 1 ||
-           uniqueHandTypeCount == 3)
+        if (uniqueHandTypeCount == 1)
         {
-            return handList.Select(hand => new HandResultTypePair(hand, ResultType.Draw));
+            return handList.Select(hand => new HandResultTypePair(hand, ResultType.DrawOne));
+        }
+
+        if (uniqueHandTypeCount == 3)
+        {
+            return handList.Select(hand => new HandResultTypePair(hand, ResultType.DrawAll));
         }
 
         // この先実質二人でのじゃんけん
