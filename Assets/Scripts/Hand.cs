@@ -11,4 +11,9 @@ public abstract class Hand
     public abstract HandType HandType { get; }
     public abstract HandType StrongHand { get; }
     public abstract HandType WeekHand { get; }
+
+    public bool IsWin(HandType enemyHand)
+    {
+        return StrongHand == enemyHand;
+    }
 }
