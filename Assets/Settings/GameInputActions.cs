@@ -138,7 +138,7 @@ public partial class @GameInputActions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""LeftDownPPaper"",
+                    ""name"": ""LeftDownPaper"",
                     ""type"": ""Button"",
                     ""id"": ""0e36e019-3509-4c6e-a254-6072add8a958"",
                     ""expectedControlType"": """",
@@ -264,7 +264,7 @@ public partial class @GameInputActions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""LeftDownPPaper"",
+                    ""action"": ""LeftDownPaper"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -346,7 +346,7 @@ public partial class @GameInputActions: IInputActionCollection2, IDisposable
         m_Janken_LeftUpPaper = m_Janken.FindAction("LeftUpPaper", throwIfNotFound: true);
         m_Janken_LeftDownRock = m_Janken.FindAction("LeftDownRock", throwIfNotFound: true);
         m_Janken_LeftDownScissors = m_Janken.FindAction("LeftDownScissors", throwIfNotFound: true);
-        m_Janken_LeftDownPPaper = m_Janken.FindAction("LeftDownPPaper", throwIfNotFound: true);
+        m_Janken_LeftDownPaper = m_Janken.FindAction("LeftDownPaper", throwIfNotFound: true);
         m_Janken_RightUpRock = m_Janken.FindAction("RightUpRock", throwIfNotFound: true);
         m_Janken_RightUpScissors = m_Janken.FindAction("RightUpScissors", throwIfNotFound: true);
         m_Janken_RightUpPaper = m_Janken.FindAction("RightUpPaper", throwIfNotFound: true);
@@ -438,7 +438,7 @@ public partial class @GameInputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Janken_LeftUpPaper;
     private readonly InputAction m_Janken_LeftDownRock;
     private readonly InputAction m_Janken_LeftDownScissors;
-    private readonly InputAction m_Janken_LeftDownPPaper;
+    private readonly InputAction m_Janken_LeftDownPaper;
     private readonly InputAction m_Janken_RightUpRock;
     private readonly InputAction m_Janken_RightUpScissors;
     private readonly InputAction m_Janken_RightUpPaper;
@@ -477,9 +477,9 @@ public partial class @GameInputActions: IInputActionCollection2, IDisposable
         /// </summary>
         public InputAction @LeftDownScissors => m_Wrapper.m_Janken_LeftDownScissors;
         /// <summary>
-        /// Provides access to the underlying input action "Janken/LeftDownPPaper".
+        /// Provides access to the underlying input action "Janken/LeftDownPaper".
         /// </summary>
-        public InputAction @LeftDownPPaper => m_Wrapper.m_Janken_LeftDownPPaper;
+        public InputAction @LeftDownPaper => m_Wrapper.m_Janken_LeftDownPaper;
         /// <summary>
         /// Provides access to the underlying input action "Janken/RightUpRock".
         /// </summary>
@@ -545,9 +545,9 @@ public partial class @GameInputActions: IInputActionCollection2, IDisposable
             @LeftDownScissors.started += instance.OnLeftDownScissors;
             @LeftDownScissors.performed += instance.OnLeftDownScissors;
             @LeftDownScissors.canceled += instance.OnLeftDownScissors;
-            @LeftDownPPaper.started += instance.OnLeftDownPPaper;
-            @LeftDownPPaper.performed += instance.OnLeftDownPPaper;
-            @LeftDownPPaper.canceled += instance.OnLeftDownPPaper;
+            @LeftDownPaper.started += instance.OnLeftDownPaper;
+            @LeftDownPaper.performed += instance.OnLeftDownPaper;
+            @LeftDownPaper.canceled += instance.OnLeftDownPaper;
             @RightUpRock.started += instance.OnRightUpRock;
             @RightUpRock.performed += instance.OnRightUpRock;
             @RightUpRock.canceled += instance.OnRightUpRock;
@@ -592,9 +592,9 @@ public partial class @GameInputActions: IInputActionCollection2, IDisposable
             @LeftDownScissors.started -= instance.OnLeftDownScissors;
             @LeftDownScissors.performed -= instance.OnLeftDownScissors;
             @LeftDownScissors.canceled -= instance.OnLeftDownScissors;
-            @LeftDownPPaper.started -= instance.OnLeftDownPPaper;
-            @LeftDownPPaper.performed -= instance.OnLeftDownPPaper;
-            @LeftDownPPaper.canceled -= instance.OnLeftDownPPaper;
+            @LeftDownPaper.started -= instance.OnLeftDownPaper;
+            @LeftDownPaper.performed -= instance.OnLeftDownPaper;
+            @LeftDownPaper.canceled -= instance.OnLeftDownPaper;
             @RightUpRock.started -= instance.OnRightUpRock;
             @RightUpRock.performed -= instance.OnRightUpRock;
             @RightUpRock.canceled -= instance.OnRightUpRock;
@@ -689,12 +689,12 @@ public partial class @GameInputActions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnLeftDownScissors(InputAction.CallbackContext context);
         /// <summary>
-        /// Method invoked when associated input action "LeftDownPPaper" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// Method invoked when associated input action "LeftDownPaper" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnLeftDownPPaper(InputAction.CallbackContext context);
+        void OnLeftDownPaper(InputAction.CallbackContext context);
         /// <summary>
         /// Method invoked when associated input action "RightUpRock" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>

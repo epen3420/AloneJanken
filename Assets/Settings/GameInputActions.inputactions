@@ -52,7 +52,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "LeftDownPPaper",
+                    "name": "LeftDownPaper",
                     "type": "Button",
                     "id": "0e36e019-3509-4c6e-a254-6072add8a958",
                     "expectedControlType": "",
@@ -178,7 +178,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "LeftDownPPaper",
+                    "action": "LeftDownPaper",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
