@@ -65,8 +65,8 @@ public class JankenInputManager : MonoBehaviour
 
     private void OnDestroy()
     {
-        inputActions.Disable();
-        inputActions.Dispose();
+        inputActions?.Disable();
+        inputActions?.Dispose();
 
         inputActions = null;
     }

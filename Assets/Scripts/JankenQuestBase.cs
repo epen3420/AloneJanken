@@ -16,7 +16,7 @@ public abstract class JankenQuestBase : ScriptableObject
         var pairs = handResultPairs.ToList();
         if (pairs.Count < 2)
         {
-            throw new System.Exception("二人以下のじゃんけんは判定できません");
+            return false;
         }
 
         var uniqueHandPosCount = pairs.Select(pair => pair.Hand.OwnerPos)
