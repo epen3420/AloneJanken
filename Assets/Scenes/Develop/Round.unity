@@ -368,10 +368,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 974812690}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc281b30e66e789478152e0b2d61a983, type: 3}
+  m_Script: {fileID: 11500000, guid: 0bcf141452b9c1546922b6f05d66cf44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  displayKeyNameText: {fileID: 858376687}
+  questText: {fileID: 858376687}
+  startRound: {fileID: 11400000, guid: 4a82f8c22b448f5418f24830a5105a0c, type: 2}
+  endRound: {fileID: 11400000, guid: c66a0c8af2342684388e93dd2cf2e02f, type: 2}
+  changeTimeEvent: {fileID: 11400000, guid: 6028f655783da6842ba3421acdb2af1f, type: 2}
 --- !u!1 &1289280971
 GameObject:
   m_ObjectHideFlags: 0
