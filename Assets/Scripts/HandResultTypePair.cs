@@ -12,6 +12,6 @@ public class HandResultTypePair
 
     public override string ToString()
     {
-        return $"{Hand.OwnerPos}は{Hand.HandType}で{Result.ToString()}だった";
+        return $"{Hand.pair.OwnerPos}は{Hand.pair.HandType}で{Result.ToString()}だった";
     }
 }

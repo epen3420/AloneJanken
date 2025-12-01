@@ -16,7 +16,7 @@ public static class HandJudger
         var handList = hands.ToList();
 
         // 重複を削除
-        var uniqueHandTypes = handList.Select(h => h.HandType)
+        var uniqueHandTypes = handList.Select(h => h.pair.HandType)
                                       .Distinct()
                                       .ToList();
 
@@ -35,7 +35,7 @@ public static class HandJudger
         var typeA = uniqueHandTypes[0];
         var typeB = uniqueHandTypes[1];
 
-        var handA = handList.FirstOrDefault(h => h.HandType == typeA);
+        var handA = handList.FirstOrDefault(h => h.pair.HandType == typeA);
         var isWinHandA = handA.IsWin(typeB);
         var winnerHandType = isWinHandA ? typeA : typeB;
 
@@ -43,7 +43,7 @@ public static class HandJudger
             new HandResultTypePair
             (
                 h,
-                (h.HandType == winnerHandType) ? ResultType.Win : ResultType.Lose
+                (h.pair.HandType == winnerHandType) ? ResultType.Win : ResultType.Lose
             )
         );
     }

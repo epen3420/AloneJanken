@@ -18,13 +18,22 @@ public enum HandType
 [System.Serializable]
 public class Hand
 {
-    public readonly HandPosType OwnerPos;
-    public readonly HandType HandType;
+    [System.Serializable]
+    public struct Pair
+    {
+        public HandPosType OwnerPos;
+        public HandType HandType;
+    }
+
+    public readonly Pair pair;
 
     public Hand(HandType type, HandPosType pos)
     {
-        OwnerPos = pos;
-        HandType = type;
+        pair = new Pair
+        {
+            OwnerPos = pos,
+            HandType = type,
+        };
     }
 
     /// <summary>
@@ -35,7 +44,7 @@ public class Hand
     /// <returns></returns>
     public bool IsWin(HandType enemyHand)
     {
-        var meHand = this.HandType;
+        var meHand = this.pair.HandType;
 
         if (meHand == HandType.Rock && enemyHand == HandType.Scissors) return true;
         if (meHand == HandType.Scissors && enemyHand == HandType.Paper) return true;

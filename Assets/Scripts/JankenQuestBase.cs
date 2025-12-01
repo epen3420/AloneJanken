@@ -8,8 +8,12 @@ public abstract class JankenQuestBase : ScriptableObject
     private string questName;
     [SerializeField]
     private string description;
+    [SerializeField]
+    private Hand.Pair[] handPair;
 
     protected abstract bool InternalJudge(List<HandResultTypePair> handResultPairs);
+
+    public IEnumerable<Hand.Pair> HandPair => handPair;
 
     public bool Judge(IEnumerable<HandResultTypePair> handResultPairs)
     {
@@ -19,7 +23,7 @@ public abstract class JankenQuestBase : ScriptableObject
             return false;
         }
 
-        var uniqueHandPosCount = pairs.Select(pair => pair.Hand.OwnerPos)
+        var uniqueHandPosCount = pairs.Select(pair => pair.Hand.pair.OwnerPos)
                                       .Distinct()
                                       .Count();
 
