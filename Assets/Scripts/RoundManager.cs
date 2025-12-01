@@ -13,7 +13,7 @@ public class RoundManager
         this.inputs = inputs;
     }
 
-    public async UniTask Execute(CancellationToken ctn)
+    public async UniTask Execute(JankenQuestBase quest, CancellationToken ctn)
     {
         inputs.Enable();
         timer.Init(3f);
@@ -21,9 +21,12 @@ public class RoundManager
         inputs.Disable();
 
         var resultHands = HandJudger.Judge(inputs.GetCurrentInputHand());
+        bool isWin = quest.Judge(resultHands);
+
         foreach (var hand in resultHands)
         {
             Debug.Log(hand.ToString());
         }
+        Debug.Log(isWin);
     }
 }
