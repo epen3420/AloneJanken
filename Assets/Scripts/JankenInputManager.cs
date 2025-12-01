@@ -32,22 +32,22 @@ public class JankenInputManager : MonoBehaviour
 
     private void OnEnable()
     {
-        inputActions.Enable();
-
         foreach (var action in actionMap.Keys)
         {
             action.performed += OnHandInput;
         }
+
+        inputActions.Enable();
     }
 
     private void OnDisable()
     {
+        inputActions.Disable();
+
         foreach (var action in actionMap.Keys)
         {
             action.performed -= OnHandInput;
         }
-
-        inputActions.Disable();
     }
 
     private void OnHandInput(InputAction.CallbackContext ctx)
