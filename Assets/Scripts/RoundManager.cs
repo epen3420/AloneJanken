@@ -75,6 +75,7 @@ public class RoundManager : MonoBehaviour
                     }
                 }
 
+                Debug.Log(isWin);
                 endRound.Raise(isWin);
             }
         }
