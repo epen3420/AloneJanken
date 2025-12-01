@@ -9,7 +9,7 @@ public class test_Janken : MonoBehaviour
     [System.Serializable]
     private struct HandInfo
     {
-        public string ownerName;
+        public HandPosType ownerPosType;
         public HandType handType;
     }
 
@@ -18,7 +18,7 @@ public class test_Janken : MonoBehaviour
         var hands = new List<Hand>();
         foreach (var handInfo in handInfos)
         {
-            hands.Add(new Hand(handInfo.handType, handInfo.ownerName));
+            hands.Add(new Hand(handInfo.handType, handInfo.ownerPosType));
         }
 
         var results = HandJudger.Judge(hands);

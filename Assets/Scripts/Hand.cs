@@ -1,3 +1,12 @@
+public enum HandPosType
+{
+    None = -1,
+    LeftUp,
+    LeftDown,
+    RightUp,
+    RightDown
+}
+
 public enum HandType
 {
     None = -1,
@@ -9,12 +18,12 @@ public enum HandType
 [System.Serializable]
 public class Hand
 {
-    public readonly string OwnerName;
+    public readonly HandPosType OwnerPos;
     public readonly HandType HandType;
 
-    public Hand(HandType type, string name = "Player")
+    public Hand(HandType type, HandPosType pos)
     {
-        OwnerName = name;
+        OwnerPos = pos;
         HandType = type;
     }
 
