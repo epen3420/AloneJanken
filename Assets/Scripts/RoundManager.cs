@@ -1,12 +1,13 @@
-/* using System.Threading;
+using Debug = UnityEngine.Debug;
+using System.Threading;
 using Cysharp.Threading.Tasks;
-using UnityEngine.InputSystem;
 
 public class RoundManager
 {
     private readonly CountDownTimer timer;
+    private readonly JankenInputManager inputs;
 
-    public RoundManager(CountDownTimer timer, InputActionAsset inputs)
+    public RoundManager(CountDownTimer timer, JankenInputManager inputs)
     {
         this.timer = timer;
         this.inputs = inputs;
@@ -14,10 +15,15 @@ public class RoundManager
 
     public async UniTask Execute(CancellationToken ctn)
     {
+        inputs.Enable();
         timer.Init(3f);
         await timer.Resume(ctn);
+        inputs.Disable();
 
-        inputs.Enable();
+        var resultHands = HandJudger.Judge(inputs.GetCurrentInputHand());
+        foreach (var hand in resultHands)
+        {
+            Debug.Log(hand.ToString());
+        }
     }
 }
- */
