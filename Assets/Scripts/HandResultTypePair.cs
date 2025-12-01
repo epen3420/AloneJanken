@@ -9,4 +9,9 @@ public class HandResultTypePair
 
     public readonly Hand Hand;
     public readonly ResultType Result;
+
+    public override string ToString()
+    {
+        return $"{Hand.OwnerName}は{Hand.HandType}で{Result.ToString()}だった";
+    }
 }
