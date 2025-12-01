@@ -83,7 +83,7 @@ jobs:
           fi
 
           # ARTIFACT_NAME を設定
-          ARTIFACT_NAME_VALUE="${{ inputs.build_target_name }}-Build-$(git rev-parse --short HEAD)"
+          ARTIFACT_NAME_VALUE="${{ inputs.build_target_name }}-Build-${{ github.run_id }}"
           echo "artifact_name=${ARTIFACT_NAME_VALUE}" >> $GITHUB_OUTPUT
 
   build:
