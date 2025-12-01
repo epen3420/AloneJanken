@@ -106,7 +106,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "RighDownPaper",
+                    "name": "RightDownPaper",
                     "type": "Button",
                     "id": "fdeca27b-5f64-41fd-9ea8-8594c46251a2",
                     "expectedControlType": "",
@@ -244,7 +244,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "RighDownPaper",
+                    "action": "RightDownPaper",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
