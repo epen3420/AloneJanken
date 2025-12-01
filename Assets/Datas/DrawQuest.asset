@@ -14,3 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   questName: "\u3042\u3044\u3053\u306B\u3057\u308D\uFF01"
   description: "\u3042\u3044\u3053\u3044\u306B\u3059\u308B"
+  handPair:
+  - OwnerPos: 0
+    HandType: 0
+  - OwnerPos: 1
+    HandType: 0
+  - OwnerPos: 2
+    HandType: 0
+  - OwnerPos: 3
+    HandType: 0
