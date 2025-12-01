@@ -9,11 +9,11 @@ public abstract class JankenQuestBase : ScriptableObject
     [SerializeField]
     private string description;
     [SerializeField]
-    private Hand.Pair[] handPair;
+    private bool isAllTarget;
 
     protected abstract bool InternalJudge(List<HandResultTypePair> handResultPairs);
 
-    public IEnumerable<Hand.Pair> HandPair => handPair;
+    public bool IsAllTarget => isAllTarget;
 
     public bool Judge(IEnumerable<HandResultTypePair> handResultPairs)
     {
