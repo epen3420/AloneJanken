@@ -35,11 +35,12 @@ public class RoundManager : MonoBehaviour
         isPlaying = true;
 
         int totalRounds = questDb.Quests.Length;
-
         try
         {
             for (int roundCount = 0; roundCount < totalRounds; roundCount++)
             {
+                var currentQuest = questDb.Quests[roundCount];
+
                 // キャンセルされているかチェック
                 ctn.ThrowIfCancellationRequested();
 
@@ -64,7 +65,7 @@ public class RoundManager : MonoBehaviour
                 if (inputResult.Any())
                 {
                     var resultHands = HandJudger.Judge(inputResult);
-                    isWin = questDb.Quests[roundCount].Judge(resultHands);
+                    isWin = currentQuest.Judge(resultHands);
 
                     foreach (var hand in resultHands)
                     {
