@@ -96,7 +96,7 @@ public class JankenInputManager : MonoBehaviour
 
     public void Disable()
     {
-        inputActions.Disable();
+        inputActions?.Disable();
 
         Debug.Log("入力受付を終了");
     }
