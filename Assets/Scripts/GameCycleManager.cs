@@ -2,10 +2,8 @@ using System.Threading;
 using Cysharp.Threading.Tasks;
 using System.Linq;
 using UnityEngine;
-using TMPro;
-using UnityEngine.UI;
 
-public class RoundManager : MonoBehaviour
+public class GameCycleManager : MonoBehaviour
 {
     [SerializeField]
     private int jankenBpm = 60;
@@ -13,16 +11,6 @@ public class RoundManager : MonoBehaviour
     private int beatsNum = 7;
     [SerializeField]
     private JankenInputManager inputs;
-    // Test
-    [SerializeField]
-    private TMP_Text logText;
-    [SerializeField]
-    private TMP_Dropdown targetHandDropdown;
-    [SerializeField]
-    private TMP_Dropdown questDropdown;
-    [SerializeField]
-    private Button startButton;
-    //
 
     [Header("Events")]
     [SerializeField]
@@ -31,6 +19,10 @@ public class RoundManager : MonoBehaviour
     private BoolEventChannelSO endRound;
     [SerializeField]
     private FloatEventChannelSO changeTimeEvent;
+    [SerializeField]
+    private HandsEventChannelSO endInput;
+    [SerializeField]
+    private JankenResultPairEventChannelSO jankenResultPairEvent;
 
     [SerializeField]
     private QuestDatabase questDb;
@@ -41,15 +33,6 @@ public class RoundManager : MonoBehaviour
     private void Awake()
     {
         timer = new CountDownTimer(changeTimeEvent, null);
-
-        // Test
-        var options = questDb.Quests.Select(quest => new TMP_Dropdown.OptionData(quest.QuestName));
-        questDropdown.AddOptions(options.ToList());
-
-        var targetHandOptions = HandTypeUtil.GetHandPosTypes().Select(hand => new TMP_Dropdown.OptionData(HandTypeUtil.GetHandPosName(hand)));
-        targetHandDropdown.AddOptions(targetHandOptions.ToList());
-
-        startButton.onClick.AddListener(async () => await StartRound(questDb.Quests[questDropdown.value], destroyCancellationToken));
     }
 
     public async UniTaskVoid GameCycle(CancellationToken ctn)
@@ -62,7 +45,8 @@ public class RoundManager : MonoBehaviour
         {
             for (int roundCount = 0; roundCount < totalRounds; roundCount++)
             {
-                await StartRound(questDb.Quests[roundCount], ctn);
+                int randomInt = Random.Range(0, totalRounds);
+                await StartRound(questDb.Quests[randomInt], ctn);
             }
         }
         finally
@@ -75,15 +59,13 @@ public class RoundManager : MonoBehaviour
     {
         if (!quest.IsAllTarget)
         {
-            var randomTargetHandPos = HandTypeUtil.GetHandPosTypes()[Random.Range(0, HandTypeUtil.HandPosCount)];
+            var randomTargetHandPos = HandTypeUtil.HandPosTypes[Random.Range(0, HandTypeUtil.HandPosCount)];
 
-            // quest.SetTargetHandPos(randomTargetHandPos);
-            quest.SetTargetHandPos((HandPosType)targetHandDropdown.value);
+            quest.SetTargetHandPos(randomTargetHandPos);
         }
         // キャンセルされているかチェック
         ctn.ThrowIfCancellationRequested();
 
-        logText.SetText("");
         startRound.Raise(quest);
 
         inputs.Enable();
@@ -99,6 +81,7 @@ public class RoundManager : MonoBehaviour
         {
             inputs.Disable();
             inputResult = inputs.CurrentInputHands.ToArray();
+            endInput.Raise(inputResult);
         }
 
 
@@ -106,19 +89,20 @@ public class RoundManager : MonoBehaviour
         if (inputResult.Length == HandTypeUtil.HandPosCount)
         {
             var resultHands = HandJudger.Judge(inputResult);
+            jankenResultPairEvent.Raise(resultHands);
             isWin = quest.Judge(resultHands);
 
             foreach (var hand in resultHands)
             {
-                logText.text += $"{hand}\n";
+                Debug.Log($"{hand}");
             }
         }
         else
         {
-            logText.text += $"入力キーの数が手の数と異なります\n\tinput: {inputResult.Length}\n\n";
+            Debug.Log($"入力キーの数が手の数と異なります input: {inputResult.Length}");
         }
 
-        logText.text += $"Win: {isWin}\n";
+        Debug.Log($"Win: {isWin}");
         endRound.Raise(isWin);
     }
 }
