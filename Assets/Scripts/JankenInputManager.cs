@@ -7,16 +7,16 @@ public class JankenInputManager : MonoBehaviour
 {
     private GameInputActions inputActions;
     // InputActionをキーにしてctx.actionで値を取れるようにしている
-    private Dictionary<InputAction, (HandPosType, HandType)> actionMap;
-    private HashSet<(HandPosType, HandType)> currentInputHands = new HashSet<(HandPosType, HandType)>();
+    private Dictionary<InputAction, Hand.Pair> actionMap;
+    private HashSet<Hand.Pair> currentInputHands = new HashSet<Hand.Pair>();
     private bool isEnable = false;
 
-    public IEnumerable<Hand> CurrentInputHands => currentInputHands.Select(pair => new Hand(pair.Item2, pair.Item1));
+    public IEnumerable<Hand> CurrentInputHands => currentInputHands.Select(pair => new Hand(pair.HandType, pair.OwnerPos));
 
     private void Awake()
     {
         inputActions = new GameInputActions();
-        actionMap = new Dictionary<InputAction, (HandPosType, HandType)>();
+        actionMap = new Dictionary<InputAction, Hand.Pair>();
 
         // --- LeftUp (左上) ---
         AddActionMap(inputActions.Janken.LeftUpRock, HandPosType.LeftUp, HandType.Rock);
@@ -47,7 +47,12 @@ public class JankenInputManager : MonoBehaviour
     /// <param name="type"></param>
     private void AddActionMap(InputAction action, HandPosType pos, HandType type)
     {
-        actionMap.Add(action, (pos, type));
+        var handPair = new Hand.Pair
+        {
+            HandType = type,
+            OwnerPos = pos,
+        };
+        actionMap.Add(action, handPair);
     }
 
     private void OnEnable()
