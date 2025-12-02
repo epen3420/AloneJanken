@@ -10,6 +10,8 @@ public class JankenInputManager : MonoBehaviour
     private Dictionary<InputAction, (HandPosType, HandType)> actionMap;
     private HashSet<(HandPosType, HandType)> currentInputHands = new HashSet<(HandPosType, HandType)>();
 
+    public IEnumerable<Hand> CurrentInputHands => currentInputHands.Select(pair => new Hand(pair.Item2, pair.Item1));
+
     private void Awake()
     {
         inputActions = new GameInputActions();
@@ -51,7 +53,8 @@ public class JankenInputManager : MonoBehaviour
     {
         foreach (var action in actionMap.Keys)
         {
-            action.performed += OnHandInput;
+            action.started += OnHandInput;
+            action.canceled += OnHandInput;
         }
     }
 
@@ -59,7 +62,8 @@ public class JankenInputManager : MonoBehaviour
     {
         foreach (var action in actionMap.Keys)
         {
-            action.performed -= OnHandInput;
+            action.started -= OnHandInput;
+            action.canceled -= OnHandInput;
         }
     }
 
@@ -77,10 +81,12 @@ public class JankenInputManager : MonoBehaviour
         {
             if (ctx.canceled)
             {
+                Debug.Log(value);
                 currentInputHands.Remove(value);
             }
             else
             {
+                Debug.Log(value);
                 currentInputHands.Add(value);
             }
         }
@@ -89,6 +95,7 @@ public class JankenInputManager : MonoBehaviour
     public void Enable()
     {
         currentInputHands.Clear();
+        OnEnable();
         inputActions.Enable();
 
         Debug.Log("入力受付を開始");
@@ -96,13 +103,9 @@ public class JankenInputManager : MonoBehaviour
 
     public void Disable()
     {
-        inputActions?.Disable();
+        OnDisable();
+        inputActions.Disable();
 
         Debug.Log("入力受付を終了");
-    }
-
-    public IEnumerable<Hand> GetCurrentInputHand()
-    {
-        return currentInputHands.Select((pair) => new Hand(pair.Item2, pair.Item1));
     }
 }

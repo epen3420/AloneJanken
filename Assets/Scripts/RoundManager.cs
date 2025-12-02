@@ -87,6 +87,7 @@ public class RoundManager : MonoBehaviour
         startRound.Raise(quest);
 
         inputs.Enable();
+        Hand[] inputResult;
         try
         {
             float duration = 60f / jankenBpm * beatsNum;
@@ -97,12 +98,12 @@ public class RoundManager : MonoBehaviour
         finally
         {
             inputs.Disable();
+            inputResult = inputs.CurrentInputHands.ToArray();
         }
 
-        var inputResult = inputs.GetCurrentInputHand();
 
         bool isWin = false;
-        if (inputResult.Count() == HandTypeUtil.HandPosCount)
+        if (inputResult.Length == HandTypeUtil.HandPosCount)
         {
             var resultHands = HandJudger.Judge(inputResult);
             isWin = quest.Judge(resultHands);
@@ -114,7 +115,7 @@ public class RoundManager : MonoBehaviour
         }
         else
         {
-            logText.text += $"入力キーの数が手の数と異なります\n\tinput: {inputResult.Count()}\n\n";
+            logText.text += $"入力キーの数が手の数と異なります\n\tinput: {inputResult.Length}\n\n";
         }
 
         logText.text += $"Win: {isWin}\n";
