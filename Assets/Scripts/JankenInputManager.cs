@@ -5,18 +5,20 @@ using UnityEngine.InputSystem;
 
 public class JankenInputManager : MonoBehaviour
 {
+    [SerializeField]
+    private HandsEventChannelSO inputHandsEvent;
+
     private GameInputActions inputActions;
     // InputActionをキーにしてctx.actionで値を取れるようにしている
-    private Dictionary<InputAction, Hand.Pair> actionMap;
-    private HashSet<Hand.Pair> currentInputHands = new HashSet<Hand.Pair>();
+    private Dictionary<InputAction, Hand> actionMap;
+    private List<Hand> currentInputHands = new List<Hand>();
     private bool isEnable = false;
 
-    public IEnumerable<Hand> CurrentInputHands => currentInputHands.Select(pair => new Hand(pair.HandType, pair.OwnerPos));
 
     private void Awake()
     {
         inputActions = new GameInputActions();
-        actionMap = new Dictionary<InputAction, Hand.Pair>();
+        actionMap = new Dictionary<InputAction, Hand>();
 
         // --- LeftUp (左上) ---
         AddActionMap(inputActions.Janken.LeftUpRock, HandPosType.LeftUp, HandType.Rock);
@@ -47,11 +49,7 @@ public class JankenInputManager : MonoBehaviour
     /// <param name="type"></param>
     private void AddActionMap(InputAction action, HandPosType pos, HandType type)
     {
-        var handPair = new Hand.Pair
-        {
-            HandType = type,
-            OwnerPos = pos,
-        };
+        var handPair = new Hand(type, pos);
         actionMap.Add(action, handPair);
     }
 
@@ -60,7 +58,6 @@ public class JankenInputManager : MonoBehaviour
         foreach (var action in actionMap.Keys)
         {
             action.performed += OnHandInput;
-            action.canceled += OnHandInput;
         }
     }
 
@@ -69,7 +66,6 @@ public class JankenInputManager : MonoBehaviour
         foreach (var action in actionMap.Keys)
         {
             action.performed -= OnHandInput;
-            action.canceled -= OnHandInput;
         }
     }
 
@@ -84,19 +80,20 @@ public class JankenInputManager : MonoBehaviour
     private void OnHandInput(InputAction.CallbackContext ctx)
     {
         if (!isEnable) return;
-        if (actionMap.TryGetValue(ctx.action, out var value))
+        if (!actionMap.TryGetValue(ctx.action, out var value)) return;
+
+        int index = currentInputHands.FindIndex(h => h.pair.OwnerPos == value.pair.OwnerPos);
+
+        if (index != -1)
         {
-            if (ctx.canceled)
-            {
-                Debug.Log(value);
-                currentInputHands.Remove(value);
-            }
-            else
-            {
-                Debug.Log(value);
-                currentInputHands.Add(value);
-            }
+            currentInputHands[index] = value;
         }
+        else
+        {
+            currentInputHands.Add(value);
+        }
+
+        inputHandsEvent.Raise(currentInputHands);
     }
 
     public void Enable()

@@ -2,6 +2,7 @@ using System.Threading;
 using Cysharp.Threading.Tasks;
 using System.Linq;
 using UnityEngine;
+using System.Collections.Generic;
 
 public class GameCycleManager : MonoBehaviour
 {
@@ -20,7 +21,7 @@ public class GameCycleManager : MonoBehaviour
     [SerializeField]
     private FloatEventChannelSO changeTimeEvent;
     [SerializeField]
-    private HandsEventChannelSO endInput;
+    private HandsEventChannelSO inputEvent;
     [SerializeField]
     private JankenResultPairEventChannelSO jankenResultPairEvent;
 
@@ -29,10 +30,26 @@ public class GameCycleManager : MonoBehaviour
 
     private CountDownTimer timer;
     private bool isPlaying = false;
+    private Hand[] inputHands;
 
     private void Awake()
     {
         timer = new CountDownTimer(changeTimeEvent, null);
+    }
+
+    private void OnEnable()
+    {
+        inputEvent.OnRaised += SetInputHands;
+    }
+
+    private void OnDisable()
+    {
+        inputEvent.OnRaised -= SetInputHands;
+    }
+
+    private void SetInputHands(IEnumerable<Hand> inputHands)
+    {
+        this.inputHands = inputHands.ToArray();
     }
 
     public async UniTaskVoid GameCycle(CancellationToken ctn)
@@ -69,7 +86,6 @@ public class GameCycleManager : MonoBehaviour
         startRound.Raise(quest);
 
         inputs.Enable();
-        Hand[] inputResult;
         try
         {
             float duration = 60f / jankenBpm * beatsNum;
@@ -80,15 +96,13 @@ public class GameCycleManager : MonoBehaviour
         finally
         {
             inputs.Disable();
-            inputResult = inputs.CurrentInputHands.ToArray();
-            endInput.Raise(inputResult);
         }
 
 
         bool isWin = false;
-        if (inputResult.Length == HandTypeUtil.HandPosCount)
+        if (inputHands.Length == HandTypeUtil.HandPosCount)
         {
-            var resultHands = HandJudger.Judge(inputResult);
+            var resultHands = HandJudger.Judge(inputHands);
             jankenResultPairEvent.Raise(resultHands);
             isWin = quest.Judge(resultHands);
 
@@ -99,7 +113,7 @@ public class GameCycleManager : MonoBehaviour
         }
         else
         {
-            Debug.Log($"入力キーの数が手の数と異なります input: {inputResult.Length}");
+            Debug.Log($"入力キーの数が手の数と異なります input: {inputHands.Length}");
         }
 
         Debug.Log($"Win: {isWin}");
