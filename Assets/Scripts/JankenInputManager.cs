@@ -9,6 +9,7 @@ public class JankenInputManager : MonoBehaviour
     // InputActionをキーにしてctx.actionで値を取れるようにしている
     private Dictionary<InputAction, (HandPosType, HandType)> actionMap;
     private HashSet<(HandPosType, HandType)> currentInputHands = new HashSet<(HandPosType, HandType)>();
+    private bool isEnable = false;
 
     public IEnumerable<Hand> CurrentInputHands => currentInputHands.Select(pair => new Hand(pair.Item2, pair.Item1));
 
@@ -53,7 +54,7 @@ public class JankenInputManager : MonoBehaviour
     {
         foreach (var action in actionMap.Keys)
         {
-            action.started += OnHandInput;
+            action.performed += OnHandInput;
             action.canceled += OnHandInput;
         }
     }
@@ -62,7 +63,7 @@ public class JankenInputManager : MonoBehaviour
     {
         foreach (var action in actionMap.Keys)
         {
-            action.started -= OnHandInput;
+            action.performed -= OnHandInput;
             action.canceled -= OnHandInput;
         }
     }
@@ -77,6 +78,7 @@ public class JankenInputManager : MonoBehaviour
 
     private void OnHandInput(InputAction.CallbackContext ctx)
     {
+        if (!isEnable) return;
         if (actionMap.TryGetValue(ctx.action, out var value))
         {
             if (ctx.canceled)
@@ -94,8 +96,8 @@ public class JankenInputManager : MonoBehaviour
 
     public void Enable()
     {
+        isEnable = true;
         currentInputHands.Clear();
-        OnEnable();
         inputActions.Enable();
 
         Debug.Log("入力受付を開始");
@@ -103,7 +105,7 @@ public class JankenInputManager : MonoBehaviour
 
     public void Disable()
     {
-        OnDisable();
+        isEnable = false;
         inputActions?.Disable();
 
         Debug.Log("入力受付を終了");
