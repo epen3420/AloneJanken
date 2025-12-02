@@ -30,7 +30,7 @@ public class GameCycleManager : MonoBehaviour
 
     private CountDownTimer timer;
     private bool isPlaying = false;
-    private Hand[] inputHands;
+    private List<Hand> inputHands = new List<Hand>();
 
     private void Awake()
     {
@@ -49,7 +49,7 @@ public class GameCycleManager : MonoBehaviour
 
     private void SetInputHands(IEnumerable<Hand> inputHands)
     {
-        this.inputHands = inputHands.ToArray();
+        this.inputHands = inputHands.ToList();
     }
 
     public async UniTaskVoid GameCycle(CancellationToken ctn)
@@ -72,13 +72,13 @@ public class GameCycleManager : MonoBehaviour
         }
     }
 
-    private async UniTask StartRound(JankenQuestBase quest, CancellationToken ctn)
+    public async UniTask StartRound(JankenQuestBase quest, CancellationToken ctn, HandPosType targetHandPost = HandPosType.None)
     {
         if (!quest.IsAllTarget)
         {
             var randomTargetHandPos = HandTypeUtil.HandPosTypes[Random.Range(0, HandTypeUtil.HandPosCount)];
 
-            quest.SetTargetHandPos(randomTargetHandPos);
+            quest.SetTargetHandPos(targetHandPost == HandPosType.None ? randomTargetHandPos : targetHandPost);
         }
         // キャンセルされているかチェック
         ctn.ThrowIfCancellationRequested();
@@ -100,7 +100,7 @@ public class GameCycleManager : MonoBehaviour
 
 
         bool isWin = false;
-        if (inputHands.Length == HandTypeUtil.HandPosCount)
+        if (inputHands.Count == HandTypeUtil.HandPosCount)
         {
             var resultHands = HandJudger.Judge(inputHands);
             jankenResultPairEvent.Raise(resultHands);
@@ -113,7 +113,7 @@ public class GameCycleManager : MonoBehaviour
         }
         else
         {
-            Debug.Log($"入力キーの数が手の数と異なります input: {inputHands.Length}");
+            Debug.Log($"入力キーの数が手の数と異なります input: {inputHands.Count}");
         }
 
         Debug.Log($"Win: {isWin}");
