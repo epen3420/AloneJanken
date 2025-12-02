@@ -35,3 +35,13 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+      - name: Notify Discord
+        if: ${{ secrets.DISCORD_WEBHOOK_URL }} != ""
+        run: |
+            curl -H "Content-Type: application/json" \
+            -X POST \
+            -d '{
+              "content": "ビルドが完了しました！ ${{ steps.deployment.outputs.page_url }}"
+            }' \
+            ${{ secrets.DISCORD_WEBHOOK_URL }}
