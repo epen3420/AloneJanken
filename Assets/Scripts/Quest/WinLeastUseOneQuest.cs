@@ -7,16 +7,6 @@ public class WinLeastUseOneQuest : JankenQuestBase
 {
     protected override bool InternalJudge(List<HandResultTypePair> handResultPairs)
     {
-        for (int i = 0; i < handResultPairs.Count; i++)
-        {
-            if (handResultPairs[i].Hand.pair.HandType == TargetHand &&
-                handResultPairs[i].Result == ResultType.Win)
-            {
-                handResultPairs.RemoveAt(i);
-                break;
-            }
-        }
-
-        return handResultPairs.All(pair => pair.Result == ResultType.Lose);
+        return handResultPairs.Any(pair => pair.Hand.pair.HandType == TargetHand && pair.Result == ResultType.Win);
     }
 }

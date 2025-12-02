@@ -23,9 +23,10 @@ public abstract class JankenQuestBase : ScriptableObject
     public HandType TargetHand => targetHand;
     public bool IsAllTarget => isAllTarget;
 
-    public void LotteryTargetHandPos()
+
+    public void SetTargetHandPos(HandPosType handPosType)
     {
-        currentTargetHandPos = HandTypeUtil.GetHandPosTypes()[Random.Range(0, HandTypeUtil.HandPosCount)];
+        currentTargetHandPos = handPosType;
     }
 
     public bool Judge(IEnumerable<HandResultTypePair> handResultPairs)

@@ -17,7 +17,9 @@ public class RoundManager : MonoBehaviour
     [SerializeField]
     private TMP_Text logText;
     [SerializeField]
-    private TMP_Dropdown dropdown;
+    private TMP_Dropdown targetHandDropdown;
+    [SerializeField]
+    private TMP_Dropdown questDropdown;
     [SerializeField]
     private Button startButton;
     //
@@ -42,9 +44,12 @@ public class RoundManager : MonoBehaviour
 
         // Test
         var options = questDb.Quests.Select(quest => new TMP_Dropdown.OptionData(quest.QuestName));
-        dropdown.AddOptions(options.ToList());
+        questDropdown.AddOptions(options.ToList());
 
-        startButton.onClick.AddListener(async () => await StartRound(questDb.Quests[dropdown.value], destroyCancellationToken));
+        var targetHandOptions = HandTypeUtil.GetHandPosTypes().Select(hand => new TMP_Dropdown.OptionData(HandTypeUtil.GetHandPosName(hand)));
+        targetHandDropdown.AddOptions(targetHandOptions.ToList());
+
+        startButton.onClick.AddListener(async () => await StartRound(questDb.Quests[questDropdown.value], destroyCancellationToken));
     }
 
     public async UniTaskVoid GameCycle(CancellationToken ctn)
@@ -69,8 +74,12 @@ public class RoundManager : MonoBehaviour
     private async UniTask StartRound(JankenQuestBase quest, CancellationToken ctn)
     {
         if (!quest.IsAllTarget)
-            quest.LotteryTargetHandPos();
+        {
+            var randomTargetHandPos = HandTypeUtil.GetHandPosTypes()[Random.Range(0, HandTypeUtil.HandPosCount)];
 
+            // quest.SetTargetHandPos(randomTargetHandPos);
+            quest.SetTargetHandPos((HandPosType)targetHandDropdown.value);
+        }
         // キャンセルされているかチェック
         ctn.ThrowIfCancellationRequested();
 
