@@ -1,4 +1,4 @@
-using System.Threading;
+/* using System.Threading;
 using Cysharp.Threading.Tasks;
 using System.Linq;
 using UnityEngine;
@@ -31,6 +31,8 @@ public class RoundManager : MonoBehaviour
     private BoolEventChannelSO endRound;
     [SerializeField]
     private FloatEventChannelSO changeTimeEvent;
+    [SerializeField]
+    private HandsEventChannelSO inputHandsEvent;
 
     [SerializeField]
     private QuestDatabase questDb;
@@ -87,6 +89,7 @@ public class RoundManager : MonoBehaviour
         startRound.Raise(quest);
 
         inputs.Enable();
+
         Hand[] inputResult;
         try
         {
@@ -98,7 +101,6 @@ public class RoundManager : MonoBehaviour
         finally
         {
             inputs.Disable();
-            inputResult = inputs.CurrentInputHands.ToArray();
         }
 
 
@@ -122,3 +124,4 @@ public class RoundManager : MonoBehaviour
         endRound.Raise(isWin);
     }
 }
+ */
