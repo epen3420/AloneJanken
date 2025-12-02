@@ -14,6 +14,8 @@ public class test_RoundUI : MonoBehaviour
     [SerializeField]
     private Button startButton;
     [SerializeField]
+    private TMP_Text logText;
+    [SerializeField]
     private GameCycleManager cycleManager;
     [SerializeField]
     private QuestDatabase questDb;
@@ -27,6 +29,32 @@ public class test_RoundUI : MonoBehaviour
         var targetPosOptions = new List<TMP_Dropdown.OptionData>(HandTypeUtil.HandPosTypes.Select(h => new TMP_Dropdown.OptionData(HandTypeUtil.GetHandPosName(h))));
         targetPosDropdown.options = targetPosOptions;
 
-        startButton.onClick.AddListener(async () => await cycleManager.StartRound(questDb.Quests[questDropdown.value], destroyCancellationToken, HandTypeUtil.HandPosTypes[targetPosDropdown.value]));
+        Application.logMessageReceived += SetLogText;
+
+        startButton.onClick.AddListener(async () =>
+        {
+            try
+            {
+                await cycleManager.StartRound(
+                    questDb.Quests[questDropdown.value],
+                    destroyCancellationToken,
+                    HandTypeUtil.HandPosTypes[targetPosDropdown.value]
+                );
+            }
+            catch (System.OperationCanceledException)
+            {
+            }
+        });
+    }
+
+    private void SetLogText(string logStr, string _, LogType logType)
+    {
+        if (logType == LogType.Log)
+            logText.text += "- " + logStr + "\n";
+    }
+
+    private void OnDestroy()
+    {
+        Application.logMessageReceived -= SetLogText;
     }
 }
