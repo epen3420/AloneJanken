@@ -18,7 +18,7 @@ public class test_RoundUI : MonoBehaviour
     [SerializeField]
     private QuestEventChannelSO startRound;
     [SerializeField]
-    private GameCycleManager cycleManager;
+    private RoundController cycleManager;
     [SerializeField]
     private QuestDatabase questDb;
 

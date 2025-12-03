@@ -1852,6 +1852,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1351487902}
   - component: {fileID: 1351487903}
+  - component: {fileID: 1351487904}
   m_Layer: 0
   m_Name: GameFlow
   m_TagString: Untagged
@@ -1895,7 +1896,20 @@ MonoBehaviour:
   inputEvent: {fileID: 11400000, guid: d618f751b6ffbb144934e3773bc965a1, type: 2}
   endInput: {fileID: 11400000, guid: 3f43eeaa73cc2824eab02d43a62674d7, type: 2}
   jankenResultPairEvent: {fileID: 11400000, guid: c96e110732983b7419642e1c545d79f7, type: 2}
+--- !u!114 &1351487904
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1351487901}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcf9a3787b842754b98f2cf5c515fb84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   questDb: {fileID: 11400000, guid: e3fdd489df6d9c145ae47eefe3fa0037, type: 2}
+  roundController: {fileID: 1351487903}
 --- !u!1 &1353163896
 GameObject:
   m_ObjectHideFlags: 0
