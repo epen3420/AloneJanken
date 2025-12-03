@@ -66,7 +66,6 @@ public class GameCycleManager : MonoBehaviour
             {
                 int randomInt = Random.Range(0, totalRounds);
                 await StartRound(questDb.Quests[randomInt], ctn);
-                inputHands.Clear();
             }
         }
         finally
@@ -131,5 +130,6 @@ public class GameCycleManager : MonoBehaviour
 
         Debug.Log($"Win: {isWin}");
         endRound.Raise(isWin);
+        inputHands.Clear();
     }
 }
