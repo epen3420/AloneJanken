@@ -32,7 +32,7 @@ public class DecidedInputHandView : MonoBehaviour
     private IEnumerable<Hand> defaultHands;
 
 
-    private void Start()
+    private void Awake()
     {
         defaultHands = HandTypeUtil.HandPosTypes.Select(pos => new Hand(HandType.Rock, pos));
 
@@ -44,6 +44,7 @@ public class DecidedInputHandView : MonoBehaviour
             }
 
         }
+
         foreach (var handPosImagePair in handPosImageMaps)
         {
             if (!handPairImageDict.TryAdd(handPosImagePair.handPosType, handPosImagePair.setImage))
