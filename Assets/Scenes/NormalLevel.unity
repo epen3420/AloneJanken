@@ -2381,6 +2381,7 @@ GameObject:
   - component: {fileID: 1938758985}
   - component: {fileID: 1938758987}
   - component: {fileID: 1938758986}
+  - component: {fileID: 1938758988}
   m_Layer: 5
   m_Name: body
   m_TagString: Untagged
@@ -2449,6 +2450,38 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1938758984}
   m_CullTransparentMesh: 1
+--- !u!114 &1938758988
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1938758984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68cf79c35adf71a40aa3e2b0b933b3a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startRound: {fileID: 11400000, guid: 4a82f8c22b448f5418f24830a5105a0c, type: 2}
+  endInput: {fileID: 11400000, guid: 3f43eeaa73cc2824eab02d43a62674d7, type: 2}
+  handTypeSpriteMaps:
+  - handType: 1
+    sprite: {fileID: -7759884159647386587, guid: 934b3c2b88d24b64c8ea20837ba75150, type: 3}
+  - handType: 2
+    sprite: {fileID: -7372912095179936824, guid: 622beeb7d0569a549abcfde82315f4e9, type: 3}
+  - handType: 3
+    sprite: {fileID: 9998612124376427, guid: 0d27237a1cd214a458303bed6e35e216, type: 3}
+  - handType: 4
+    sprite: {fileID: 1367075135634323723, guid: d5ea6bdbaf5e4a24a84f60961683b360, type: 3}
+  handPosImageMaps:
+  - handPosType: 1
+    setImage: {fileID: 418260535}
+  - handPosType: 2
+    setImage: {fileID: 622585819}
+  - handPosType: 3
+    setImage: {fileID: 704850274}
+  - handPosType: 4
+    setImage: {fileID: 714617412}
 --- !u!1 &1974164741
 GameObject:
   m_ObjectHideFlags: 0

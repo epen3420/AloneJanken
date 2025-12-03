@@ -29,6 +29,7 @@ public class GameCycleManager : MonoBehaviour
             {
                 int randomInt = Random.Range(0, totalRounds);
                 await roundController.StartRound(questDb.Quests[randomInt], ctn);
+                await UniTask.Delay(3000);
             }
         }
         finally
