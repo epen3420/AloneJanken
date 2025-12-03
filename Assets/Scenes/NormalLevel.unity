@@ -1707,6 +1707,7 @@ MonoBehaviour:
   endRound: {fileID: 11400000, guid: c66a0c8af2342684388e93dd2cf2e02f, type: 2}
   changeTimeEvent: {fileID: 11400000, guid: 6028f655783da6842ba3421acdb2af1f, type: 2}
   inputEvent: {fileID: 11400000, guid: d618f751b6ffbb144934e3773bc965a1, type: 2}
+  endInput: {fileID: 11400000, guid: 3f43eeaa73cc2824eab02d43a62674d7, type: 2}
   jankenResultPairEvent: {fileID: 11400000, guid: c96e110732983b7419642e1c545d79f7, type: 2}
   questDb: {fileID: 11400000, guid: e3fdd489df6d9c145ae47eefe3fa0037, type: 2}
 --- !u!1 &1606179421
