@@ -840,6 +840,7 @@ MonoBehaviour:
   targetPosDropdown: {fileID: 517684077}
   startButton: {fileID: 395122589}
   logText: {fileID: 1765964621}
+  startRound: {fileID: 11400000, guid: 4a82f8c22b448f5418f24830a5105a0c, type: 2}
   cycleManager: {fileID: 1351487903}
   questDb: {fileID: 11400000, guid: e3fdd489df6d9c145ae47eefe3fa0037, type: 2}
 --- !u!114 &412622608
@@ -1963,6 +1964,7 @@ GameObject:
   - component: {fileID: 698518869}
   - component: {fileID: 698518868}
   - component: {fileID: 698518867}
+  - component: {fileID: 698518870}
   m_Layer: 5
   m_Name: HekatonCanvas
   m_TagString: Untagged
@@ -2036,6 +2038,38 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &698518870
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 698518866}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68cf79c35adf71a40aa3e2b0b933b3a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startRound: {fileID: 11400000, guid: 4a82f8c22b448f5418f24830a5105a0c, type: 2}
+  endInput: {fileID: 11400000, guid: 3f43eeaa73cc2824eab02d43a62674d7, type: 2}
+  handTypeSpriteMaps:
+  - handType: 1
+    sprite: {fileID: -7759884159647386587, guid: 934b3c2b88d24b64c8ea20837ba75150, type: 3}
+  - handType: 2
+    sprite: {fileID: -7372912095179936824, guid: 622beeb7d0569a549abcfde82315f4e9, type: 3}
+  - handType: 3
+    sprite: {fileID: 9998612124376427, guid: 0d27237a1cd214a458303bed6e35e216, type: 3}
+  - handType: 4
+    sprite: {fileID: 1367075135634323723, guid: d5ea6bdbaf5e4a24a84f60961683b360, type: 3}
+  handPosImageMaps:
+  - handPosType: 1
+    setImage: {fileID: 418260535}
+  - handPosType: 2
+    setImage: {fileID: 622585819}
+  - handPosType: 3
+    setImage: {fileID: 704850274}
+  - handPosType: 4
+    setImage: {fileID: 714617412}
 --- !u!1 &704850272
 GameObject:
   m_ObjectHideFlags: 0
@@ -3014,6 +3048,7 @@ MonoBehaviour:
   endRound: {fileID: 11400000, guid: c66a0c8af2342684388e93dd2cf2e02f, type: 2}
   changeTimeEvent: {fileID: 11400000, guid: 6028f655783da6842ba3421acdb2af1f, type: 2}
   inputEvent: {fileID: 11400000, guid: d618f751b6ffbb144934e3773bc965a1, type: 2}
+  endInput: {fileID: 11400000, guid: 3f43eeaa73cc2824eab02d43a62674d7, type: 2}
   jankenResultPairEvent: {fileID: 11400000, guid: c96e110732983b7419642e1c545d79f7, type: 2}
   questDb: {fileID: 11400000, guid: e3fdd489df6d9c145ae47eefe3fa0037, type: 2}
 --- !u!1 &1371687923

@@ -13,6 +13,7 @@ public enum HandType
     Rock,
     Scissors,
     Paper,
+    Strange,
 }
 
 [System.Serializable]

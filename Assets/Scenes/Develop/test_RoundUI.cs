@@ -16,6 +16,8 @@ public class test_RoundUI : MonoBehaviour
     [SerializeField]
     private TMP_Text logText;
     [SerializeField]
+    private QuestEventChannelSO startRound;
+    [SerializeField]
     private GameCycleManager cycleManager;
     [SerializeField]
     private QuestDatabase questDb;
@@ -30,6 +32,7 @@ public class test_RoundUI : MonoBehaviour
         targetPosDropdown.options = targetPosOptions;
 
         Application.logMessageReceived += SetLogText;
+        startRound.OnRaised += ResetLogText;
 
         startButton.onClick.AddListener(async () =>
         {
@@ -51,6 +54,11 @@ public class test_RoundUI : MonoBehaviour
     {
         if (logType == LogType.Log)
             logText.text += "- " + logStr + "\n";
+    }
+
+    private void ResetLogText(JankenQuestBase _ = default)
+    {
+        logText.SetText("");
     }
 
     private void OnDestroy()

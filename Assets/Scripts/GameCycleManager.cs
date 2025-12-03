@@ -23,6 +23,8 @@ public class GameCycleManager : MonoBehaviour
     [SerializeField]
     private HandsEventChannelSO inputEvent;
     [SerializeField]
+    private HandsEventChannelSO endInput;
+    [SerializeField]
     private JankenResultPairEventChannelSO jankenResultPairEvent;
 
     [SerializeField]
@@ -64,6 +66,7 @@ public class GameCycleManager : MonoBehaviour
             {
                 int randomInt = Random.Range(0, totalRounds);
                 await StartRound(questDb.Quests[randomInt], ctn);
+                inputHands.Clear();
             }
         }
         finally
@@ -102,6 +105,7 @@ public class GameCycleManager : MonoBehaviour
         bool isWin = false;
         if (inputHands.Count == HandTypeUtil.HandPosCount)
         {
+            endInput.Raise(inputHands);
             var resultHands = HandJudger.Judge(inputHands);
             jankenResultPairEvent.Raise(resultHands);
             isWin = quest.Judge(resultHands);
@@ -113,6 +117,15 @@ public class GameCycleManager : MonoBehaviour
         }
         else
         {
+            var inputHandPosList = inputHands.Select(hand => hand.pair.OwnerPos).ToList();
+            foreach (var handPos in HandTypeUtil.HandPosTypes)
+            {
+                if (!inputHandPosList.Contains(handPos))
+                {
+                    inputHands.Add(new Hand(HandType.Strange, handPos));
+                }
+            }
+            endInput.Raise(inputHands);
             Debug.Log($"入力キーの数が手の数と異なります input: {inputHands.Count}");
         }
 
