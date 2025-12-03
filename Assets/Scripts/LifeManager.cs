@@ -1,56 +1,38 @@
-using Debug = UnityEngine.Debug;
+using UnityEngine;
 
-public class LifeCounter
+public class LifeManager : MonoBehaviour
 {
-    private readonly IntEventChannelSO OnChangeLife;
-    private readonly VoidEventChannelSO OnLifeZero;
+    [SerializeField]
+    private BoolEventChannelSO endRound;
+    [SerializeField]
+    private IntEventChannelSO changeLifeEvent;
+    [SerializeField]
+    private VoidEventChannelSO lifeZeroEvent;
+    [SerializeField]
+    private int maxLife = 3;
 
-    public int CurrentLife => currentLife;
+    private LifeCounter lifeCounter;
 
-    private int currentLife;
-
-
-    public LifeCounter(VoidEventChannelSO lifeZeroEventChannel,
-                       IntEventChannelSO changeLifeEventChannel,
-                       int maxLife = 3)
+    private void Awake()
     {
-        OnChangeLife = changeLifeEventChannel;
-        OnLifeZero = lifeZeroEventChannel;
-
-        ChangeLife(maxLife);
+        lifeCounter = new LifeCounter(lifeZeroEvent, changeLifeEvent, maxLife);
     }
 
-    public void IncreaseLife()
+    private void OnEnable()
     {
-        AddLife(1);
+        endRound.OnRaised += SetLife;
     }
 
-    public void DecreaseLife()
+    private void OnDisable()
     {
-        AddLife(-1);
+        endRound.OnRaised -= SetLife;
     }
 
-    public void AddLife(int value)
+    private void SetLife(bool isWin)
     {
-        ChangeLife(currentLife + value);
-
-        Debug.Log($"Current Life: {currentLife}");
-    }
-
-    private void ChangeLife(int life)
-    {
-        if (life < 0)
+        if (!isWin)
         {
-            Debug.LogWarning($"Can not change life to {life}");
-            return;
-        }
-
-        currentLife = life;
-        OnChangeLife?.Raise(currentLife);
-
-        if (currentLife == 0)
-        {
-            OnLifeZero.Raise();
+            lifeCounter.DecreaseLife();
         }
     }
 }
