@@ -82,15 +82,20 @@ public class JankenInputManager : MonoBehaviour
         if (!isEnable) return;
         if (!actionMap.TryGetValue(ctx.action, out var value)) return;
 
-        int index = currentInputHands.FindIndex(h => h.pair.OwnerPos == value.pair.OwnerPos);
+        ChangeHandInput(value);
+    }
+
+    public void ChangeHandInput(Hand hand)
+    {
+        int index = currentInputHands.FindIndex(h => h.pair.OwnerPos == hand.pair.OwnerPos);
 
         if (index != -1)
         {
-            currentInputHands[index] = value;
+            currentInputHands[index] = hand;
         }
         else
         {
-            currentInputHands.Add(value);
+            currentInputHands.Add(hand);
         }
 
         inputHandsEvent.Raise(currentInputHands);

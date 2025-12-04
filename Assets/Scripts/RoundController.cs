@@ -88,6 +88,7 @@ public class RoundController : MonoBehaviour
         }
         else
         {
+            Debug.Log($"入力キーの数が手の数と異なります input: {inputHands.Count}");
             var inputHandPosList = inputHands.Select(hand => hand.pair.OwnerPos).ToList();
             foreach (var handPos in HandTypeUtil.HandPosTypes)
             {
@@ -97,7 +98,6 @@ public class RoundController : MonoBehaviour
                 }
             }
             endInput.Raise(inputHands);
-            Debug.Log($"入力キーの数が手の数と異なります input: {inputHands.Count}");
         }
 
         Debug.Log($"Win: {isWin}");

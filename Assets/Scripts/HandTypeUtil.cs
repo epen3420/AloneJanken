@@ -38,10 +38,10 @@ public static class HandTypeUtil
     }
 
     public static HandType[] HandTypes => handTypesWithoutNone;
-    public static int HandCount => handTypes.Length - 1; // Noneの文を引く
+    public static int HandCount => handTypesWithoutNone.Length; // Noneの文を引く
 
     public static HandPosType[] HandPosTypes => handPosTypesWithoutNone;
-    public static int HandPosCount => handPosTypes.Length - 1; // Noneの文を引く
+    public static int HandPosCount => handPosTypesWithoutNone.Length; // Noneの文を引く
 
     public static string GetHandName(HandType type) => handTypeNameDict[type];
 
