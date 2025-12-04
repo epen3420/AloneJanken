@@ -241,3 +241,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   questDb: {fileID: 11400000, guid: 7b147be1217462245a04a454d5b7a637, type: 2}
   roundController: {fileID: 3239099527675364215}
+  lifeZeroEvent: {fileID: 11400000, guid: 769bfef652e2b3145af49095ee1a77c2, type: 2}
