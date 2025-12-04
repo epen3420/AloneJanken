@@ -1222,6 +1222,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9515f46876d466a418c763d912bc2a72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startRound: {fileID: 11400000, guid: 4a82f8c22b448f5418f24830a5105a0c, type: 2}
   inputEvent: {fileID: 11400000, guid: d618f751b6ffbb144934e3773bc965a1, type: 2}
   endRound: {fileID: 11400000, guid: c66a0c8af2342684388e93dd2cf2e02f, type: 2}
   leftUpText: {fileID: 1936163789845021514}
@@ -1250,6 +1251,8 @@ MonoBehaviour:
   - posType: 4
     tapInputController: {fileID: 6828822188526042680}
   inputManager: {fileID: 0}
+  startRound: {fileID: 11400000, guid: 4a82f8c22b448f5418f24830a5105a0c, type: 2}
+  endRound: {fileID: 11400000, guid: c66a0c8af2342684388e93dd2cf2e02f, type: 2}
 --- !u!114 &8076325346519207547
 MonoBehaviour:
   m_ObjectHideFlags: 0
