@@ -54,6 +54,8 @@ public class RoundController : MonoBehaviour
         QuestBase quest,
         CancellationToken ctn)
     {
+        Debug.Log($"{quest.ToString()}");
+
         // キャンセルされているかチェック
         ctn.ThrowIfCancellationRequested();
 
