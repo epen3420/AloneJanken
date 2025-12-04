@@ -129,10 +129,10 @@ TextureImporter:
       name: body_hekaton_0
       rect:
         serializedVersion: 2
-        x: 62
+        x: 382
         y: 0
         width: 1156
-        height: 936
+        height: 1022
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
