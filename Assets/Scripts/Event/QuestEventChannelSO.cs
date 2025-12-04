@@ -1,5 +1,5 @@
 [UnityEngine.CreateAssetMenu(fileName = "NewQuestEventChannelSO", menuName = "Events/QuestEventChannelSO")]
-public class QuestEventChannelSO : EventChannelSO<JankenQuestBase>
+public class QuestEventChannelSO : EventChannelSO<QuestBase>
 {
 
 }

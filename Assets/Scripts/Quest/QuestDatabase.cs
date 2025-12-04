@@ -4,7 +4,13 @@ using UnityEngine;
 public class QuestDatabase : ScriptableObject
 {
     [SerializeField]
-    private JankenQuestBase[] quests;
+    private QuestType[] questTypes;
 
-    public JankenQuestBase[] Quests => quests;
+    public QuestType[] QuestTypes => questTypes;
+
+    public QuestType GetQuestTypeRandomly()
+    {
+        int randomInt = Random.Range(0, questTypes.Length);
+        return questTypes[randomInt];
+    }
 }

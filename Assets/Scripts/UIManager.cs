@@ -29,13 +29,13 @@ public class UIManager : MonoBehaviour
         startRound.OnRaised -= ShowTargetHand;
     }
 
-    private void ShowQuest(JankenQuestBase quest)
+    private void ShowQuest(QuestBase quest)
     {
-        questText.SetText(quest.QuestName);
+        questText.SetText(quest.ToString());
     }
 
-    private void ShowTargetHand(JankenQuestBase quest)
+    private void ShowTargetHand(QuestBase quest)
     {
-        targetHandText.SetText($"{HandTypeUtil.GetHandPosName(quest.CurrentTargetHandPos)}");
+        targetHandText.SetText($"{HandTypeUtil.GetHandPosName(quest.TargetHandPos)}");
     }
 }

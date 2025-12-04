@@ -66,7 +66,7 @@ public class DecidedInputHandView : MonoBehaviour
         endInput.OnRaised -= SetView;
     }
 
-    private void ResetView(JankenQuestBase _)
+    private void ResetView(QuestBase _)
     {
         SetView(defaultHands);
     }

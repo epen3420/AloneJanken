@@ -50,14 +50,10 @@ public class RoundController : MonoBehaviour
         this.inputHands = inputHands.ToList();
     }
 
-    public async UniTask StartRound(JankenQuestBase quest, CancellationToken ctn, HandPosType targetHandPost = HandPosType.None)
+    public async UniTask StartRound(
+        QuestBase quest,
+        CancellationToken ctn)
     {
-        if (!quest.IsAllTarget)
-        {
-            var randomTargetHandPos = HandTypeUtil.HandPosTypes[Random.Range(0, HandTypeUtil.HandPosCount)];
-
-            quest.SetTargetHandPos(targetHandPost == HandPosType.None ? randomTargetHandPos : targetHandPost);
-        }
         // キャンセルされているかチェック
         ctn.ThrowIfCancellationRequested();
 

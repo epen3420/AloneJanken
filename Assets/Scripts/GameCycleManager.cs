@@ -22,13 +22,15 @@ public class GameCycleManager : MonoBehaviour
         if (isPlaying) return;
         isPlaying = true;
 
-        int totalRounds = questDb.Quests.Length;
         try
         {
-            for (int roundCount = 0; roundCount < totalRounds; roundCount++)
+            while (true)
             {
-                int randomInt = Random.Range(0, totalRounds);
-                await roundController.StartRound(questDb.Quests[randomInt], ctn);
+                var targetHand = HandTypeUtil.GetRandomlyHandType();
+                var targetHandPos = HandTypeUtil.GetRandomlyHandPosType();
+                var questType = questDb.GetQuestTypeRandomly();
+                var quest = QuestFactory.GetQuestByType(questType, targetHand, targetHandPos);
+                await roundController.StartRound(quest, ctn);
                 await UniTask.Delay(3000);
             }
         }
