@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -10,6 +11,7 @@ public class WinCountView : MonoBehaviour
 
     private int winCount = 0;
     private int continuousWinCount = 0;
+    private int score = 0;
 
 
     private void Start()
@@ -31,6 +33,7 @@ public class WinCountView : MonoBehaviour
     {
         if (isWin)
         {
+            score += 100 + (int)(100 * 0.1 * continuousWinCount);
             winCount++;
             continuousWinCount++;
         }
@@ -45,5 +48,10 @@ public class WinCountView : MonoBehaviour
     private void SetText(int count)
     {
         winCountText.SetText($"Win: {count}");
+    }
+
+    public int GetCurrentScore()
+    {
+        return score;
     }
 }

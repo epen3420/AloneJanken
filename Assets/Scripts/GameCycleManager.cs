@@ -10,6 +10,8 @@ public class GameCycleManager : MonoBehaviour
     private RoundController roundController;
     [SerializeField]
     private VoidEventChannelSO lifeZeroEvent;
+    [SerializeField]
+    private WinCountView winCounter;
 
     private bool isPlaying = false;
     private CancellationTokenSource cycleStopCts;
@@ -60,6 +62,8 @@ public class GameCycleManager : MonoBehaviour
         cycleStopCts.Cancel();
         cycleStopCts.Dispose();
         cycleStopCts = null;
+
+        Debug.Log($"{winCounter.GetCurrentScore()}");
 
         Debug.Log("Game Over");
     }

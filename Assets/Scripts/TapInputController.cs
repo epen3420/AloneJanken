@@ -19,12 +19,15 @@ public class TapInputController : MonoBehaviour
 
     private void OnEnable()
     {
+        button.interactable = true;
         button.onClick.AddListener(OnButtonClick);
     }
 
     private void OnDisable()
     {
         button.onClick.RemoveListener(OnButtonClick);
+        button.interactable = false;
+        handTypeIndex = 0;
     }
 
     private void OnButtonClick()

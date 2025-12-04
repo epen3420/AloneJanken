@@ -6,6 +6,8 @@ using UnityEngine;
 public class PrepareInputHandView : MonoBehaviour
 {
     [SerializeField]
+    private QuestEventChannelSO startRound;
+    [SerializeField]
     private HandsEventChannelSO inputEvent;
     [SerializeField]
     private BoolEventChannelSO endRound;
@@ -19,21 +21,16 @@ public class PrepareInputHandView : MonoBehaviour
     private TMP_Text rightDownText;
 
 
-    private void Start()
-    {
-        ResetText();
-    }
-
     private void OnEnable()
     {
+        startRound.OnRaised += ResetText;
         inputEvent.OnRaised += SetView;
-        endRound.OnRaised += ResetText;
     }
 
     private void OnDisable()
     {
+        startRound.OnRaised -= ResetText;
         inputEvent.OnRaised -= SetView;
-        endRound.OnRaised -= ResetText;
     }
 
     private void SetView(IEnumerable<Hand> inputHands)
@@ -43,13 +40,17 @@ public class PrepareInputHandView : MonoBehaviour
         var rightUpInput = inputHands.FirstOrDefault(h => h.pair.OwnerPos == HandPosType.RightUp);
         var rightDownInput = inputHands.FirstOrDefault(h => h.pair.OwnerPos == HandPosType.RightDown);
 
-        leftUpText.SetText(leftUpInput?.pair.HandType.ToString());
-        leftDownText.SetText(leftDownInput?.pair.HandType.ToString());
-        rightUpText.SetText(rightUpInput?.pair.HandType.ToString());
-        rightDownText.SetText(rightDownInput?.pair.HandType.ToString());
+        if (leftUpInput != null)
+            leftUpText.SetText(leftUpInput?.pair.HandType.ToString());
+        if (leftDownInput != null)
+            leftDownText.SetText(leftDownInput?.pair.HandType.ToString());
+        if (rightUpInput != null)
+            rightUpText.SetText(rightUpInput?.pair.HandType.ToString());
+        if (rightDownInput != null)
+            rightDownText.SetText(rightDownInput?.pair.HandType.ToString());
     }
 
-    private void ResetText(bool _ = false)
+    private void ResetText(QuestBase quest = default)
     {
         leftUpText.SetText("");
         leftDownText.SetText("");

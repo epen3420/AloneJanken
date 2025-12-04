@@ -14,6 +14,10 @@ public class TapInputManager : MonoBehaviour
     private PosTypeButtonMap[] posTypeButtonMaps;
     [SerializeField]
     private JankenInputManager inputManager;
+    [SerializeField]
+    private QuestEventChannelSO startRound;
+    [SerializeField]
+    private BoolEventChannelSO endRound;
 
     private UnityAction<HandType>[] onClickActions;
 
@@ -30,6 +34,9 @@ public class TapInputManager : MonoBehaviour
             posTypeButtonMaps[index].tapInputController.OnClick += action;
             onClickActions[index] = action;
         }
+
+        startRound.OnRaised += EnableButtons;
+        endRound.OnRaised += DisableButtons;
     }
 
     private void OnDisable()
@@ -37,6 +44,25 @@ public class TapInputManager : MonoBehaviour
         for (int i = 0; i < posTypeButtonMaps.Length; i++)
         {
             posTypeButtonMaps[i].tapInputController.OnClick -= onClickActions[i];
+        }
+
+        startRound.OnRaised -= EnableButtons;
+        endRound.OnRaised -= DisableButtons;
+    }
+
+    private void EnableButtons(QuestBase _ = default)
+    {
+        foreach (var map in posTypeButtonMaps)
+        {
+            map.tapInputController.enabled = true;
+        }
+    }
+
+    private void DisableButtons(bool _ = default)
+    {
+        foreach (var map in posTypeButtonMaps)
+        {
+            map.tapInputController.enabled = false;
         }
     }
 }
