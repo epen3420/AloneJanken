@@ -34,7 +34,7 @@ public class TapInputController : MonoBehaviour
 
     private HandType LoopHandType()
     {
-        if (handTypeIndex > HandTypeUtil.HandCount)
+        if (handTypeIndex >= HandTypeUtil.HandCount)
             handTypeIndex = 0;
 
         return handTypes[handTypeIndex++];
