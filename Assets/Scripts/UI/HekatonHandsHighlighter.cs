@@ -56,8 +56,14 @@ public class HekatonHandsHighlighter : MonoBehaviour
 
     private async void StartTimer()
     {
-        await timer.Resume(destroyCancellationToken);
-        stopHighlightCts?.Cancel();
+        try
+        {
+            await timer.Resume(destroyCancellationToken);
+            stopHighlightCts?.Cancel();
+        }
+        catch (System.OperationCanceledException)
+        {
+        }
     }
 
     private void EndHighlight()
