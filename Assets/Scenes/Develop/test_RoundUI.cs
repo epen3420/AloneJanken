@@ -18,7 +18,7 @@ public class test_RoundUI : MonoBehaviour
     [SerializeField]
     private TMP_Text logText;
     [SerializeField]
-    private QuestEventChannelSO startRound;
+    private VoidEventChannelSO startRound;
     [SerializeField]
     private RoundController cycleManager;
     [SerializeField]
@@ -37,7 +37,7 @@ public class test_RoundUI : MonoBehaviour
         targetPosDropdown.options = targetPosOptions;
 
         Application.logMessageReceived += SetLogText;
-        startRound.OnRaised += ResetLogText;
+        startRound.OnVoidRaised += ResetLogText;
 
         startButton.onClick.AddListener(async () =>
         {
@@ -63,7 +63,7 @@ public class test_RoundUI : MonoBehaviour
             logText.text += "- " + logStr + "\n";
     }
 
-    private void ResetLogText(QuestBase _ = default)
+    private void ResetLogText()
     {
         logText.SetText("");
     }

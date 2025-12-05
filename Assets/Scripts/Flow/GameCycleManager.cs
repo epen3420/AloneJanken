@@ -23,12 +23,12 @@ public class GameCycleManager : MonoBehaviour
 
     private void OnEnable()
     {
-        lifeZeroEvent.OnRaised += GameOver;
+        lifeZeroEvent.OnVoidRaised += GameOver;
     }
 
     private void OnDisable()
     {
-        lifeZeroEvent.OnRaised -= GameOver;
+        lifeZeroEvent.OnVoidRaised -= GameOver;
     }
 
     private void Start()

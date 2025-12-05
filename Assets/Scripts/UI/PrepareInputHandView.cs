@@ -6,7 +6,7 @@ using UnityEngine;
 public class PrepareInputHandView : MonoBehaviour
 {
     [SerializeField]
-    private QuestEventChannelSO startRound;
+    private VoidEventChannelSO startRound;
     [SerializeField]
     private HandsEventChannelSO inputEvent;
     [SerializeField]
@@ -23,13 +23,13 @@ public class PrepareInputHandView : MonoBehaviour
 
     private void OnEnable()
     {
-        startRound.OnRaised += ResetText;
+        startRound.OnVoidRaised += ResetText;
         inputEvent.OnRaised += SetView;
     }
 
     private void OnDisable()
     {
-        startRound.OnRaised -= ResetText;
+        startRound.OnVoidRaised -= ResetText;
         inputEvent.OnRaised -= SetView;
     }
 
@@ -50,7 +50,7 @@ public class PrepareInputHandView : MonoBehaviour
             rightDownText.SetText(rightDownInput?.pair.HandType.ToString());
     }
 
-    private void ResetText(QuestBase quest = default)
+    private void ResetText()
     {
         leftUpText.SetText("");
         leftDownText.SetText("");

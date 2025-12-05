@@ -747,8 +747,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inputHandsEvent: {fileID: 11400000, guid: d618f751b6ffbb144934e3773bc965a1, type: 2}
-  startTimer: {fileID: 11400000, guid: bdc014ec43be07b43bba6b0bbf8769b7, type: 2}
-  endTimer: {fileID: 11400000, guid: c95eae4a7b5e77048ae4fa3aabc7554d, type: 2}
 --- !u!114 &3783701501371244182
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -847,13 +845,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jankenBpm: 60
   beatsNum: 7
+  inputs: {fileID: 3320767024447880016}
   startRound: {fileID: 11400000, guid: 4a82f8c22b448f5418f24830a5105a0c, type: 2}
-  startTimer: {fileID: 11400000, guid: bdc014ec43be07b43bba6b0bbf8769b7, type: 2}
-  endTimer: {fileID: 11400000, guid: c95eae4a7b5e77048ae4fa3aabc7554d, type: 2}
   endRound: {fileID: 11400000, guid: c66a0c8af2342684388e93dd2cf2e02f, type: 2}
   changeTimeEvent: {fileID: 11400000, guid: 6028f655783da6842ba3421acdb2af1f, type: 2}
   inputEvent: {fileID: 11400000, guid: d618f751b6ffbb144934e3773bc965a1, type: 2}
   endInput: {fileID: 11400000, guid: 3f43eeaa73cc2824eab02d43a62674d7, type: 2}
+  jankenResultPairEvent: {fileID: 11400000, guid: c96e110732983b7419642e1c545d79f7, type: 2}
 --- !u!1001 &7449925582237340791
 PrefabInstance:
   m_ObjectHideFlags: 0

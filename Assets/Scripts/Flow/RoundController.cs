@@ -10,12 +10,14 @@ public class RoundController : MonoBehaviour
     private int jankenBpm = 60;
     [SerializeField]
     private int beatsNum = 7;
-    [SerializeField]
-    private JankenInputManager inputs;
 
     [Header("Events")]
     [SerializeField]
     private QuestEventChannelSO startRound;
+    [SerializeField]
+    private FloatEventChannelSO startTimer;
+    [SerializeField]
+    private VoidEventChannelSO endTimer;
     [SerializeField]
     private BoolEventChannelSO endRound;
     [SerializeField]
@@ -24,8 +26,6 @@ public class RoundController : MonoBehaviour
     private HandsEventChannelSO inputEvent;
     [SerializeField]
     private HandsEventChannelSO endInput;
-    [SerializeField]
-    private JankenResultPairEventChannelSO jankenResultPairEvent;
 
     private CountDownTimer timer;
     private List<Hand> inputHands = new List<Hand>();
@@ -61,26 +61,18 @@ public class RoundController : MonoBehaviour
 
         startRound.Raise(quest);
 
-        inputs.Enable();
-        try
-        {
-            float duration = 60f / jankenBpm * beatsNum;
-            timer.Init(duration);
+        float duration = 60f / jankenBpm * beatsNum;
+        timer.Init(duration);
 
-            await timer.Resume(ctn);
-        }
-        finally
-        {
-            inputs.Disable();
-        }
-
+        startTimer.Raise(duration);
+        await timer.Resume(ctn);
+        endTimer.Raise();
 
         bool isWin = false;
         if (inputHands.Count == HandTypeUtil.HandPosCount)
         {
             endInput.Raise(inputHands);
             var resultHands = HandJudger.Judge(inputHands);
-            jankenResultPairEvent.Raise(resultHands);
             isWin = quest.Judge(resultHands);
 
             foreach (var hand in resultHands)

@@ -7,6 +7,10 @@ public class JankenInputManager : MonoBehaviour
 {
     [SerializeField]
     private HandsEventChannelSO inputHandsEvent;
+    [SerializeField]
+    private VoidEventChannelSO startTimer;
+    [SerializeField]
+    private VoidEventChannelSO endTimer;
 
     private GameInputActions inputActions;
     // InputActionをキーにしてctx.actionで値を取れるようにしている
@@ -59,6 +63,9 @@ public class JankenInputManager : MonoBehaviour
         {
             action.performed += OnHandInput;
         }
+
+        startTimer.OnVoidRaised += Enable;
+        endTimer.OnVoidRaised += Disable;
     }
 
     private void OnDisable()
@@ -67,6 +74,9 @@ public class JankenInputManager : MonoBehaviour
         {
             action.performed -= OnHandInput;
         }
+
+        startTimer.OnVoidRaised -= Enable;
+        endTimer.OnVoidRaised -= Disable;
     }
 
     private void OnDestroy()

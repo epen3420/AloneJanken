@@ -19,7 +19,7 @@ public class DecidedInputHandView : MonoBehaviour
     }
 
     [SerializeField]
-    private QuestEventChannelSO startRound;
+    private VoidEventChannelSO startRound;
     [SerializeField]
     private HandsEventChannelSO endInput;
     [SerializeField]
@@ -56,17 +56,17 @@ public class DecidedInputHandView : MonoBehaviour
 
     private void OnEnable()
     {
-        startRound.OnRaised += ResetView;
+        startRound.OnVoidRaised += ResetView;
         endInput.OnRaised += SetView;
     }
 
     private void OnDisable()
     {
-        startRound.OnRaised -= ResetView;
+        startRound.OnVoidRaised -= ResetView;
         endInput.OnRaised -= SetView;
     }
 
-    private void ResetView(QuestBase _)
+    private void ResetView()
     {
         SetView(defaultHands);
     }
