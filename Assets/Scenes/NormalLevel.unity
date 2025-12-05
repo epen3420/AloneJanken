@@ -747,6 +747,34 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4486631616810026277, guid: 03086ea8d610ef34595c814d4187f8b5, type: 3}
+      propertyPath: handPosImageMaps.Array.data[1].setImage
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4486631616810026277, guid: 03086ea8d610ef34595c814d4187f8b5, type: 3}
+      propertyPath: handPosImageMaps.Array.data[2].setImage
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4486631616810026277, guid: 03086ea8d610ef34595c814d4187f8b5, type: 3}
+      propertyPath: handPosImageMaps.Array.data[3].setImage
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4600509369426413033, guid: 03086ea8d610ef34595c814d4187f8b5, type: 3}
+      propertyPath: handPosImageMaps.Array.data[1].image
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4600509369426413033, guid: 03086ea8d610ef34595c814d4187f8b5, type: 3}
+      propertyPath: handPosImageMaps.Array.data[2].image
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4600509369426413033, guid: 03086ea8d610ef34595c814d4187f8b5, type: 3}
+      propertyPath: handPosImageMaps.Array.data[3].image
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4651813325097674479, guid: 03086ea8d610ef34595c814d4187f8b5, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -33.920288
+      objectReference: {fileID: 0}
     - target: {fileID: 5590347437245867237, guid: 03086ea8d610ef34595c814d4187f8b5, type: 3}
       propertyPath: m_Name
       value: HekatonCanvas

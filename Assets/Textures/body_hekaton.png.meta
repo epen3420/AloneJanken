@@ -129,12 +129,12 @@ TextureImporter:
       name: body_hekaton_0
       rect:
         serializedVersion: 2
-        x: 382
+        x: 455
         y: 0
-        width: 1156
+        width: 1011
         height: 1022
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -151,7 +151,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: a3fa3e2f2b76b2f47a73cc90c8d6c576
     internalID: 0
     vertices: []
     indices: 
