@@ -24,7 +24,7 @@ public abstract class QuestBase
         this.targetHandPos = targetHandPos;
     }
 
-    protected virtual bool IsAllTarget { get; } = false;
+    public virtual bool IsAllTarget { get; } = false;
 
     public abstract bool InternalJudge();
     public abstract override string ToString();

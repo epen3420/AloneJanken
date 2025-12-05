@@ -3,7 +3,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class DecidedInputHandView : MonoBehaviour
+public class HekatonHandsChanger : MonoBehaviour
 {
     [System.Serializable]
     private struct HandTypeSpriteMap

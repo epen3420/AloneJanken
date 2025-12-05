@@ -246,6 +246,7 @@ GameObject:
   - component: {fileID: 284092019896834776}
   - component: {fileID: 2820331868318733647}
   - component: {fileID: 4486631616810026277}
+  - component: {fileID: 4600509369426413033}
   m_Layer: 5
   m_Name: body
   m_TagString: Untagged
@@ -346,6 +347,31 @@ MonoBehaviour:
     setImage: {fileID: 9125750449478407723}
   - handPosType: 4
     setImage: {fileID: 7674111328910075942}
+--- !u!114 &4600509369426413033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6383651659984157789}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f91301234059f1c4284194a5da49f902, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startRound: {fileID: 11400000, guid: 4a82f8c22b448f5418f24830a5105a0c, type: 2}
+  endTimer: {fileID: 11400000, guid: c95eae4a7b5e77048ae4fa3aabc7554d, type: 2}
+  highlightColor: {r: 1, g: 0.24842751, b: 0.24842751, a: 0}
+  highlightDuration: 0.5
+  handPosImageMaps:
+  - posType: 1
+    image: {fileID: 5234614688504587341}
+  - posType: 2
+    image: {fileID: 4460867746545728546}
+  - posType: 3
+    image: {fileID: 9125750449478407723}
+  - posType: 4
+    image: {fileID: 7674111328910075942}
 --- !u!1 &6468732455371406541
 GameObject:
   m_ObjectHideFlags: 0
