@@ -1,5 +1,3 @@
-using System.Linq;
-
 public class LeastDrawQuest : QuestBase
 {
     public LeastDrawQuest(
@@ -11,8 +9,9 @@ public class LeastDrawQuest : QuestBase
 
     public override bool InternalJudge()
     {
-        return MatchTargetPosPair.Result == ResultType.DrawOne ||
-               MatchTargetPosPair.Result == ResultType.DrawAll;
+        return MatchTargetPosPair.Hand.pair.HandType == TargetHand &&
+               (MatchTargetPosPair.Result == ResultType.DrawOne ||
+               MatchTargetPosPair.Result == ResultType.DrawAll);
     }
 
     public override string ToString()

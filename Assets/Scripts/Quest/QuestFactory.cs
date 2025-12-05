@@ -8,6 +8,7 @@ public enum QuestType
     LeastWin,
     LeastLose,
     UseAllDraw,
+    OnlyUseDraw,
     LeastDraw,
 }
 
@@ -30,6 +31,8 @@ public static class QuestFactory
                 return new LeastLoseQuest(targetHand, targetHandPos);
             case QuestType.UseAllDraw:
                 return new UseAllDrawQuest(targetHand, targetHandPos);
+            case QuestType.OnlyUseDraw:
+                return new OnlyUseDrawQuest(targetHand, targetHandPos);
             case QuestType.LeastDraw:
                 return new LeastDrawQuest(targetHand, targetHandPos);
 
