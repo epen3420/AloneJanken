@@ -1479,7 +1479,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8e40b90a69d7d3438cf9ca996b12361, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  endRound: {fileID: 11400000, guid: c66a0c8af2342684388e93dd2cf2e02f, type: 2}
+  changeWinCount: {fileID: 11400000, guid: 0d0cb20f27927414dbf29247d87d6495, type: 2}
+  changeContinuousWinCount: {fileID: 11400000, guid: 4bfb4cbce6db31644bf7cd94ed411949, type: 2}
   winCountText: {fileID: 6918470663883234971}
 --- !u!114 &3330496969251275544
 MonoBehaviour:
