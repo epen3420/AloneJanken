@@ -1,5 +1,7 @@
 using System.Collections.Generic;
 using System.Threading;
+using Cysharp.Threading.Tasks;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,8 +12,6 @@ public class HekatonHandsHighlighter : MonoBehaviour
     [SerializeField]
     private VoidEventChannelSO endTimer;
     [SerializeField]
-    private Color highlightColor;
-    [SerializeField]
     private float highlightDuration = 0.5f;
     [SerializeField]
     private HandPosImageMaps[] handPosImageMaps;
@@ -20,7 +20,7 @@ public class HekatonHandsHighlighter : MonoBehaviour
     private struct HandPosImageMaps
     {
         public HandPosType posType;
-        public Image image;
+        public Image imageForHighlight;
     }
 
     private Dictionary<HandPosType, Image> handPosImageDict = new Dictionary<HandPosType, Image>();
@@ -34,7 +34,7 @@ public class HekatonHandsHighlighter : MonoBehaviour
 
         foreach (var map in handPosImageMaps)
         {
-            handPosImageDict.Add(map.posType, map.image);
+            handPosImageDict.Add(map.posType, map.imageForHighlight);
         }
     }
 
@@ -72,6 +72,7 @@ public class HekatonHandsHighlighter : MonoBehaviour
         foreach (var cts in stopHighlightCtsDict)
         {
             cts.Value?.Cancel();
+            handPosImageDict[cts.Key].gameObject.SetActive(false);
         }
     }
 
@@ -92,13 +93,15 @@ public class HekatonHandsHighlighter : MonoBehaviour
 
     private void HighlightHand(HandPosType posType)
     {
-        stopHighlightCtsDict[posType] = new CancellationTokenSource();
+        var cts = new CancellationTokenSource();
+        stopHighlightCtsDict[posType] = cts;
 
-        ImageHighlighter.Highlight(
-            handPosImageDict[posType],
-            highlightColor,
-            highlightDuration,
-            stopHighlightCtsDict[posType].Token
-        ).Forget();
+        var imageForHighlight = handPosImageDict[posType];
+        imageForHighlight.gameObject.SetActive(true);
+        imageForHighlight.DOFade(0, highlightDuration)
+            .SetEase(Ease.Flash)
+            .SetLoops(-1, LoopType.Yoyo)
+            .ToUniTask(cancellationToken: cts.Token)
+            .Forget();
     }
 }
