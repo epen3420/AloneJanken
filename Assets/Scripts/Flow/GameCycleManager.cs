@@ -11,7 +11,7 @@ public class GameCycleManager : MonoBehaviour
     [SerializeField]
     private VoidEventChannelSO lifeZeroEvent;
     [SerializeField]
-    private WinCountView winCounter;
+    private ScoreManager scoreManager;
     [SerializeField]
     private string[] sentencesBeforeStart;
     [SerializeField]
@@ -70,7 +70,7 @@ public class GameCycleManager : MonoBehaviour
         cycleStopCts.Dispose();
         cycleStopCts = null;
 
-        Debug.Log($"{winCounter.GetCurrentScore()}");
+        Debug.Log($"{scoreManager.GetCurrentScore()}");
 
         Debug.Log("Game Over");
     }

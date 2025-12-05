@@ -1,17 +1,14 @@
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
 public class WinCountView : MonoBehaviour
 {
     [SerializeField]
-    private BoolEventChannelSO endRound;
+    private IntEventChannelSO changeWinCount;
+    [SerializeField]
+    private IntEventChannelSO changeContinuousWinCount;
     [SerializeField]
     private TMP_Text winCountText;
-
-    private int winCount = 0;
-    private int continuousWinCount = 0;
-    private int score = 0;
 
 
     private void Start()
@@ -21,37 +18,16 @@ public class WinCountView : MonoBehaviour
 
     private void OnEnable()
     {
-        endRound.OnRaised += UpdateView;
+        changeWinCount.OnRaised += SetText;
     }
 
     private void OnDisable()
     {
-        endRound.OnRaised -= UpdateView;
-    }
-
-    private void UpdateView(bool isWin)
-    {
-        if (isWin)
-        {
-            score += 100 + (int)(100 * 0.1 * continuousWinCount);
-            winCount++;
-            continuousWinCount++;
-        }
-        else
-        {
-            continuousWinCount = 0;
-        }
-
-        SetText(winCount);
+        changeWinCount.OnRaised += SetText;
     }
 
     private void SetText(int count)
     {
         winCountText.SetText($"Win: {count}");
-    }
-
-    public int GetCurrentScore()
-    {
-        return score;
     }
 }

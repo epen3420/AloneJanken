@@ -513,17 +513,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1408030899 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8076325346519207547, guid: 7a13579bceb6c3f418177754e63b8e4a, type: 3}
-  m_PrefabInstance: {fileID: 7449925582237340791}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d8e40b90a69d7d3438cf9ca996b12361, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1408030900 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3330496969251275544, guid: 7a13579bceb6c3f418177754e63b8e4a, type: 3}
@@ -535,6 +524,57 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b58c7da6dfeed346ae08e5146ebcfc3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1576227613
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1576227614}
+  - component: {fileID: 1576227615}
+  m_Layer: 0
+  m_Name: Score
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1576227614
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1576227613}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2799256526307246489}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1576227615
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1576227613}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e430b2c8c1e5fa449bf14c811bc18a94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  endRound: {fileID: 11400000, guid: c66a0c8af2342684388e93dd2cf2e02f, type: 2}
+  winCount:
+    observer: {fileID: 11400000, guid: 0d0cb20f27927414dbf29247d87d6495, type: 2}
+  continuousWinCount:
+    observer: {fileID: 11400000, guid: 4bfb4cbce6db31644bf7cd94ed411949, type: 2}
+  score:
+    observer: {fileID: 11400000, guid: 3b10b3696e8a8904790f3a10efc10f49, type: 2}
 --- !u!1 &1958548900824806414
 GameObject:
   m_ObjectHideFlags: 0
@@ -616,6 +656,7 @@ Transform:
   - {fileID: 2777064088220107345}
   - {fileID: 2573974969477903095}
   - {fileID: 3239205129389285409}
+  - {fileID: 1576227614}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2927346472276907260
@@ -797,7 +838,7 @@ MonoBehaviour:
   questDb: {fileID: 11400000, guid: 7b147be1217462245a04a454d5b7a637, type: 2}
   roundController: {fileID: 6613739823959855903}
   lifeZeroEvent: {fileID: 11400000, guid: 769bfef652e2b3145af49095ee1a77c2, type: 2}
-  winCounter: {fileID: 1408030899}
+  scoreManager: {fileID: 1576227615}
   sentencesBeforeStart:
   - "\u307E\u305A\u306F\u3001\u7DF4\u7FD2\u304B\u3089"
   chatShower: {fileID: 1408030900}
@@ -950,6 +991,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: HUDCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 8076325346519207547, guid: 7a13579bceb6c3f418177754e63b8e4a, type: 3}
+      propertyPath: changeWinCount
+      value: 
+      objectReference: {fileID: 11400000, guid: 0d0cb20f27927414dbf29247d87d6495, type: 2}
+    - target: {fileID: 8076325346519207547, guid: 7a13579bceb6c3f418177754e63b8e4a, type: 3}
+      propertyPath: changeContinuousWinCount
+      value: 
+      objectReference: {fileID: 11400000, guid: 4bfb4cbce6db31644bf7cd94ed411949, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
