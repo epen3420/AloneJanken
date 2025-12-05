@@ -83,11 +83,11 @@ Preset:
   - target: {fileID: 0}
     propertyPath: m_fontAsset
     value: 
-    objectReference: {fileID: 11400000, guid: f0df5e498580e55438b0d02bccb7c1d5, type: 2}
+    objectReference: {fileID: 11400000, guid: 9b0983cd34c1fd94da0f26ac0496801e, type: 2}
   - target: {fileID: 0}
     propertyPath: m_sharedMaterial
     value: 
-    objectReference: {fileID: -4007222886948801005, guid: f0df5e498580e55438b0d02bccb7c1d5, type: 2}
+    objectReference: {fileID: 4206598320347003282, guid: 9b0983cd34c1fd94da0f26ac0496801e, type: 2}
   - target: {fileID: 0}
     propertyPath: m_fontSharedMaterials.Array.size
     value: 0
