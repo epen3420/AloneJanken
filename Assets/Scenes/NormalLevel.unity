@@ -575,6 +575,9 @@ MonoBehaviour:
     observer: {fileID: 11400000, guid: 4bfb4cbce6db31644bf7cd94ed411949, type: 2}
   score:
     observer: {fileID: 11400000, guid: 3b10b3696e8a8904790f3a10efc10f49, type: 2}
+  baseScore: 100
+  continuousMultiplier: 0.1
+  maxAddContinuous: 10
 --- !u!1 &1958548900824806414
 GameObject:
   m_ObjectHideFlags: 0
@@ -990,10 +993,6 @@ PrefabInstance:
     - target: {fileID: 7632496699115334412, guid: 7a13579bceb6c3f418177754e63b8e4a, type: 3}
       propertyPath: m_Name
       value: HUDCanvas
-      objectReference: {fileID: 0}
-    - target: {fileID: 7632496699115334412, guid: 7a13579bceb6c3f418177754e63b8e4a, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
