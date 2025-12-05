@@ -10,6 +10,12 @@ public class ScoreManager : MonoBehaviour
     private ReactiveProperty<int> continuousWinCount;
     [SerializeField]
     private ReactiveProperty<int> score;
+    [SerializeField]
+    private int baseScore = 100;
+    [SerializeField]
+    private float continuousMultiplier = 0.1f;
+    [SerializeField]
+    private int maxAddContinuous = 10;
 
 
     private void OnEnable()
@@ -26,7 +32,8 @@ public class ScoreManager : MonoBehaviour
     {
         if (isWin)
         {
-            score.Value += 100 + (int)(100 * 0.1 * continuousWinCount.Value);
+            int clampedContinuousCount = Mathf.Clamp(continuousWinCount.Value, 0, maxAddContinuous);
+            score.Value += baseScore + (int)(baseScore * continuousMultiplier * clampedContinuousCount);
             winCount.Value++;
             continuousWinCount.Value++;
         }
