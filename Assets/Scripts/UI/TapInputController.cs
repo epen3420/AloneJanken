@@ -15,6 +15,8 @@ public class TapInputController : MonoBehaviour
     private void Awake()
     {
         button = GetComponent<Button>();
+
+        enabled = false;
     }
 
     private void OnEnable()
