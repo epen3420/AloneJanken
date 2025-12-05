@@ -242,3 +242,7 @@ MonoBehaviour:
   questDb: {fileID: 11400000, guid: 7b147be1217462245a04a454d5b7a637, type: 2}
   roundController: {fileID: 3239099527675364215}
   lifeZeroEvent: {fileID: 11400000, guid: 769bfef652e2b3145af49095ee1a77c2, type: 2}
+  winCounter: {fileID: 0}
+  sentencesBeforeStart:
+  - "\u305D\u308C\u3058\u3083\u3001\u672C\u756A\u306F\u3058\u3081\u308B\u3088\u30FC"
+  chatShower: {fileID: 0}

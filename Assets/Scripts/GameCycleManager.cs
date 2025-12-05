@@ -12,6 +12,10 @@ public class GameCycleManager : MonoBehaviour
     private VoidEventChannelSO lifeZeroEvent;
     [SerializeField]
     private WinCountView winCounter;
+    [SerializeField]
+    private string[] sentencesBeforeStart;
+    [SerializeField]
+    private ChatShower chatShower;
 
     private bool isPlaying = false;
     private CancellationTokenSource cycleStopCts;
@@ -41,14 +45,17 @@ public class GameCycleManager : MonoBehaviour
 
         try
         {
+            await chatShower.ShowAsTypeWriter(sentencesBeforeStart);
+
             while (!ctn.IsCancellationRequested)
             {
+                await UniTask.Delay(3000);
                 var targetHand = HandTypeUtil.GetRandomlyHandType();
                 var targetHandPos = HandTypeUtil.GetRandomlyHandPosType();
                 var questType = questDb.GetQuestTypeRandomly();
                 var quest = QuestFactory.GetQuestByType(questType, targetHand, targetHandPos);
+                chatShower.ShowText(quest.ToString());
                 await roundController.StartRound(quest, ctn);
-                await UniTask.Delay(3000);
             }
         }
         finally
