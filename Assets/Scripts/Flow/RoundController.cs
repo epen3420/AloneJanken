@@ -54,12 +54,12 @@ public class RoundController : MonoBehaviour
         QuestBase quest,
         CancellationToken ctn)
     {
-        Debug.Log($"{quest.ToString()}");
-
         // キャンセルされているかチェック
         ctn.ThrowIfCancellationRequested();
 
         startRound.Raise(quest);
+
+        Debug.Log($"{quest.ToString()}");
 
         float duration = 60f / jankenBpm * beatsNum;
         timer.Init(duration);
