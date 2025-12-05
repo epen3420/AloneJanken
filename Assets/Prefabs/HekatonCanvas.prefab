@@ -361,7 +361,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startRound: {fileID: 11400000, guid: 4a82f8c22b448f5418f24830a5105a0c, type: 2}
   endTimer: {fileID: 11400000, guid: c95eae4a7b5e77048ae4fa3aabc7554d, type: 2}
-  highlightColor: {r: 1, g: 0.24842751, b: 0.24842751, a: 0}
+  highlightColor: {r: 1, g: 0.24842751, b: 0.24842751, a: 1}
   highlightDuration: 0.5
   handPosImageMaps:
   - posType: 1
