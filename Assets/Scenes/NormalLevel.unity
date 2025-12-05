@@ -747,34 +747,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4486631616810026277, guid: 03086ea8d610ef34595c814d4187f8b5, type: 3}
-      propertyPath: handPosImageMaps.Array.data[1].setImage
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 4486631616810026277, guid: 03086ea8d610ef34595c814d4187f8b5, type: 3}
-      propertyPath: handPosImageMaps.Array.data[2].setImage
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 4486631616810026277, guid: 03086ea8d610ef34595c814d4187f8b5, type: 3}
-      propertyPath: handPosImageMaps.Array.data[3].setImage
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 4600509369426413033, guid: 03086ea8d610ef34595c814d4187f8b5, type: 3}
-      propertyPath: handPosImageMaps.Array.data[1].image
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 4600509369426413033, guid: 03086ea8d610ef34595c814d4187f8b5, type: 3}
-      propertyPath: handPosImageMaps.Array.data[2].image
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 4600509369426413033, guid: 03086ea8d610ef34595c814d4187f8b5, type: 3}
-      propertyPath: handPosImageMaps.Array.data[3].image
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 4651813325097674479, guid: 03086ea8d610ef34595c814d4187f8b5, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -33.920288
-      objectReference: {fileID: 0}
     - target: {fileID: 5590347437245867237, guid: 03086ea8d610ef34595c814d4187f8b5, type: 3}
       propertyPath: m_Name
       value: HekatonCanvas
@@ -868,7 +840,7 @@ MonoBehaviour:
   lifeZeroEvent: {fileID: 11400000, guid: 769bfef652e2b3145af49095ee1a77c2, type: 2}
   scoreManager: {fileID: 1576227615}
   sentencesBeforeStart:
-  - "\u307E\u305A\u306F\u3001\u7DF4\u7FD2\u304B\u3089"
+  - "\u3058\u3083\u3042\u3001\u672C\u756A\u3044\u304F\u3088\u30FC"
   chatShower: {fileID: 1408030900}
 --- !u!1 &6065042150878197818
 GameObject:

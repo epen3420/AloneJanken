@@ -184,7 +184,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 30}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -33.92029, y: 11.053162}
+  m_AnchoredPosition: {x: -33.920288, y: 11.053162}
   m_SizeDelta: {x: 175, y: 378}
   m_Pivot: {x: 0.2142211, y: 0.0967233}
 --- !u!222 &7462955343865297255
@@ -492,11 +492,11 @@ MonoBehaviour:
   - handPosType: 1
     setImage: {fileID: 5234614688504587341}
   - handPosType: 2
-    setImage: {fileID: 0}
+    setImage: {fileID: 6133567756348369984}
   - handPosType: 3
-    setImage: {fileID: 0}
+    setImage: {fileID: 8176105202261351363}
   - handPosType: 4
-    setImage: {fileID: 0}
+    setImage: {fileID: 2498621616324583636}
 --- !u!114 &4600509369426413033
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -517,8 +517,8 @@ MonoBehaviour:
   - posType: 1
     image: {fileID: 5234614688504587341}
   - posType: 2
-    image: {fileID: 0}
+    image: {fileID: 6133567756348369984}
   - posType: 3
-    image: {fileID: 0}
+    image: {fileID: 8176105202261351363}
   - posType: 4
-    image: {fileID: 0}
+    image: {fileID: 2498621616324583636}
