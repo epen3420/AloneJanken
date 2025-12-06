@@ -14,10 +14,14 @@ jobs:
         uses: rjstone/discord-webhook-notify@v2
         with:
           webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
+          username: GitHub (Actions)
+          avatarUrl: "https://github.githubassets.com/assets/GitHub-Mark-ea2971cee799.png"
           title: "🔔 Workflow完了: ${{ github.event.workflow_run.name }}"
-          description: |
+          text: |
             **リポジトリ:** ${{ github.repository }}
             **ブランチ:** ${{ github.event.workflow_run.head_branch }}
             **結果:** **${{ github.event.workflow_run.conclusion }}**
             [実行詳細を見る](${{ github.event.workflow_run.html_url }})
-          severity: ${{ github.event.workflow_run.conclusion }}
+          severity: ${{ github.event.workflow_run.conclusion == 'success' && 'info' ||
+              github.event.workflow_run.conclusion == 'failure' && 'error' ||
+              'warn' }}
