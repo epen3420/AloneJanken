@@ -49,13 +49,15 @@ public class GameCycleManager : MonoBehaviour
 
             while (!ctn.IsCancellationRequested)
             {
-                await UniTask.Delay(3000);
+                // await UniTask.Delay(3000);
                 var targetHand = HandTypeUtil.GetRandomlyHandType();
                 var targetHandPos = HandTypeUtil.GetRandomlyHandPosType();
                 var questType = questDb.GetQuestTypeRandomly();
                 var quest = QuestFactory.GetQuestByType(questType, targetHand, targetHandPos);
                 chatShower.ShowText(quest.ToString());
                 await roundController.StartRound(quest, ctn);
+
+                await UniTask.WaitForEndOfFrame();
             }
         }
         finally

@@ -7,33 +7,26 @@ using System.Collections.Generic;
 public class RoundController : MonoBehaviour
 {
     [SerializeField]
-    private int jankenBpm = 60;
+    private int bpm = 60;
     [SerializeField]
-    private int beatsNum = 7;
-
+    private int beatsNum = 8;
     [Header("Events")]
     [SerializeField]
     private QuestEventChannelSO startRound;
     [SerializeField]
-    private FloatEventChannelSO startTimer;
-    [SerializeField]
-    private VoidEventChannelSO endTimer;
-    [SerializeField]
     private BoolEventChannelSO endRound;
     [SerializeField]
-    private FloatEventChannelSO changeTimeEvent;
+    private IntEventChannelSO changeBeats;
+    [SerializeField]
+    private VoidEventChannelSO endBeats;
     [SerializeField]
     private HandsEventChannelSO inputEvent;
     [SerializeField]
     private HandsEventChannelSO endInput;
 
-    private CountDownTimer timer;
+    private QuestBase currentQuest;
     private List<Hand> inputHands = new List<Hand>();
 
-    private void Awake()
-    {
-        timer = new CountDownTimer(changeTimeEvent, null);
-    }
 
     private void OnEnable()
     {
@@ -57,23 +50,35 @@ public class RoundController : MonoBehaviour
         // キャンセルされているかチェック
         ctn.ThrowIfCancellationRequested();
 
-        startRound.Raise(quest);
+        currentQuest = quest;
 
-        Debug.Log($"{quest.ToString()}");
+        Debug.Log($"{currentQuest.ToString()}");
 
-        float duration = 60f / jankenBpm * beatsNum;
-        timer.Init(duration);
+        startRound.Raise(currentQuest);
 
-        startTimer.Raise(duration);
-        await timer.Resume(ctn);
-        endTimer.Raise();
+        var bpmManager = new BPMManager(bpm, beatsNum, changeBeats);
+        await bpmManager.CountBeatsAsync(ctn);
 
+        endBeats.Raise();
+
+        bool isWin = CheckWin();
+
+        Debug.Log($"Win: {isWin}");
+        endRound.Raise(isWin);
+        inputHands.Clear();
+
+        bpmManager = new BPMManager(bpm, 1);
+        await bpmManager.CountBeatsAsync(ctn);
+    }
+
+    private bool CheckWin()
+    {
         bool isWin = false;
         if (inputHands.Count == HandTypeUtil.HandPosCount)
         {
             endInput.Raise(inputHands);
             var resultHands = HandJudger.Judge(inputHands);
-            isWin = quest.Judge(resultHands);
+            isWin = currentQuest.Judge(resultHands);
 
             foreach (var hand in resultHands)
             {
@@ -94,8 +99,6 @@ public class RoundController : MonoBehaviour
             endInput.Raise(inputHands);
         }
 
-        Debug.Log($"Win: {isWin}");
-        endRound.Raise(isWin);
-        inputHands.Clear();
+        return isWin;
     }
 }

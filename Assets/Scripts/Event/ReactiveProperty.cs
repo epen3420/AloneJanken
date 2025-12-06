@@ -7,6 +7,13 @@ public class ReactiveProperty<T>
     private EventChannelSO<T> observer;
     private T value;
 
+
+    public ReactiveProperty(EventChannelSO<T> eventChannelSO, T value = default)
+    {
+        observer = eventChannelSO;
+        Value = value;
+    }
+
     public T Value
     {
         get { return this.value; }

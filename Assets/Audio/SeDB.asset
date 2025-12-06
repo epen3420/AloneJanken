@@ -16,3 +16,6 @@ MonoBehaviour:
   - title: beep
     audioClip: {fileID: 8300000, guid: bc74a9ffe94d92e439a093b4b57a2d0d, type: 3}
     volume: 1
+  - title: start_beep
+    audioClip: {fileID: 8300000, guid: 4fb495dbfe25090418ccc22f0b9cbe27, type: 3}
+    volume: 1

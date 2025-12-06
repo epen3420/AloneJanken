@@ -8,7 +8,7 @@ public class JankenInputManager : MonoBehaviour
     [SerializeField]
     private HandsEventChannelSO inputHandsEvent;
     [SerializeField]
-    private VoidEventChannelSO startTimer;
+    private VoidEventChannelSO startRound;
     [SerializeField]
     private VoidEventChannelSO endTimer;
 
@@ -64,7 +64,7 @@ public class JankenInputManager : MonoBehaviour
             action.performed += OnHandInput;
         }
 
-        startTimer.OnVoidRaised += Enable;
+        startRound.OnVoidRaised += Enable;
         endTimer.OnVoidRaised += Disable;
     }
 
@@ -75,7 +75,7 @@ public class JankenInputManager : MonoBehaviour
             action.performed -= OnHandInput;
         }
 
-        startTimer.OnVoidRaised -= Enable;
+        startRound.OnVoidRaised -= Enable;
         endTimer.OnVoidRaised -= Disable;
     }
 

@@ -1,3 +1,5 @@
+using System.Threading;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -16,5 +18,27 @@ public class VoidEventChannelSO : ScriptableObject
         }
 
         OnVoidRaised.Invoke();
+    }
+
+
+    public async UniTask WaitAsync(CancellationToken ctn = default)
+    {
+        var utcs = new UniTaskCompletionSource();
+
+        UnityAction listener = () =>
+        {
+            utcs.TrySetResult();
+        };
+
+        OnVoidRaised += listener;
+
+        try
+        {
+            await utcs.Task.AttachExternalCancellation(ctn);
+        }
+        finally
+        {
+            OnVoidRaised -= listener;
+        }
     }
 }

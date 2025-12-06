@@ -8,23 +8,24 @@ public class SoundHandler : MonoBehaviour
     // [SerializeField]
     // private BoolEventChannelSO endRound;
     [SerializeField]
-    private FloatEventChannelSO changeTimeEvent;
+    private VoidEventChannelSO changeTimeEvent;
+    [SerializeField]
+    private VoidEventChannelSO startRound;
 
-    private int passedTime = 0;
 
     private void OnEnable()
     {
-        changeTimeEvent.OnRaised += ChangeTimeSound;
+        startRound.OnVoidRaised += StartRoundSound;
+        changeTimeEvent.OnVoidRaised += ChangeTimeSound;
     }
 
-    private void ChangeTimeSound(float time)
+    private void StartRoundSound()
     {
-        int currentTimeInt = (int)time;
-        if (passedTime != currentTimeInt)
-        {
-            SoundPlayer.Instance.PlaySe("beep");
+        SoundPlayer.Instance.PlaySe("start_beep");
+    }
 
-            passedTime = currentTimeInt;
-        }
+    private void ChangeTimeSound()
+    {
+        SoundPlayer.Instance.PlaySe("beep");
     }
 }

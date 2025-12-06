@@ -1,3 +1,5 @@
+using System.Threading;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -22,5 +24,26 @@ public abstract class EventChannelSO<T> : VoidEventChannelSO
 #if UNITY_EDITOR
         Debug.Log($"{name} raised with value: {value}");
 #endif
+    }
+
+    public async UniTask<T> WaitAsyncWithValue(CancellationToken ctn = default)
+    {
+        var utcs = new UniTaskCompletionSource<T>();
+
+        UnityAction<T> listener = (val) =>
+        {
+            utcs.TrySetResult(val);
+        };
+
+        OnRaised += listener;
+
+        try
+        {
+            return await utcs.Task.AttachExternalCancellation(ctn);
+        }
+        finally
+        {
+            OnRaised -= listener;
+        }
     }
 }

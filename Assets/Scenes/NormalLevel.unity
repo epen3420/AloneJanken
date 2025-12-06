@@ -791,7 +791,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inputHandsEvent: {fileID: 11400000, guid: d618f751b6ffbb144934e3773bc965a1, type: 2}
-  startTimer: {fileID: 11400000, guid: bdc014ec43be07b43bba6b0bbf8769b7, type: 2}
+  startRound: {fileID: 11400000, guid: 4a82f8c22b448f5418f24830a5105a0c, type: 2}
   endTimer: {fileID: 11400000, guid: c95eae4a7b5e77048ae4fa3aabc7554d, type: 2}
 --- !u!114 &3783701501371244182
 MonoBehaviour:
@@ -889,13 +889,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f8bde4bb7253b647b794a3daa30dea1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jankenBpm: 60
-  beatsNum: 7
+  bpm: 60
+  beatsNum: 8
   startRound: {fileID: 11400000, guid: 4a82f8c22b448f5418f24830a5105a0c, type: 2}
-  startTimer: {fileID: 11400000, guid: bdc014ec43be07b43bba6b0bbf8769b7, type: 2}
-  endTimer: {fileID: 11400000, guid: c95eae4a7b5e77048ae4fa3aabc7554d, type: 2}
   endRound: {fileID: 11400000, guid: c66a0c8af2342684388e93dd2cf2e02f, type: 2}
-  changeTimeEvent: {fileID: 11400000, guid: 6028f655783da6842ba3421acdb2af1f, type: 2}
+  changeBeats: {fileID: 11400000, guid: 9c98e49cc8503d240bd6fdd2dd3a1297, type: 2}
+  endBeats: {fileID: 11400000, guid: c95eae4a7b5e77048ae4fa3aabc7554d, type: 2}
   inputEvent: {fileID: 11400000, guid: d618f751b6ffbb144934e3773bc965a1, type: 2}
   endInput: {fileID: 11400000, guid: 3f43eeaa73cc2824eab02d43a62674d7, type: 2}
 --- !u!1001 &7449925582237340791
@@ -1011,7 +1010,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa5c5d3423a97f9499d32f0ccbe2d80b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTimeEvent: {fileID: 11400000, guid: 6028f655783da6842ba3421acdb2af1f, type: 2}
+  changeTimeEvent: {fileID: 11400000, guid: 9c98e49cc8503d240bd6fdd2dd3a1297, type: 2}
+  startRound: {fileID: 11400000, guid: 4a82f8c22b448f5418f24830a5105a0c, type: 2}
 --- !u!1 &9172483675885655751
 GameObject:
   m_ObjectHideFlags: 0
