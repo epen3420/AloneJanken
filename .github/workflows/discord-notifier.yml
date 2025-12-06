@@ -17,7 +17,7 @@ jobs:
           username: GitHub (Actions)
           avatarUrl: "https://github.githubassets.com/assets/GitHub-Mark-ea2971cee799.png"
           title: "🔔 Workflow完了: ${{ github.event.workflow_run.name }}"
-          text: |
+          description: |
             **リポジトリ:** ${{ github.repository }}
             **ブランチ:** ${{ github.event.workflow_run.head_branch }}
             **結果:** **${{ github.event.workflow_run.conclusion }}**
