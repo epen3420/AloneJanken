@@ -24,14 +24,11 @@ public class HekatonHandsHighlighter : MonoBehaviour
     }
 
     private Dictionary<HandPosType, Image> handPosImageDict = new Dictionary<HandPosType, Image>();
-    private CountDownTimer timer;
     private Dictionary<HandPosType, CancellationTokenSource> stopHighlightCtsDict;
 
 
     private void Awake()
     {
-        timer = new CountDownTimer(null, null);
-
         foreach (var map in handPosImageMaps)
         {
             handPosImageDict.Add(map.posType, map.imageForHighlight);
@@ -42,7 +39,6 @@ public class HekatonHandsHighlighter : MonoBehaviour
     {
         stopHighlightCtsDict = new Dictionary<HandPosType, CancellationTokenSource>();
         startRound.OnRaised += HighlightHands;
-        startRound.OnVoidRaised += StartTimer;
 
         endTimer.OnVoidRaised += EndHighlight;
     }
@@ -50,21 +46,8 @@ public class HekatonHandsHighlighter : MonoBehaviour
     private void OnDisable()
     {
         startRound.OnRaised -= HighlightHands;
-        startRound.OnVoidRaised -= StartTimer;
 
         endTimer.OnVoidRaised -= EndHighlight;
-    }
-
-    private async void StartTimer()
-    {
-        try
-        {
-            await timer.Resume(destroyCancellationToken);
-            EndHighlight();
-        }
-        catch (System.OperationCanceledException)
-        {
-        }
     }
 
     private void EndHighlight()
