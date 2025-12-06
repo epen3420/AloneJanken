@@ -9,6 +9,12 @@ public class VoidEventChannelSO : ScriptableObject
 
     public void Raise()
     {
-        OnVoidRaised?.Invoke();
+        if (OnVoidRaised == null)
+        {
+            Debug.LogWarning($"{name} was raised but no listeners were found.");
+            return;
+        }
+
+        OnVoidRaised.Invoke();
     }
 }
