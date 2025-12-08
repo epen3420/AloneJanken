@@ -1,6 +1,7 @@
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameCycleManager : MonoBehaviour
 {
@@ -76,5 +77,6 @@ public class GameCycleManager : MonoBehaviour
         Debug.Log($"{scoreManager.GetCurrentScore()}");
 
         Debug.Log("Game Over");
+        SceneManager.LoadScene("Result");
     }
 }
