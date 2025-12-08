@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
-using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PrepareInputHandView : MonoBehaviour
 {
@@ -9,52 +9,80 @@ public class PrepareInputHandView : MonoBehaviour
     private VoidEventChannelSO startRound;
     [SerializeField]
     private HandsEventChannelSO inputEvent;
+    [System.Serializable]
+    private struct HandTypeSpriteMap
+    {
+        public HandType handType;
+        public Sprite sprite;
+    }
+    [System.Serializable]
+    private struct HandPosImageMap
+    {
+        public HandPosType handPosType;
+        public Image setImage;
+    }
     [SerializeField]
-    private BoolEventChannelSO endRound;
+    private HandTypeSpriteMap[] handTypeSpriteMaps;
     [SerializeField]
-    private TMP_Text leftUpText;
-    [SerializeField]
-    private TMP_Text leftDownText;
-    [SerializeField]
-    private TMP_Text rightUpText;
-    [SerializeField]
-    private TMP_Text rightDownText;
+    private HandPosImageMap[] handPosImageMaps;
 
+    private Dictionary<HandType, Sprite> handTypeSpriteDict = new Dictionary<HandType, Sprite>();
+    private Dictionary<HandPosType, Image> handPairImageDict = new Dictionary<HandPosType, Image>();
+
+
+    private void Awake()
+    {
+        foreach (var handSpritePair in handTypeSpriteMaps)
+        {
+            if (!handTypeSpriteDict.TryAdd(handSpritePair.handType, handSpritePair.sprite))
+            {
+                throw new System.Exception($"[Duplicate handTypeSpriteDictionary key at {this.name}] already exist key: {handSpritePair.handType}");
+            }
+
+        }
+
+        foreach (var handPosImagePair in handPosImageMaps)
+        {
+            if (!handPairImageDict.TryAdd(handPosImagePair.handPosType, handPosImagePair.setImage))
+            {
+                throw new System.Exception($"[Duplicate handPairImageDictionary key at {this.name}] already exist key: {handPosImagePair.handPosType}");
+            }
+        }
+    }
 
     private void OnEnable()
     {
-        startRound.OnVoidRaised += ResetText;
+        startRound.OnVoidRaised += ResetView;
         inputEvent.OnRaised += SetView;
     }
 
     private void OnDisable()
     {
-        startRound.OnVoidRaised -= ResetText;
+        startRound.OnVoidRaised -= ResetView;
         inputEvent.OnRaised -= SetView;
     }
 
-    private void SetView(IEnumerable<Hand> inputHands)
+    private void ResetView()
     {
-        var leftUpInput = inputHands.FirstOrDefault(h => h.pair.OwnerPos == HandPosType.LeftUp);
-        var leftDownInput = inputHands.FirstOrDefault(h => h.pair.OwnerPos == HandPosType.LeftDown);
-        var rightUpInput = inputHands.FirstOrDefault(h => h.pair.OwnerPos == HandPosType.RightUp);
-        var rightDownInput = inputHands.FirstOrDefault(h => h.pair.OwnerPos == HandPosType.RightDown);
-
-        if (leftUpInput != null)
-            leftUpText.SetText(leftUpInput?.pair.HandType.ToString());
-        if (leftDownInput != null)
-            leftDownText.SetText(leftDownInput?.pair.HandType.ToString());
-        if (rightUpInput != null)
-            rightUpText.SetText(rightUpInput?.pair.HandType.ToString());
-        if (rightDownInput != null)
-            rightDownText.SetText(rightDownInput?.pair.HandType.ToString());
+        foreach (var image in handPairImageDict)
+        {
+            image.Value.enabled = false;
+            image.Value.sprite = null;
+        }
     }
 
-    private void ResetText()
+    private void SetView(IEnumerable<Hand> hands)
     {
-        leftUpText.SetText("");
-        leftDownText.SetText("");
-        rightUpText.SetText("");
-        rightDownText.SetText("");
+        foreach (var hand in hands)
+        {
+            var sprite = handTypeSpriteDict[hand.pair.HandType];
+            var image = handPairImageDict[hand.pair.OwnerPos];
+
+            image.enabled = true;
+            if (image.sprite != sprite)
+            {
+                image.sprite = sprite;
+            }
+        }
     }
 }
