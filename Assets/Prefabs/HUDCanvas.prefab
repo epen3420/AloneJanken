@@ -428,7 +428,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6558821051693277393}
   - component: {fileID: 7111777503197977514}
-  - component: {fileID: 6930846066370901434}
+  - component: {fileID: 578140308632328129}
   m_Layer: 5
   m_Name: Lifes
   m_TagString: Untagged
@@ -453,11 +453,11 @@ RectTransform:
   - {fileID: 3679111067769137707}
   m_Father: {fileID: 6349268314749431612}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 1}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -25, y: -20}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 1395, y: -20}
   m_SizeDelta: {x: 500, y: 150}
-  m_Pivot: {x: 1, y: 1}
+  m_Pivot: {x: 0, y: 1}
 --- !u!222 &7111777503197977514
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -466,7 +466,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2529415673469530424}
   m_CullTransparentMesh: 1
---- !u!114 &6930846066370901434
+--- !u!114 &578140308632328129
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -475,14 +475,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 2529415673469530424}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1fd3b54e60669f34aa651f3eae114d2c, type: 3}
+  m_Script: {fileID: 11500000, guid: 5a483f10eec0c3d43abfc25d488a9411, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   changeLifeEvent: {fileID: 11400000, guid: 5dce3995f0b53f54489db87374202991, type: 2}
-  lifeImages:
-  - {fileID: 6065995086198845063}
-  - {fileID: 182156124774055991}
-  - {fileID: 5773076172456978731}
+  lifeViews:
+  - {fileID: 2474305872249119506}
+  - {fileID: 8218039815051666804}
+  - {fileID: 2372136436740094073}
 --- !u!1 &4642293819416140174
 GameObject:
   m_ObjectHideFlags: 0
@@ -493,6 +493,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1981996284754960241}
   - component: {fileID: 1680587171117340781}
+  - component: {fileID: 2474305872249119506}
   - component: {fileID: 6065995086198845063}
   m_Layer: 5
   m_Name: Life_0
@@ -517,8 +518,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 383.3333, y: -50}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: 420, y: -75}
+  m_SizeDelta: {x: 160, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1680587171117340781
 CanvasRenderer:
@@ -528,6 +529,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4642293819416140174}
   m_CullTransparentMesh: 1
+--- !u!114 &2474305872249119506
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4642293819416140174}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fd3b54e60669f34aa651f3eae114d2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifeSprite: {fileID: -1037983474548051733, guid: 165544e6f07dc034ebd9b9b783e0a46e, type: 3}
+  hurtLifeSprite: {fileID: -2816347981693906757, guid: 42b1c8ba887aeff4baddcd5a88aeb3b2, type: 3}
 --- !u!114 &6065995086198845063
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -548,9 +563,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: -1037983474548051733, guid: 165544e6f07dc034ebd9b9b783e0a46e, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -794,6 +809,7 @@ GameObject:
   m_Component:
   - component: {fileID: 943524149135328388}
   - component: {fileID: 4686873710798509179}
+  - component: {fileID: 8218039815051666804}
   - component: {fileID: 182156124774055991}
   m_Layer: 5
   m_Name: Life_1
@@ -818,8 +834,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 216.66666, y: -50}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: 250, y: -75}
+  m_SizeDelta: {x: 160, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4686873710798509179
 CanvasRenderer:
@@ -829,6 +845,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5790637664858555472}
   m_CullTransparentMesh: 1
+--- !u!114 &8218039815051666804
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5790637664858555472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fd3b54e60669f34aa651f3eae114d2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifeSprite: {fileID: -1037983474548051733, guid: 165544e6f07dc034ebd9b9b783e0a46e, type: 3}
+  hurtLifeSprite: {fileID: -2816347981693906757, guid: 42b1c8ba887aeff4baddcd5a88aeb3b2, type: 3}
 --- !u!114 &182156124774055991
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -849,9 +879,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: -1037983474548051733, guid: 165544e6f07dc034ebd9b9b783e0a46e, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -1003,6 +1033,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3679111067769137707}
   - component: {fileID: 1048275724163962470}
+  - component: {fileID: 2372136436740094073}
   - component: {fileID: 5773076172456978731}
   m_Layer: 5
   m_Name: Life_2
@@ -1027,8 +1058,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 50, y: -50}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: 80, y: -75}
+  m_SizeDelta: {x: 160, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1048275724163962470
 CanvasRenderer:
@@ -1038,6 +1069,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6860472401587764252}
   m_CullTransparentMesh: 1
+--- !u!114 &2372136436740094073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6860472401587764252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fd3b54e60669f34aa651f3eae114d2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifeSprite: {fileID: -1037983474548051733, guid: 165544e6f07dc034ebd9b9b783e0a46e, type: 3}
+  hurtLifeSprite: {fileID: -2816347981693906757, guid: 42b1c8ba887aeff4baddcd5a88aeb3b2, type: 3}
 --- !u!114 &5773076172456978731
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1058,9 +1103,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: -1037983474548051733, guid: 165544e6f07dc034ebd9b9b783e0a46e, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1

@@ -1,36 +1,31 @@
 using UnityEngine;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(Image))]
 public class LifeViewer : MonoBehaviour
 {
     [SerializeField]
-    private IntEventChannelSO changeLifeEvent;
+    private Sprite lifeSprite;
     [SerializeField]
-    private Image[] lifeImages;
+    private Sprite hurtLifeSprite;
+
+    private Image image;
 
 
-    private void OnEnable()
+    private void Awake()
     {
-        changeLifeEvent.OnRaised += SetView;
+        image = GetComponent<Image>();
     }
 
-    // スクリプトが無効になったときに、イベントの購読を解除 (メモリリーク防止)
-    private void OnDisable()
+    public void SetSprite(bool isLife)
     {
-        changeLifeEvent.OnRaised -= SetView;
-    }
-
-
-    /// <summary>
-    /// 現在のライフ数に応じてUIのImageの表示を更新します。
-    /// </summary>
-    /// <param name="lifeCount">現在のライフ数</param>
-    private void SetView(int lifeCount)
-    {
-        for (int i = 0; i < lifeImages.Length; i++)
+        if (isLife)
         {
-            bool isLifeRemaining = i < lifeCount;
-            lifeImages[i].gameObject.SetActive(isLifeRemaining);
+            image.sprite = lifeSprite;
+        }
+        else
+        {
+            image.sprite = hurtLifeSprite;
         }
     }
 }
