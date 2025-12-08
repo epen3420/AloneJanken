@@ -25,6 +25,7 @@ public class RoundController : MonoBehaviour
     private HandsEventChannelSO endInput;
 
     private QuestBase currentQuest;
+    private List<HandPosType> useableHandPos;
     private List<Hand> inputHands = new List<Hand>();
 
 
@@ -45,12 +46,14 @@ public class RoundController : MonoBehaviour
 
     public async UniTask StartRound(
         QuestBase quest,
+        IEnumerable<HandPosType> useableHandPos,
         CancellationToken ctn)
     {
         // キャンセルされているかチェック
         ctn.ThrowIfCancellationRequested();
 
         currentQuest = quest;
+        this.useableHandPos = useableHandPos.ToList();
 
         Debug.Log($"{currentQuest.ToString()}");
 
@@ -74,7 +77,7 @@ public class RoundController : MonoBehaviour
     private bool CheckWin()
     {
         bool isWin = false;
-        if (inputHands.Count == HandTypeUtil.HandPosCount)
+        if (inputHands.Count == useableHandPos.Count)
         {
             endInput.Raise(inputHands);
             var resultHands = HandJudger.Judge(inputHands);
@@ -89,7 +92,7 @@ public class RoundController : MonoBehaviour
         {
             Debug.Log($"入力キーの数が手の数と異なります input: {inputHands.Count}");
             var inputHandPosList = inputHands.Select(hand => hand.pair.OwnerPos).ToList();
-            foreach (var handPos in HandTypeUtil.HandPosTypes)
+            foreach (var handPos in useableHandPos)
             {
                 if (!inputHandPosList.Contains(handPos))
                 {

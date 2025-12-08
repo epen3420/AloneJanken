@@ -5,8 +5,11 @@ public class QuestDatabase : ScriptableObject
 {
     [SerializeField]
     private QuestType[] questTypes;
+    [SerializeField]
+    private HandPosType[] useableHandPosTypes;
 
     public QuestType[] QuestTypes => questTypes;
+    public HandPosType[] UseableHandPotTypes => useableHandPosTypes;
 
     public QuestType GetQuestTypeRandomly()
     {

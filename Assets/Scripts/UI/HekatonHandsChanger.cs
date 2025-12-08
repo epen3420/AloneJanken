@@ -75,8 +75,10 @@ public class HekatonHandsChanger : MonoBehaviour
     {
         foreach (var hand in hands)
         {
+            if (!handPairImageDict.TryGetValue(hand.pair.OwnerPos, out var image))
+                continue;
+
             var sprite = handTypeSpriteDict[hand.pair.HandType];
-            var image = handPairImageDict[hand.pair.OwnerPos];
 
             if (image.sprite != sprite)
             {

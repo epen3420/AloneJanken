@@ -49,7 +49,7 @@ public class test_RoundUI : MonoBehaviour
                 Debug.Log($"{questType} : {targetHand} : {targetHandPos}");
                 var quest = QuestFactory.GetQuestByType(questType, targetHand, targetHandPos);
 
-                await cycleManager.StartRound(quest, destroyCancellationToken);
+                await cycleManager.StartRound(quest, HandTypeUtil.HandPosTypes, destroyCancellationToken);
             }
             catch (System.OperationCanceledException)
             {

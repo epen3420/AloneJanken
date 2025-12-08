@@ -76,10 +76,12 @@ public class HekatonHandsHighlighter : MonoBehaviour
 
     private void HighlightHand(HandPosType posType)
     {
+        if (!handPosImageDict.TryGetValue(posType, out var imageForHighlight))
+            return;
+
         var cts = new CancellationTokenSource();
         stopHighlightCtsDict[posType] = cts;
 
-        var imageForHighlight = handPosImageDict[posType];
         imageForHighlight.gameObject.SetActive(true);
         imageForHighlight.DOFade(0, highlightDuration)
             .SetEase(Ease.Flash)

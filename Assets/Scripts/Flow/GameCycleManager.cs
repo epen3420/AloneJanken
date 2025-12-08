@@ -51,11 +51,12 @@ public class GameCycleManager : MonoBehaviour
             {
                 // await UniTask.Delay(3000);
                 var targetHand = HandTypeUtil.GetRandomlyHandType();
-                var targetHandPos = HandTypeUtil.GetRandomlyHandPosType();
+                int randomNum = Random.Range(0, questDb.UseableHandPotTypes.Length);
+                var targetHandPos = questDb.UseableHandPotTypes[randomNum];
                 var questType = questDb.GetQuestTypeRandomly();
                 var quest = QuestFactory.GetQuestByType(questType, targetHand, targetHandPos);
                 chatShower.ShowText(quest.ToString());
-                await roundController.StartRound(quest, ctn);
+                await roundController.StartRound(quest, questDb.UseableHandPotTypes, ctn);
 
                 await UniTask.WaitForEndOfFrame();
             }
