@@ -22,6 +22,7 @@ public class ChatShower : MonoBehaviour
 
     public void ShowText(string sentence)
     {
+        text.maxVisibleCharacters = sentence.Length;
         textboxImage.sprite = questTextboxSprite;
         text.SetText(sentence);
     }
