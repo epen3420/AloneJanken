@@ -13,7 +13,7 @@ public class GameCycleManager : MonoBehaviour
     [SerializeField]
     private ScoreManager scoreManager;
     [SerializeField]
-    private string[] sentencesBeforeStart;
+    private NovelController novelController;
     [SerializeField]
     private ChatShower chatShower;
 
@@ -45,7 +45,7 @@ public class GameCycleManager : MonoBehaviour
 
         try
         {
-            await chatShower.ShowAsTypeWriter(sentencesBeforeStart);
+            await novelController.Execute(chatShower);
 
             while (!ctn.IsCancellationRequested)
             {

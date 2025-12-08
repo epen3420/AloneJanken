@@ -251,6 +251,50 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &273859336
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 273859337}
+  - component: {fileID: 273859338}
+  m_Layer: 0
+  m_Name: Novel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &273859337
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 273859336}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2799256526307246489}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &273859338
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 273859336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2afcb2e2b9f8139449a7fb8a291990e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &280242270 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3963378793280484672, guid: 419282ffeb7afcb42bcb5a943ecdb828, type: 3}
@@ -1168,6 +1212,7 @@ Transform:
   - {fileID: 2573974969477903095}
   - {fileID: 3239205129389285409}
   - {fileID: 1576227614}
+  - {fileID: 273859337}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2814695317609401849
@@ -1914,8 +1959,7 @@ MonoBehaviour:
   roundController: {fileID: 6613739823959855903}
   lifeZeroEvent: {fileID: 11400000, guid: 769bfef652e2b3145af49095ee1a77c2, type: 2}
   scoreManager: {fileID: 1576227615}
-  sentencesBeforeStart:
-  - "\u307E\u305A\u306F\u3001\u7DF4\u7FD2\u304B\u3089\uFF5E"
+  novelController: {fileID: 273859338}
   chatShower: {fileID: 5285887313399175023}
 --- !u!222 &5956906088937462503
 CanvasRenderer:

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using TMPro;
@@ -14,10 +15,6 @@ public class ChatShower : MonoBehaviour
     private Sprite chatTextboxSprite;
     [SerializeField]
     private Sprite questTextboxSprite;
-    [SerializeField]
-    private float duration = 0.5f;
-    [SerializeField]
-    private float waitTimeAfterAllVisible = 1.0f;
 
 
     public void ShowText(string sentence)
@@ -27,7 +24,7 @@ public class ChatShower : MonoBehaviour
         text.SetText(sentence);
     }
 
-    public async UniTask ShowAsTypeWriter(string sentence)
+    public async UniTask ShowAsTypeWriter(string sentence, float duration = 0.1f)
     {
         textboxImage.sprite = chatTextboxSprite;
         text.maxVisibleCharacters = 0;
@@ -36,10 +33,8 @@ public class ChatShower : MonoBehaviour
         for (int i = 0; i < sentence.Length; i++)
         {
             text.maxVisibleCharacters++;
-            await UniTask.Delay((int)(duration * 1000));
+            await UniTask.Delay(TimeSpan.FromSeconds(duration));
         }
-
-        await UniTask.Delay((int)(waitTimeAfterAllVisible * 1000));
     }
 
     public async UniTask ShowAsTypeWriter(IEnumerable<string> sentences)

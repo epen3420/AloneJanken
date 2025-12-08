@@ -513,6 +513,50 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1145200894
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1145200895}
+  - component: {fileID: 1145200896}
+  m_Layer: 0
+  m_Name: Novel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1145200895
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1145200894}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2799256526307246489}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1145200896
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1145200894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3b8a7054ec631d478a70b94cc9bd7f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1408030900 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3330496969251275544, guid: 7a13579bceb6c3f418177754e63b8e4a, type: 3}
@@ -660,6 +704,7 @@ Transform:
   - {fileID: 2573974969477903095}
   - {fileID: 3239205129389285409}
   - {fileID: 1576227614}
+  - {fileID: 1145200895}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2927346472276907260
@@ -842,8 +887,7 @@ MonoBehaviour:
   roundController: {fileID: 6613739823959855903}
   lifeZeroEvent: {fileID: 11400000, guid: 769bfef652e2b3145af49095ee1a77c2, type: 2}
   scoreManager: {fileID: 1576227615}
-  sentencesBeforeStart:
-  - "\u3058\u3083\u3042\u3001\u672C\u756A\u3044\u304F\u3088\u30FC"
+  novelController: {fileID: 1145200896}
   chatShower: {fileID: 1408030900}
 --- !u!1 &6065042150878197818
 GameObject:
