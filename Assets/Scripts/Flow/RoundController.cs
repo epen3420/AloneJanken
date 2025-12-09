@@ -18,6 +18,8 @@ public class RoundController : MonoBehaviour
     [SerializeField]
     private IntEventChannelSO changeBeats;
     [SerializeField]
+    private VoidEventChannelSO endBeats;
+    [SerializeField]
     private HandsEventChannelSO inputEvent;
     [SerializeField]
     private HandsEventChannelSO endInput;
@@ -59,7 +61,12 @@ public class RoundController : MonoBehaviour
 
         startRound.Raise(currentQuest);
 
-        var bpmManager = new BPMManager(bpm, beatsNum, changeBeats: changeBeats);
+        var bpmManager = new BPMManager(
+            bpm,
+            beatsNum,
+            changeBeats: changeBeats,
+            endBeats: endBeats);
+
         await bpmManager.AwaitCount(ctn);
     }
 

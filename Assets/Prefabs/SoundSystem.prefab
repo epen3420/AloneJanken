@@ -48,7 +48,7 @@ MonoBehaviour:
   bgmAudioSource: {fileID: 1134045244219727098}
   bgmSoundDatas: {fileID: 11400000, guid: 7370cba280d520146ac3cac2b56bcc4a, type: 2}
   seDatas: {fileID: 11400000, guid: c5479a3df6646e54f9ae5433d2ca7e69, type: 2}
-  voiceSoundDatas: {fileID: 0}
+  voiceSoundDatas: {fileID: 11400000, guid: 8613ed0e77cb08243bdf939295898a7b, type: 2}
   SoundSetting: {fileID: 11400000, guid: 34b0d24141f42ce4ab12fd2d2f3eeaac, type: 2}
   isMute: 0
 --- !u!82 &1134045244219727098
@@ -64,7 +64,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0
   m_Pitch: 1
   Loop: 0
   Mute: 0

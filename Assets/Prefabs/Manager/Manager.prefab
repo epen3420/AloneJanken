@@ -53,6 +53,38 @@ PrefabInstance:
       propertyPath: endGame
       value: 
       objectReference: {fileID: 11400000, guid: 769bfef652e2b3145af49095ee1a77c2, type: 2}
+    - target: {fileID: 1757551836666846302, guid: 857d2a634ba0182449da355b21f3e89a, type: 3}
+      propertyPath: endBeats
+      value: 
+      objectReference: {fileID: 11400000, guid: 18d5179b94293914688ba7931eedabab, type: 2}
+    - target: {fileID: 1757551836666846302, guid: 857d2a634ba0182449da355b21f3e89a, type: 3}
+      propertyPath: jankenVoices.Array.size
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1757551836666846302, guid: 857d2a634ba0182449da355b21f3e89a, type: 3}
+      propertyPath: 'jankenVoices.Array.data[0]'
+      value: sai
+      objectReference: {fileID: 0}
+    - target: {fileID: 1757551836666846302, guid: 857d2a634ba0182449da355b21f3e89a, type: 3}
+      propertyPath: 'jankenVoices.Array.data[1]'
+      value: syoha
+      objectReference: {fileID: 0}
+    - target: {fileID: 1757551836666846302, guid: 857d2a634ba0182449da355b21f3e89a, type: 3}
+      propertyPath: 'jankenVoices.Array.data[2]'
+      value: guu
+      objectReference: {fileID: 0}
+    - target: {fileID: 1757551836666846302, guid: 857d2a634ba0182449da355b21f3e89a, type: 3}
+      propertyPath: 'jankenVoices.Array.data[4]'
+      value: jan
+      objectReference: {fileID: 0}
+    - target: {fileID: 1757551836666846302, guid: 857d2a634ba0182449da355b21f3e89a, type: 3}
+      propertyPath: 'jankenVoices.Array.data[5]'
+      value: ken
+      objectReference: {fileID: 0}
+    - target: {fileID: 1757551836666846302, guid: 857d2a634ba0182449da355b21f3e89a, type: 3}
+      propertyPath: 'jankenVoices.Array.data[6]'
+      value: pon
+      objectReference: {fileID: 0}
     - target: {fileID: 3118299920387071984, guid: 857d2a634ba0182449da355b21f3e89a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -350,6 +382,10 @@ PrefabInstance:
       propertyPath: novelController
       value: 
       objectReference: {fileID: 8984738077446610619}
+    - target: {fileID: 6126117273634949418, guid: b9c9f4722da67264fb5cc5fdc519bbb0, type: 3}
+      propertyPath: endBeats
+      value: 
+      objectReference: {fileID: 11400000, guid: 18d5179b94293914688ba7931eedabab, type: 2}
     - target: {fileID: 6142937907800033410, guid: b9c9f4722da67264fb5cc5fdc519bbb0, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
