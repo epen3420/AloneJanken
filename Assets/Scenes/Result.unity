@@ -693,6 +693,7 @@ GameObject:
   - component: {fileID: 572713193}
   - component: {fileID: 572713195}
   - component: {fileID: 572713194}
+  - component: {fileID: 572713196}
   m_Layer: 5
   m_Name: Score
   m_TagString: Untagged
@@ -820,6 +821,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 572713192}
   m_CullTransparentMesh: 1
+--- !u!114 &572713196
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 572713192}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e5f4c8de84692848bc962a5197ac036, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &579407604
 GameObject:
   m_ObjectHideFlags: 0
@@ -977,6 +990,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 631352132}
+  - component: {fileID: 631352133}
   m_Layer: 5
   m_Name: Scores
   m_TagString: Untagged
@@ -1005,6 +1019,22 @@ RectTransform:
   m_AnchoredPosition: {x: 75, y: -50}
   m_SizeDelta: {x: 1000, y: 400}
   m_Pivot: {x: 0, y: 1}
+--- !u!114 &631352133
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 631352131}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d38d6092deadea408842bb036bec89d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  continuousViewer: {fileID: 572713196}
+  resultViewer: {fileID: 1849783468}
+  score: 1234
+  continuous: 12
 --- !u!1 &665580663
 GameObject:
   m_ObjectHideFlags: 0
@@ -1169,8 +1199,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1324162598}
   - {fileID: 631352132}
+  - {fileID: 1324162598}
   - {fileID: 579407605}
   m_Father: {fileID: 1823737534}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1937,6 +1967,7 @@ GameObject:
   - component: {fileID: 1849783465}
   - component: {fileID: 1849783467}
   - component: {fileID: 1849783466}
+  - component: {fileID: 1849783468}
   m_Layer: 5
   m_Name: Score
   m_TagString: Untagged
@@ -2062,6 +2093,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1849783464}
   m_CullTransparentMesh: 1
+--- !u!114 &1849783468
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1849783464}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e5f4c8de84692848bc962a5197ac036, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1914159735
 GameObject:
   m_ObjectHideFlags: 0

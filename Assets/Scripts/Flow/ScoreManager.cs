@@ -61,4 +61,9 @@ public class ScoreManager : MonoBehaviour
     {
         return score.Value;
     }
+
+    public int GetCurrentContinuous()
+    {
+        return continuousWinCount.Value;
+    }
 }
