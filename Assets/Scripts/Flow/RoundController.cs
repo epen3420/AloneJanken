@@ -72,7 +72,7 @@ public class RoundController : MonoBehaviour
 
     private void EndJanken(int count)
     {
-        if (count != beatsNum - 1) return;
+        if (count != beatsNum - 2) return;
         bool isWin = CheckWin();
 
         Debug.Log($"Win: {isWin}");
