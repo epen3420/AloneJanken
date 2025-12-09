@@ -8,6 +8,8 @@ public static class SceneController
     public static event System.Action OnStartLoading;
     public static event System.Action<float> OnLoadingScene;
     public static event System.Action OnLoadedScene;
+    public static string CurrentSceneName { get; private set; }
+    public static string PreviousSceneName { get; private set; }
 
     private static bool isLoading = false;
 
@@ -15,6 +17,16 @@ public static class SceneController
 
     public static void LoadScene(string name)
     {
+        if (name == "Current")
+        {
+            name = CurrentSceneName;
+        }
+
+        if (name == "Previous")
+        {
+            name = PreviousSceneName;
+        }
+
         InternalLoadScene(name).Forget();
     }
 
@@ -22,6 +34,9 @@ public static class SceneController
     {
         if (isLoading) return;
         isLoading = true;
+
+        PreviousSceneName = CurrentSceneName;
+        CurrentSceneName = name;
 
         OnStartLoading?.Invoke();
 
