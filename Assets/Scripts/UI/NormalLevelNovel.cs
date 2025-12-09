@@ -1,10 +1,16 @@
 using TimeSpan = System.TimeSpan;
 using Cysharp.Threading.Tasks;
+using UnityEngine;
 
 public class NormalLevelNovel : NovelController
 {
+    [SerializeField]
+    private VoidEventChannelSO startNormalLevel;
+
     public override async UniTask Execute(ChatShower chatShower)
     {
+        startNormalLevel.Raise();
+
         await chatShower.ShowAsTypeWriter("そしたら本番いくよ～");
         await UniTask.Delay(TimeSpan.FromSeconds(1.0f));
 
