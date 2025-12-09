@@ -1,0 +1,126 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2567019357443813550
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2922510208616797171}
+  - component: {fileID: 8474816943628132127}
+  - component: {fileID: 3075386348201805825}
+  - component: {fileID: 9106982889889823259}
+  - component: {fileID: 4225840058987533297}
+  m_Layer: 5
+  m_Name: Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2922510208616797171
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2567019357443813550}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &8474816943628132127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2567019357443813550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9515f46876d466a418c763d912bc2a72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startRound: {fileID: 11400000, guid: 4a82f8c22b448f5418f24830a5105a0c, type: 2}
+  inputEvent: {fileID: 11400000, guid: d618f751b6ffbb144934e3773bc965a1, type: 2}
+  handTypeSpriteMaps:
+  - handType: 1
+    sprite: {fileID: 2007590490319039663, guid: 0d3a5ccdd815de846a9c91d62f2d58d9, type: 3}
+  - handType: 2
+    sprite: {fileID: -5932599598011048182, guid: ac32925d48e41074b82eb899746da08f, type: 3}
+  - handType: 3
+    sprite: {fileID: -7534685119642856361, guid: b898d108f0ae101479f68eade7fff3e4, type: 3}
+  handPosImageMaps:
+  - handPosType: 1
+    setImage: {fileID: 0}
+  - handPosType: 2
+    setImage: {fileID: 0}
+  - handPosType: 3
+    setImage: {fileID: 0}
+  - handPosType: 4
+    setImage: {fileID: 0}
+--- !u!114 &3075386348201805825
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2567019357443813550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71c9d9810fbceb04bb795217ede61d8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  posTypeButtonMaps:
+  - posType: 1
+    tapInputController: {fileID: 0}
+  - posType: 2
+    tapInputController: {fileID: 0}
+  - posType: 3
+    tapInputController: {fileID: 0}
+  - posType: 4
+    tapInputController: {fileID: 0}
+  inputManager: {fileID: 0}
+  startRound: {fileID: 11400000, guid: 4a82f8c22b448f5418f24830a5105a0c, type: 2}
+  endJanken: {fileID: 11400000, guid: c66a0c8af2342684388e93dd2cf2e02f, type: 2}
+--- !u!114 &9106982889889823259
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2567019357443813550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8e40b90a69d7d3438cf9ca996b12361, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  changeWinCount: {fileID: 11400000, guid: 0d0cb20f27927414dbf29247d87d6495, type: 2}
+  changeContinuousWinCount: {fileID: 11400000, guid: 4bfb4cbce6db31644bf7cd94ed411949, type: 2}
+  winCountText: {fileID: 0}
+--- !u!114 &4225840058987533297
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2567019357443813550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b58c7da6dfeed346ae08e5146ebcfc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: {fileID: 0}
+  textboxImage: {fileID: 0}
+  chatTextboxSprite: {fileID: 1477084187498140963, guid: 417f28022a7a2bb4c956498fd0e51d39, type: 3}
+  questTextboxSprite: {fileID: 2053296592404884609, guid: 7600841e41c7bca4bb0a7b3fce67a584, type: 3}

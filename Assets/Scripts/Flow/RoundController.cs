@@ -18,8 +18,6 @@ public class RoundController : MonoBehaviour
     [SerializeField]
     private IntEventChannelSO changeBeats;
     [SerializeField]
-    private VoidEventChannelSO endBeats;
-    [SerializeField]
     private HandsEventChannelSO inputEvent;
     [SerializeField]
     private HandsEventChannelSO endInput;

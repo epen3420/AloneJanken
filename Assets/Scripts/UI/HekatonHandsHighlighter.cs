@@ -10,7 +10,7 @@ public class HekatonHandsHighlighter : MonoBehaviour
     [SerializeField]
     private QuestEventChannelSO startRound;
     [SerializeField]
-    private VoidEventChannelSO endTimer;
+    private VoidEventChannelSO endJanken;
     [SerializeField]
     private float highlightDuration = 0.5f;
     [SerializeField]
@@ -40,14 +40,14 @@ public class HekatonHandsHighlighter : MonoBehaviour
         stopHighlightCtsDict = new Dictionary<HandPosType, CancellationTokenSource>();
         startRound.OnRaised += HighlightHands;
 
-        endTimer.OnVoidRaised += EndHighlight;
+        endJanken.OnVoidRaised += EndHighlight;
     }
 
     private void OnDisable()
     {
         startRound.OnRaised -= HighlightHands;
 
-        endTimer.OnVoidRaised -= EndHighlight;
+        endJanken.OnVoidRaised -= EndHighlight;
     }
 
     private void EndHighlight()
