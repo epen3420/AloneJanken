@@ -44,6 +44,7 @@ public class LoadingScreen : MonoBehaviour
         Fade(0f).ContinueWith(() =>
         {
             canvasGroup.blocksRaycasts = false;
+            sliderController.UpdateSlider(0);
         }).Forget();
     }
 
