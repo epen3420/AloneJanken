@@ -1,4 +1,5 @@
 using System.Threading;
+using System.Threading.Tasks;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
@@ -16,6 +17,8 @@ public class GameCycleManager : MonoBehaviour
     private NovelController novelController;
     [SerializeField]
     private ChatShower chatShower;
+    [SerializeField]
+    private float waitTimeBeforeTransition = 1f;
 
     private bool isPlaying = false;
     private CancellationTokenSource cycleStopCts;
@@ -63,11 +66,17 @@ public class GameCycleManager : MonoBehaviour
         }
         finally
         {
+
             isPlaying = false;
         }
     }
 
     private void GameOver()
+    {
+        AsyncGameOver().Forget();
+    }
+
+    private async UniTask AsyncGameOver()
     {
         cycleStopCts.Cancel();
         cycleStopCts.Dispose();
@@ -75,6 +84,8 @@ public class GameCycleManager : MonoBehaviour
 
         Debug.Log($"{scoreManager.GetCurrentScore()}");
 
+        await chatShower.ShowAsTypeWriter("GAME OVER");
+        await UniTask.Delay(System.TimeSpan.FromSeconds(waitTimeBeforeTransition));
         Debug.Log("Game Over");
         SceneController.LoadScene("Result");
     }
