@@ -2,7 +2,7 @@ using System.Threading;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
-namespace SoundManagement
+namespace SoundSystem
 {
     public class SoundPlayer : MonoBehaviour
     {
@@ -80,13 +80,13 @@ namespace SoundManagement
             currentBgmData = bgmSoundDatas.GetSoundData(bgmTitle);
             if (currentBgmData == null) return;
 
-            bgmAudioSource.clip = currentBgmData.audioClip;
-            VolumeApply(bgmAudioSource, SoundSetting.BgmVolume, currentBgmData.volume);
-            bgmAudioSource.loop = !currentBgmData.loop; // ループポイント指定がない場合はUnityのloop機能を使う
+            bgmAudioSource.clip = currentBgmData.AudioClip;
+            VolumeApply(bgmAudioSource, SoundSetting.BgmVolume, currentBgmData.Volume);
+            bgmAudioSource.loop = !currentBgmData.Loop; // ループポイント指定がない場合はUnityのloop機能を使う
             bgmAudioSource.timeSamples = 0;
             bgmAudioSource.Play();
 
-            if (currentBgmData.loop)
+            if (currentBgmData.Loop)
             {
                 await CustomBgmLoop(bgmCts.Token);
             }
@@ -122,8 +122,8 @@ namespace SoundManagement
             AudioSource tempSource = Instantiate(seAudioSourcePrefab, transform);
             tempSource.enabled = true; // テンプレートを有効化
 
-            tempSource.clip = seData.audioClip;
-            VolumeApply(tempSource, SoundSetting.SeVolume, seData.volume);
+            tempSource.clip = seData.AudioClip;
+            VolumeApply(tempSource, SoundSetting.SeVolume, seData.Volume);
             tempSource.mute = isMute; // ミュート状態を適用
 
             tempSource.Play();
@@ -144,8 +144,8 @@ namespace SoundManagement
             AudioSource tempSource = Instantiate(voiceAudioSourcePrefab, transform);
             tempSource.enabled = true; // テンプレートを有効化
 
-            tempSource.clip = voiceData.audioClip;
-            VolumeApply(tempSource, SoundSetting.VoiceVolume, voiceData.volume);
+            tempSource.clip = voiceData.AudioClip;
+            VolumeApply(tempSource, SoundSetting.VoiceVolume, voiceData.Volume);
             tempSource.mute = isMute; // ミュート状態を適用
 
             tempSource.Play();
@@ -190,9 +190,9 @@ namespace SoundManagement
         {
             while (bgmAudioSource.isPlaying && !ctn.IsCancellationRequested)
             {
-                if (bgmAudioSource.timeSamples >= CorrectFrequency(currentBgmData.loopEndSample))
+                if (bgmAudioSource.timeSamples >= CorrectFrequency(currentBgmData.LoopEndSample))
                 {
-                    bgmAudioSource.timeSamples -= CorrectFrequency(currentBgmData.loopEndSample - currentBgmData.loopStartSample);
+                    bgmAudioSource.timeSamples -= CorrectFrequency(currentBgmData.LoopEndSample - currentBgmData.LoopStartSample);
                 }
                 await UniTask.WaitForEndOfFrame(cancellationToken: ctn);
             }
@@ -202,7 +202,7 @@ namespace SoundManagement
         {
             if (bgmAudioSource.clip == null) return 0;
             // 整数キャスト前に double/float で計算
-            return (int)(n * (double)bgmAudioSource.clip.frequency / currentBgmData.frequency);
+            return (int)(n * (double)bgmAudioSource.clip.frequency / currentBgmData.Frequency);
         }
 
         /// <summary>
@@ -255,7 +255,7 @@ namespace SoundManagement
                 // BGMの音量を再適用
                 if (currentBgmData != null)
                 {
-                    VolumeApply(bgmAudioSource, SoundSetting.BgmVolume, currentBgmData.volume);
+                    VolumeApply(bgmAudioSource, SoundSetting.BgmVolume, currentBgmData.Volume);
                 }
             };
         }

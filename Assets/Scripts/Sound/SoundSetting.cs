@@ -1,16 +1,15 @@
 using UnityEngine;
 
-namespace SoundManagement
+namespace SoundSystem
 {
-    [CreateAssetMenu(fileName = "SoundSetting", menuName = "サウンド/音声設定")]
+    [CreateAssetMenu(fileName = "NewSoundSettings", menuName = "Sounds/SoundSettings")]
     public class SoundSetting : ScriptableObject
     {
         public SoundSetting(
             float masterVolume = 1.0f,
             float bgmVolume = 1.0f,
             float seVolume = 1.0f,
-            float voiceVolume = 1.0f
-        )
+            float voiceVolume = 1.0f)
         {
             SetBgmVolume(bgmVolume);
             SetSeVolume(seVolume);

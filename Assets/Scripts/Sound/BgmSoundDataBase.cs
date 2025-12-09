@@ -1,9 +1,8 @@
 using UnityEngine;
-using System.Collections.Generic;
 
-namespace SoundManagement
+namespace SoundSystem
 {
-    [CreateAssetMenu(menuName = "サウンド/BGMデータベース")]
+    [CreateAssetMenu(fileName = "NewBgmDb", menuName = "Sounds/BgmDatabase")]
     public class BgmSoundDataBase : SoundDataBase<BgmSoundData>
     {
     }
@@ -15,22 +14,35 @@ namespace SoundManagement
         /// <summary>
         /// 音楽をループ再生するかどうかを示します。
         /// </summary>
-        public bool loop;
+        public bool Loop => loop;
 
         /// <summary>
         /// ループ再生の開始サンプル位置。
         /// </summary>
-        public int loopStartSample;
+        public int LoopStartSample => loopStartSample;
 
         /// <summary>
         /// ループ再生の終了サンプル位置。
         /// </summary>
-        public int loopEndSample;
+        public int LoopEndSample => loopEndSample;
 
         /// <summary>
         /// 音楽のサンプリング周波数（Hz）。
         /// </summary>
-        public int frequency;
+        public int Frequency => frequency;
+
+        [Header("ループ")]
+        [SerializeField]
+        private bool loop = false;
+        [Header("ループ開始サンプル位置")]
+        [SerializeField]
+        private int loopStartSample = 0;
+        [Header("ループ終了サンプル位置")]
+        [SerializeField]
+        private int loopEndSample = 0;
+        [Header("サンプリング周波数 (Hz)")]
+        [SerializeField]
+        private int frequency = 44100;
 
         public BgmSoundData(string bgmTitle,
                             AudioClip audioClip,

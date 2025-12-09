@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-namespace SoundManagement
+namespace SoundSystem
 {
     public abstract class SoundDataBase<TData> : ScriptableObject where TData : SoundData
     {
@@ -10,7 +10,7 @@ namespace SoundManagement
 
         public TData GetSoundData(string identifier)
         {
-            return soundDatas.Find(data => data.title == identifier);
+            return soundDatas.Find(data => data.Title == identifier);
         }
 
         public TData GetSoundData(int index)

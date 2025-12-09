@@ -1,8 +1,8 @@
 using UnityEngine;
 
-namespace SoundManagement
+namespace SoundSystem
 {
-    [CreateAssetMenu(menuName = "サウンド/ボイスデータベース")]
+    [CreateAssetMenu(fileName = "NewVoiceDb", menuName = "Sounds/VoiceDatabase")]
     public class VoiceSoundDataBase : SoundDataBase<SoundData>
     {
     }
