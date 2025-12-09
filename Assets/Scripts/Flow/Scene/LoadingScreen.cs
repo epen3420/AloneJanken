@@ -1,0 +1,62 @@
+using Cysharp.Threading.Tasks;
+using DG.Tweening;
+using UnityEngine;
+
+[RequireComponent(typeof(CanvasGroup))]
+public class LoadingScreen : MonoBehaviour
+{
+    [SerializeField]
+    private SliderController sliderController;
+
+    private CanvasGroup canvasGroup;
+
+
+    private void Awake()
+    {
+        DontDestroyOnLoad(this.gameObject);
+
+        canvasGroup = GetComponent<CanvasGroup>();
+        canvasGroup.alpha = 0f;
+        canvasGroup.blocksRaycasts = false;
+
+        SceneController.OnStartLoading += Execute;
+    }
+
+    private void Execute()
+    {
+        canvasGroup.blocksRaycasts = true;
+        Fade(1f).Forget();
+
+        SceneController.OnLoadingScene += SetView;
+        SceneController.OnLoadedScene += Disable;
+    }
+
+    private void SetView(float progress)
+    {
+        sliderController.UpdateSliderWithEasing(progress, 0.2f).Forget();
+    }
+
+    private void Disable()
+    {
+        SceneController.OnLoadingScene -= SetView;
+        SceneController.OnLoadedScene -= Disable;
+
+        Fade(0f).ContinueWith(() =>
+        {
+            canvasGroup.blocksRaycasts = false;
+        }).Forget();
+    }
+
+    private void OnDestroy()
+    {
+        SceneController.OnStartLoading -= Execute;
+        SceneController.OnLoadingScene -= SetView;
+        SceneController.OnLoadedScene -= Disable;
+    }
+
+    private async UniTask Fade(float to)
+    {
+        await DOTween.To(() => canvasGroup.alpha, x => canvasGroup.alpha = x, to, 0.2f)
+                    .ToUniTask(cancellationToken: destroyCancellationToken);
+    }
+}

@@ -962,19 +962,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 575357241}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1553335175}
-        m_TargetAssemblyTypeName: SceneController, Assembly-CSharp
-        m_MethodName: GoToNextScene
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: NormalLevel
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &575357241
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1247,6 +1235,107 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 621355074}
   m_CullTransparentMesh: 1
+--- !u!1001 &645692928
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3175567467462661067, guid: 25cdb49cc3dec334eb9db8cfb3044224, type: 3}
+      propertyPath: m_Name
+      value: LoadingCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 5574023642957056840, guid: 25cdb49cc3dec334eb9db8cfb3044224, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5660922639074767547, guid: 25cdb49cc3dec334eb9db8cfb3044224, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5660922639074767547, guid: 25cdb49cc3dec334eb9db8cfb3044224, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5660922639074767547, guid: 25cdb49cc3dec334eb9db8cfb3044224, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5660922639074767547, guid: 25cdb49cc3dec334eb9db8cfb3044224, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5660922639074767547, guid: 25cdb49cc3dec334eb9db8cfb3044224, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5660922639074767547, guid: 25cdb49cc3dec334eb9db8cfb3044224, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5660922639074767547, guid: 25cdb49cc3dec334eb9db8cfb3044224, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5660922639074767547, guid: 25cdb49cc3dec334eb9db8cfb3044224, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5660922639074767547, guid: 25cdb49cc3dec334eb9db8cfb3044224, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5660922639074767547, guid: 25cdb49cc3dec334eb9db8cfb3044224, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5660922639074767547, guid: 25cdb49cc3dec334eb9db8cfb3044224, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5660922639074767547, guid: 25cdb49cc3dec334eb9db8cfb3044224, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5660922639074767547, guid: 25cdb49cc3dec334eb9db8cfb3044224, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5660922639074767547, guid: 25cdb49cc3dec334eb9db8cfb3044224, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5660922639074767547, guid: 25cdb49cc3dec334eb9db8cfb3044224, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5660922639074767547, guid: 25cdb49cc3dec334eb9db8cfb3044224, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5660922639074767547, guid: 25cdb49cc3dec334eb9db8cfb3044224, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5660922639074767547, guid: 25cdb49cc3dec334eb9db8cfb3044224, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5660922639074767547, guid: 25cdb49cc3dec334eb9db8cfb3044224, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5660922639074767547, guid: 25cdb49cc3dec334eb9db8cfb3044224, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 25cdb49cc3dec334eb9db8cfb3044224, type: 3}
 --- !u!1 &678915156
 GameObject:
   m_ObjectHideFlags: 0
@@ -1901,7 +1990,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_VertexColorAlwaysGammaSpace: 0
+  m_VertexColorAlwaysGammaSpace: 1
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
@@ -1937,9 +2026,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1553335170}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 594f028dd37602f47884c7a26afee6e8, type: 3}
+  m_Script: {fileID: 11500000, guid: 602d88b9b7be7b4499642418d9685b05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneButtonMaps:
+  - sceneName: Tutorial
+    button: {fileID: 2068850047}
+  - sceneName: NormalLevel
+    button: {fileID: 575357240}
 --- !u!1 &1915349232
 GameObject:
   m_ObjectHideFlags: 0
@@ -2159,19 +2253,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2068850048}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1553335175}
-        m_TargetAssemblyTypeName: SceneController, Assembly-CSharp
-        m_MethodName: GoToNextScene
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: Tutorial
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &2068850048
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2698,3 +2780,4 @@ SceneRoots:
   - {fileID: 2696345101394480801}
   - {fileID: 1553335174}
   - {fileID: 1124355527}
+  - {fileID: 645692928}

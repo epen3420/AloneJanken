@@ -273,5 +273,12 @@ namespace SoundSystem
             source.enabled = false;
             return source;
         }
+
+        private void OnDestroy()
+        {
+            bgmCts?.Cancel();
+            bgmCts?.Dispose();
+            bgmCts = null;
+        }
     }
 }
