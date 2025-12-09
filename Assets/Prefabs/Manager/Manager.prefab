@@ -151,27 +151,38 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7724864335002656335, guid: 5bba9e17eb6859d43b5df81e12a00bbd, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 253076812610985098, guid: 5bba9e17eb6859d43b5df81e12a00bbd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8984738077446610619}
   m_SourcePrefab: {fileID: 100100000, guid: 5bba9e17eb6859d43b5df81e12a00bbd, type: 3}
+--- !u!1 &3482114137688083519 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 253076812610985098, guid: 5bba9e17eb6859d43b5df81e12a00bbd, type: 3}
+  m_PrefabInstance: {fileID: 3734021060129149109}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8984738077446610619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3482114137688083519}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3b8a7054ec631d478a70b94cc9bd7f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startNormalLevel: {fileID: 11400000, guid: 2577ab0ff406bed4eba900a90abf28e1, type: 2}
 --- !u!4 &5320867224412435122 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8792834973578846727, guid: 5bba9e17eb6859d43b5df81e12a00bbd, type: 3}
   m_PrefabInstance: {fileID: 3734021060129149109}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &6405758529859849978 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7724864335002656335, guid: 5bba9e17eb6859d43b5df81e12a00bbd, type: 3}
-  m_PrefabInstance: {fileID: 3734021060129149109}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2afcb2e2b9f8139449a7fb8a291990e0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &4592601309518198614
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -330,7 +341,7 @@ PrefabInstance:
     - target: {fileID: 4520231896263503480, guid: b9c9f4722da67264fb5cc5fdc519bbb0, type: 3}
       propertyPath: novelController
       value: 
-      objectReference: {fileID: 6405758529859849978}
+      objectReference: {fileID: 8984738077446610619}
     - target: {fileID: 6142937907800033410, guid: b9c9f4722da67264fb5cc5fdc519bbb0, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

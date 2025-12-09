@@ -15,6 +15,9 @@ EditorBuildSettings:
     path: Assets/Scenes/NormalLevel.unity
     guid: 154d39cdcd3710e4195f5a379c0b0116
   - enabled: 1
+    path: Assets/Scenes/Result.unity
+    guid: b1486f5055740b44bbdcf671cad36e57
+  - enabled: 1
     path: Assets/Scenes/Develop/Round.unity
     guid: 0391c7b900efbe94f90e7d677b1818b6
   m_configObjects:
