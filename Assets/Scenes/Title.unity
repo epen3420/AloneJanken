@@ -403,6 +403,7 @@ GameObject:
   - component: {fileID: 416948863}
   - component: {fileID: 416948862}
   - component: {fileID: 416948861}
+  - component: {fileID: 416948864}
   m_Layer: 5
   m_Name: HowToPlayButton
   m_TagString: Untagged
@@ -512,6 +513,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 416948859}
   m_CullTransparentMesh: 1
+--- !u!114 &416948864
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 416948859}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f374f0d769205c45bce519bcbe4ffdc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverScaleAmount: 1.1
+  smoothSpeed: 10
 --- !u!1 &416963685
 GameObject:
   m_ObjectHideFlags: 0
@@ -603,6 +618,7 @@ GameObject:
   - component: {fileID: 464427148}
   - component: {fileID: 464427147}
   - component: {fileID: 464427146}
+  - component: {fileID: 464427149}
   m_Layer: 5
   m_Name: StoryButton
   m_TagString: Untagged
@@ -712,6 +728,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 464427144}
   m_CullTransparentMesh: 1
+--- !u!114 &464427149
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 464427144}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f374f0d769205c45bce519bcbe4ffdc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverScaleAmount: 1.1
+  smoothSpeed: 10
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -861,6 +891,7 @@ GameObject:
   - component: {fileID: 575357242}
   - component: {fileID: 575357241}
   - component: {fileID: 575357240}
+  - component: {fileID: 575357243}
   m_Layer: 5
   m_Name: NormalButton
   m_TagString: Untagged
@@ -982,6 +1013,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 575357238}
   m_CullTransparentMesh: 1
+--- !u!114 &575357243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 575357238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f374f0d769205c45bce519bcbe4ffdc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverScaleAmount: 1.1
+  smoothSpeed: 10
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -1300,9 +1345,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 838, y: 310}
-  m_Pivot: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: -59, y: 65}
+  m_SizeDelta: {x: 1920, y: 1080}
+  m_Pivot: {x: 0.5, y: 0.20447175}
 --- !u!114 &1027430684
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1323,7 +1368,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 1605788529726904510, guid: 898bb5978d2c7c64aa90f9367e702846, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 898bb5978d2c7c64aa90f9367e702846, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -1907,6 +1952,7 @@ GameObject:
   - component: {fileID: 1915349236}
   - component: {fileID: 1915349235}
   - component: {fileID: 1915349234}
+  - component: {fileID: 1915349237}
   m_Layer: 5
   m_Name: CreditButton
   m_TagString: Untagged
@@ -2016,6 +2062,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1915349232}
   m_CullTransparentMesh: 1
+--- !u!114 &1915349237
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1915349232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f374f0d769205c45bce519bcbe4ffdc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverScaleAmount: 1.1
+  smoothSpeed: 10
 --- !u!1 &2068850045
 GameObject:
   m_ObjectHideFlags: 0
@@ -2028,6 +2088,7 @@ GameObject:
   - component: {fileID: 2068850049}
   - component: {fileID: 2068850048}
   - component: {fileID: 2068850047}
+  - component: {fileID: 2068850050}
   m_Layer: 5
   m_Name: PracticeButton
   m_TagString: Untagged
@@ -2149,6 +2210,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2068850045}
   m_CullTransparentMesh: 1
+--- !u!114 &2068850050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2068850045}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f374f0d769205c45bce519bcbe4ffdc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverScaleAmount: 1.1
+  smoothSpeed: 10
 --- !u!114 &401726751430003276
 MonoBehaviour:
   m_ObjectHideFlags: 0
