@@ -10,7 +10,7 @@ public class GameCycleManager : MonoBehaviour
     [SerializeField]
     private RoundController roundController;
     [SerializeField]
-    private VoidEventChannelSO lifeZeroEvent;
+    private VoidEventChannelSO endGame;
     [SerializeField]
     private ScoreManager scoreManager;
     [SerializeField]
@@ -24,12 +24,12 @@ public class GameCycleManager : MonoBehaviour
 
     private void OnEnable()
     {
-        lifeZeroEvent.OnVoidRaised += GameOver;
+        endGame.OnVoidRaised += GameOver;
     }
 
     private void OnDisable()
     {
-        lifeZeroEvent.OnVoidRaised -= GameOver;
+        endGame.OnVoidRaised -= GameOver;
     }
 
     private void Start()

@@ -49,6 +49,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sound
       objectReference: {fileID: 0}
+    - target: {fileID: 1757551836666846302, guid: 857d2a634ba0182449da355b21f3e89a, type: 3}
+      propertyPath: endGame
+      value: 
+      objectReference: {fileID: 11400000, guid: 769bfef652e2b3145af49095ee1a77c2, type: 2}
     - target: {fileID: 3118299920387071984, guid: 857d2a634ba0182449da355b21f3e89a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -330,6 +334,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameFlow
       objectReference: {fileID: 0}
+    - target: {fileID: 4520231896263503480, guid: b9c9f4722da67264fb5cc5fdc519bbb0, type: 3}
+      propertyPath: endGame
+      value: 
+      objectReference: {fileID: 11400000, guid: 769bfef652e2b3145af49095ee1a77c2, type: 2}
     - target: {fileID: 4520231896263503480, guid: b9c9f4722da67264fb5cc5fdc519bbb0, type: 3}
       propertyPath: questDb
       value: 
