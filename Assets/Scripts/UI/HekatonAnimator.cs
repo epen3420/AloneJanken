@@ -41,10 +41,10 @@ public class HekatonAnimator : MonoBehaviour
 
         foreach (var animator in allAnimators)
         {
-            float speed = animator.GetNextAnimatorClipInfo(0)
-                 .FirstOrDefault(state => state.clip.name == "Janken")
-                 .clip.length / 8;
-            animator.SetFloat("MotionTime", speed);
+            // float speed = animator.GetNextAnimatorClipInfo(0)
+            //      .FirstOrDefault(state => state.clip.name == "Janken")
+            //      .clip.length / 8;
+            // animator.SetFloat("MotionTime", speed);
             animator.SetTrigger("Janken");
         }
     }

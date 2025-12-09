@@ -17,7 +17,7 @@ public class ScoreManager : MonoBehaviour
     }
 
     [SerializeField]
-    private BoolEventChannelSO endRound;
+    private BoolEventChannelSO endJanken;
     [SerializeField]
     private ReactiveProperty<int> winCount;
     [SerializeField]
@@ -34,12 +34,12 @@ public class ScoreManager : MonoBehaviour
 
     private void OnEnable()
     {
-        endRound.OnRaised += UpdateScore;
+        endJanken.OnRaised += UpdateScore;
     }
 
     private void OnDisable()
     {
-        endRound.OnRaised -= UpdateScore;
+        endJanken.OnRaised -= UpdateScore;
     }
 
     private void UpdateScore(bool isWin)

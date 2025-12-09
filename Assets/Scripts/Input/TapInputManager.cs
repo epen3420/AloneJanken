@@ -17,7 +17,7 @@ public class TapInputManager : MonoBehaviour
     [SerializeField]
     private VoidEventChannelSO startRound;
     [SerializeField]
-    private VoidEventChannelSO endRound;
+    private VoidEventChannelSO endJanken;
 
     private UnityAction<HandType>[] onClickActions;
 
@@ -36,7 +36,7 @@ public class TapInputManager : MonoBehaviour
         }
 
         startRound.OnVoidRaised += EnableButtons;
-        endRound.OnVoidRaised += DisableButtons;
+        endJanken.OnVoidRaised += DisableButtons;
     }
 
     private void OnDisable()
@@ -47,7 +47,7 @@ public class TapInputManager : MonoBehaviour
         }
 
         startRound.OnVoidRaised -= EnableButtons;
-        endRound.OnVoidRaised -= DisableButtons;
+        endJanken.OnVoidRaised -= DisableButtons;
     }
 
     private void EnableButtons()

@@ -6,7 +6,7 @@ public class SoundHandler : MonoBehaviour
     // [SerializeField]
     // private QuestEventChannelSO startRound;
     // [SerializeField]
-    // private BoolEventChannelSO endRound;
+    // private BoolEventChannelSO endJanken;
     [SerializeField]
     private VoidEventChannelSO changeTimeEvent;
     [SerializeField]

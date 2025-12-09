@@ -613,7 +613,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e430b2c8c1e5fa449bf14c811bc18a94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  endRound: {fileID: 11400000, guid: c66a0c8af2342684388e93dd2cf2e02f, type: 2}
+  endJanken: {fileID: 11400000, guid: c66a0c8af2342684388e93dd2cf2e02f, type: 2}
   winCount:
     observer: {fileID: 11400000, guid: 0d0cb20f27927414dbf29247d87d6495, type: 2}
   continuousWinCount:
@@ -863,7 +863,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04b4d0b67cf8ca147b3f6bb9a2d41b29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  endRound: {fileID: 11400000, guid: c66a0c8af2342684388e93dd2cf2e02f, type: 2}
+  endJanken: {fileID: 11400000, guid: c66a0c8af2342684388e93dd2cf2e02f, type: 2}
   changeLifeEvent: {fileID: 11400000, guid: 5dce3995f0b53f54489db87374202991, type: 2}
   lifeZeroEvent: {fileID: 11400000, guid: 769bfef652e2b3145af49095ee1a77c2, type: 2}
   maxLife: 3
@@ -949,7 +949,7 @@ MonoBehaviour:
   bpm: 60
   beatsNum: 8
   startRound: {fileID: 11400000, guid: 4a82f8c22b448f5418f24830a5105a0c, type: 2}
-  endRound: {fileID: 11400000, guid: c66a0c8af2342684388e93dd2cf2e02f, type: 2}
+  endJanken: {fileID: 11400000, guid: c66a0c8af2342684388e93dd2cf2e02f, type: 2}
   changeBeats: {fileID: 11400000, guid: 9c98e49cc8503d240bd6fdd2dd3a1297, type: 2}
   endBeats: {fileID: 11400000, guid: c95eae4a7b5e77048ae4fa3aabc7554d, type: 2}
   inputEvent: {fileID: 11400000, guid: d618f751b6ffbb144934e3773bc965a1, type: 2}
@@ -978,6 +978,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: -60
       objectReference: {fileID: 0}
+    - target: {fileID: 4058343662229449061, guid: 7a13579bceb6c3f418177754e63b8e4a, type: 3}
+      propertyPath: endJanken
+      value: 
+      objectReference: {fileID: 11400000, guid: c66a0c8af2342684388e93dd2cf2e02f, type: 2}
     - target: {fileID: 4058343662229449061, guid: 7a13579bceb6c3f418177754e63b8e4a, type: 3}
       propertyPath: inputManager
       value: 
