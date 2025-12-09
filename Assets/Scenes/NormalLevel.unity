@@ -622,27 +622,6 @@ MonoBehaviour:
   baseScore: 100
   continuousMultiplier: 0.1
   maxAddContinuous: 10
---- !u!1 &1918560428 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 133482993127337717, guid: 03086ea8d610ef34595c814d4187f8b5, type: 3}
-  m_PrefabInstance: {fileID: 2927346472276907260}
-  m_PrefabAsset: {fileID: 0}
---- !u!111 &1918560430
-Animation:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1918560428}
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_UpdateMode: 0
-  m_CullingType: 0
 --- !u!1 &1958548900824806414
 GameObject:
   m_ObjectHideFlags: 0
@@ -824,14 +803,10 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 961739752}
-    m_RemovedComponents:
-    - {fileID: 5503061275280410609, guid: 03086ea8d610ef34595c814d4187f8b5, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 133482993127337717, guid: 03086ea8d610ef34595c814d4187f8b5, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1918560430}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 03086ea8d610ef34595c814d4187f8b5, type: 3}
 --- !u!4 &3239205129389285409
 Transform:
