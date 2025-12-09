@@ -10,7 +10,7 @@ public class HekatonAnimator : MonoBehaviour
     [SerializeField]
     private VoidEventChannelSO startNormalLevel;
     [SerializeField]
-    private VoidEventChannelSO startRound;
+    private IntEventChannelSO changeBeats;
 
     private Animator[] allAnimators => upHandAnimators.Concat(downHandAnimators).ToArray();
 
@@ -18,13 +18,13 @@ public class HekatonAnimator : MonoBehaviour
     private void OnEnable()
     {
         startNormalLevel.OnVoidRaised += AppearHands;
-        startRound.OnVoidRaised += JankenAnim;
+        changeBeats.OnRaised += JankenAnim;
     }
 
     private void OnDisable()
     {
         startNormalLevel.OnVoidRaised -= AppearHands;
-        startRound.OnVoidRaised -= JankenAnim;
+        changeBeats.OnRaised -= JankenAnim;
     }
 
     private void AppearHands()
@@ -35,10 +35,16 @@ public class HekatonAnimator : MonoBehaviour
         }
     }
 
-    private void JankenAnim()
+    private void JankenAnim(int count)
     {
+        if (count != 0) return;
+
         foreach (var animator in allAnimators)
         {
+            float speed = animator.GetNextAnimatorClipInfo(0)
+                 .FirstOrDefault(state => state.clip.name == "Janken")
+                 .clip.length / 8;
+            animator.SetFloat("MotionTime", speed);
             animator.SetTrigger("Janken");
         }
     }
