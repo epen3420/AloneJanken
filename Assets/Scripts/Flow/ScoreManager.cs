@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class ScoreManager : MonoBehaviour
@@ -32,6 +34,8 @@ public class ScoreManager : MonoBehaviour
     [SerializeField]
     private int maxAddContinuous = 10;
 
+    private List<int> continuousCounts = new List<int>();
+
 
     private void OnEnable()
     {
@@ -54,6 +58,7 @@ public class ScoreManager : MonoBehaviour
         }
         else
         {
+            continuousCounts.Add(continuousWinCount.Value);
             continuousWinCount.Value = 0;
         }
     }
@@ -66,5 +71,10 @@ public class ScoreManager : MonoBehaviour
     public int GetCurrentContinuous()
     {
         return continuousWinCount.Value;
+    }
+
+    public int GetMaxContinuous()
+    {
+        return continuousCounts.Max();
     }
 }

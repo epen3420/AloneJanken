@@ -25,7 +25,7 @@ public class ResultPresenter : MonoBehaviour
             return;
         }
 #endif
-        continuousViewer.CountScore(ScoreManager.Instance.GetCurrentContinuous(), 0.5f).Forget();
+        continuousViewer.CountScore(ScoreManager.Instance.GetMaxContinuous(), 0.5f).Forget();
 
         resultViewer.CountScore(ScoreManager.Instance.GetCurrentScore(), 1).Forget();
     }
