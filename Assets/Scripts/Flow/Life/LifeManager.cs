@@ -3,7 +3,7 @@ using UnityEngine;
 public class LifeManager : MonoBehaviour
 {
     [SerializeField]
-    private BoolEventChannelSO endRound;
+    private BoolEventChannelSO endJanken;
     [SerializeField]
     private IntEventChannelSO changeLifeEvent;
     [SerializeField]
@@ -20,12 +20,12 @@ public class LifeManager : MonoBehaviour
 
     private void OnEnable()
     {
-        endRound.OnRaised += SetLife;
+        endJanken.OnRaised += SetLife;
     }
 
     private void OnDisable()
     {
-        endRound.OnRaised -= SetLife;
+        endJanken.OnRaised -= SetLife;
     }
 
     private void SetLife(bool isWin)

@@ -1,0 +1,95 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1285766148080015599
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5937521499420814729}
+  - component: {fileID: 6396314614543305314}
+  - component: {fileID: 5392215688901373786}
+  m_Layer: 5
+  m_Name: Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &5937521499420814729
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1285766148080015599}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &6396314614543305314
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1285766148080015599}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68cf79c35adf71a40aa3e2b0b933b3a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startRound: {fileID: 11400000, guid: 4a82f8c22b448f5418f24830a5105a0c, type: 2}
+  endInput: {fileID: 11400000, guid: 3f43eeaa73cc2824eab02d43a62674d7, type: 2}
+  handTypeSpriteMaps:
+  - handType: 1
+    sprite: {fileID: -7759884159647386587, guid: 934b3c2b88d24b64c8ea20837ba75150, type: 3}
+  - handType: 2
+    sprite: {fileID: -7372912095179936824, guid: 622beeb7d0569a549abcfde82315f4e9, type: 3}
+  - handType: 3
+    sprite: {fileID: 9998612124376427, guid: 0d27237a1cd214a458303bed6e35e216, type: 3}
+  - handType: 4
+    sprite: {fileID: 1367075135634323723, guid: d5ea6bdbaf5e4a24a84f60961683b360, type: 3}
+  handPosImageMaps:
+  - handPosType: 1
+    setImage: {fileID: 0}
+  - handPosType: 2
+    setImage: {fileID: 0}
+  - handPosType: 3
+    setImage: {fileID: 0}
+  - handPosType: 4
+    setImage: {fileID: 0}
+--- !u!114 &5392215688901373786
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1285766148080015599}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f91301234059f1c4284194a5da49f902, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startRound: {fileID: 11400000, guid: 4a82f8c22b448f5418f24830a5105a0c, type: 2}
+  endJanken: {fileID: 11400000, guid: c66a0c8af2342684388e93dd2cf2e02f, type: 2}
+  highlightDuration: 0.5
+  handPosImageMaps:
+  - posType: 1
+    imageForHighlight: {fileID: 0}
+  - posType: 2
+    imageForHighlight: {fileID: 0}
+  - posType: 3
+    imageForHighlight: {fileID: 0}
+  - posType: 4
+    imageForHighlight: {fileID: 0}

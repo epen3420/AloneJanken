@@ -14,11 +14,9 @@ public class RoundController : MonoBehaviour
     [SerializeField]
     private QuestEventChannelSO startRound;
     [SerializeField]
-    private BoolEventChannelSO endRound;
+    private BoolEventChannelSO endJanken;
     [SerializeField]
     private IntEventChannelSO changeBeats;
-    [SerializeField]
-    private VoidEventChannelSO endBeats;
     [SerializeField]
     private HandsEventChannelSO inputEvent;
     [SerializeField]
@@ -31,11 +29,13 @@ public class RoundController : MonoBehaviour
 
     private void OnEnable()
     {
+        changeBeats.OnRaised += EndJanken;
         inputEvent.OnRaised += SetInputHands;
     }
 
     private void OnDisable()
     {
+        changeBeats.OnRaised -= EndJanken;
         inputEvent.OnRaised -= SetInputHands;
     }
 
@@ -59,19 +59,18 @@ public class RoundController : MonoBehaviour
 
         startRound.Raise(currentQuest);
 
-        var bpmManager = new BPMManager(bpm, beatsNum, changeBeats);
-        await bpmManager.CountBeatsAsync(ctn);
+        var bpmManager = new BPMManager(bpm, beatsNum, changeBeats: changeBeats);
+        await bpmManager.AwaitCount(ctn);
+    }
 
-        endBeats.Raise();
-
+    private void EndJanken(int count)
+    {
+        if (count != beatsNum - 1) return;
         bool isWin = CheckWin();
 
         Debug.Log($"Win: {isWin}");
-        endRound.Raise(isWin);
+        endJanken.Raise(isWin);
         inputHands.Clear();
-
-        bpmManager = new BPMManager(bpm, 1);
-        await bpmManager.CountBeatsAsync(ctn);
     }
 
     private bool CheckWin()

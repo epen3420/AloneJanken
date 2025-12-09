@@ -10,7 +10,7 @@ public class JankenInputManager : MonoBehaviour
     [SerializeField]
     private VoidEventChannelSO startRound;
     [SerializeField]
-    private VoidEventChannelSO endTimer;
+    private VoidEventChannelSO endJanken;
 
     private GameInputActions inputActions;
     // InputActionをキーにしてctx.actionで値を取れるようにしている
@@ -65,7 +65,7 @@ public class JankenInputManager : MonoBehaviour
         }
 
         startRound.OnVoidRaised += Enable;
-        endTimer.OnVoidRaised += Disable;
+        endJanken.OnVoidRaised += Disable;
     }
 
     private void OnDisable()
@@ -76,7 +76,7 @@ public class JankenInputManager : MonoBehaviour
         }
 
         startRound.OnVoidRaised -= Enable;
-        endTimer.OnVoidRaised -= Disable;
+        endJanken.OnVoidRaised -= Disable;
     }
 
     private void OnDestroy()

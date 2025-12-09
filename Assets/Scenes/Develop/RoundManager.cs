@@ -28,7 +28,7 @@ public class RoundManager : MonoBehaviour
     [SerializeField]
     private QuestEventChannelSO startRound;
     [SerializeField]
-    private BoolEventChannelSO endRound;
+    private BoolEventChannelSO endJanken;
     [SerializeField]
     private FloatEventChannelSO changeTimeEvent;
     [SerializeField]
@@ -121,7 +121,7 @@ public class RoundManager : MonoBehaviour
         }
 
         logText.text += $"Win: {isWin}\n";
-        endRound.Raise(isWin);
+        endJanken.Raise(isWin);
     }
 }
  */
