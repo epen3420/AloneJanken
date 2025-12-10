@@ -12,6 +12,7 @@ public static class SceneController
     public static string PreviousSceneName { get; private set; }
 
     private static bool isLoading = false;
+    private static bool isInit = false;
 
     private const float MIN_LOAD_DURATION = 2.0f;
 
@@ -34,6 +35,8 @@ public static class SceneController
     {
         if (isLoading) return;
         isLoading = true;
+
+        Init();
 
         PreviousSceneName = CurrentSceneName;
         CurrentSceneName = name;
@@ -70,5 +73,17 @@ public static class SceneController
         OnLoadedScene?.Invoke();
 
         isLoading = false;
+    }
+
+    public static void Init()
+    {
+        if (isInit) return;
+
+        if (string.IsNullOrEmpty(CurrentSceneName))
+        {
+            CurrentSceneName = SceneManager.GetActiveScene().name;
+        }
+
+        isInit = true;
     }
 }

@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,14 +9,15 @@ public class HekatonFaceController : MonoBehaviour
     {
         public int count;
         public Sprite face;
+        public bool needEye;
     }
 
     [SerializeField]
     private Image image;
     [SerializeField]
-    private CountFaceMap[] countFaceMap;
+    private CountFaceMap[] countFaceMaps;
     [SerializeField]
-    private Sprite[] missCountFaceMaps;
+    private CountFaceMap[] missCountFaceMaps;
     [SerializeField]
     private BoolEventChannelSO endJanken;
     [SerializeField]
@@ -30,24 +32,53 @@ public class HekatonFaceController : MonoBehaviour
         endJanken.OnRaised += Miss;
     }
 
+    private void OnDisable()
+    {
+        endJanken.OnRaised -= Miss;
+    }
+
     private void Miss(bool isWin)
     {
-
         if (isWin)
         {
-            foreach (var map in countFaceMap)
+            continuousIndex++;
+            if (!countFaceMaps.Any(map => map.count == continuousIndex))
+            {
+                image.sprite = countFaceMaps[0].face;
+                return;
+            }
+
+            foreach (var map in countFaceMaps)
             {
                 if (map.count == continuousIndex)
                 {
                     image.sprite = map.face;
                 }
             }
-            continuousIndex++;
+
+            if (continuousIndex >= countFaceMaps.Length)
+            {
+                continuousIndex = 0;
+            }
         }
         else
         {
             continuousIndex = 0;
-            image.sprite = missCountFaceMaps[missCountIndex++];
+            missCountIndex++;
+
+            if (!missCountFaceMaps.Any(map => map.count == missCountIndex))
+            {
+                image.sprite = countFaceMaps[0].face;
+                return;
+            }
+
+            foreach (var map in missCountFaceMaps)
+            {
+                if (map.count == missCountIndex)
+                {
+                    image.sprite = map.face;
+                }
+            }
 
             if (missCountIndex >= missCountFaceMaps.Length)
             {

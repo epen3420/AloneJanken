@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8801172343768937738}
   - component: {fileID: 5585002409234900174}
   - component: {fileID: 1875511426437312347}
+  - component: {fileID: 1992789657078857505}
   m_Layer: 5
   m_Name: Head
   m_TagString: Untagged
@@ -77,6 +78,44 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &1992789657078857505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 170958801927485081}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc6bbed30515fd449a2bb1b2ea90fdac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  image: {fileID: 5767893887831222642}
+  countFaceMaps:
+  - count: 0
+    face: {fileID: 21300000, guid: 53a4659b960ac3d40b8bfa718b74bf87, type: 3}
+    needEye: 0
+  - count: 5
+    face: {fileID: 21300000, guid: 97987cb5ad382b448a24092d43c6043b, type: 3}
+    needEye: 0
+  - count: 7
+    face: {fileID: 21300000, guid: e9d8a62a27af8f843bcc608de9abb84c, type: 3}
+    needEye: 0
+  missCountFaceMaps:
+  - count: 0
+    face: {fileID: 21300000, guid: 53a4659b960ac3d40b8bfa718b74bf87, type: 3}
+    needEye: 1
+  - count: 1
+    face: {fileID: 21300000, guid: e8e7302d1d38c9f4b99fda87c84082f4, type: 3}
+    needEye: 0
+  - count: 2
+    face: {fileID: 21300000, guid: a1a863d76cbf8e74b921a0e71af7124c, type: 3}
+    needEye: 0
+  - count: 3
+    face: {fileID: 21300000, guid: bfa63f69f93165544af0a91c7a7eb636, type: 3}
+    needEye: 1
+  endJanken: {fileID: 11400000, guid: c66a0c8af2342684388e93dd2cf2e02f, type: 2}
+  continuousCount: {fileID: 11400000, guid: 4bfb4cbce6db31644bf7cd94ed411949, type: 2}
 --- !u!1 &5590347437245867237
 GameObject:
   m_ObjectHideFlags: 0
@@ -191,13 +230,13 @@ MonoBehaviour:
     m_Events:
     - m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 5590347437245867237}
-          m_TargetAssemblyTypeName: 
-          m_MethodName: 
+        - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: RoundController, Assembly-CSharp
+          m_MethodName: EndJanken
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: 
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 

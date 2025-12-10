@@ -19,6 +19,6 @@ public class ResultHekatonView : MonoBehaviour
 
     private void Awake()
     {
-        image.sprite = sceneHekatonMaps.FirstOrDefault(map => map.SceneName == SceneController.CurrentSceneName).sprite;
+        image.sprite = sceneHekatonMaps.FirstOrDefault(map => map.SceneName == SceneController.PreviousSceneName).sprite;
     }
 }
