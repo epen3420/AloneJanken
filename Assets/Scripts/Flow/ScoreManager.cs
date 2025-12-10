@@ -63,6 +63,11 @@ public class ScoreManager : MonoBehaviour
         }
     }
 
+    public int GetCurrentWinCount()
+    {
+        return winCount.Value;
+    }
+
     public int GetCurrentScore()
     {
         return score.Value;

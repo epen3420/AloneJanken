@@ -967,7 +967,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4768330102636945096}
   - component: {fileID: 4785299728678821728}
-  - component: {fileID: 3015034029933393970}
+  - component: {fileID: 4785299728678821729}
   m_Layer: 0
   m_Name: GameFlow
   m_TagString: Untagged
@@ -1301,25 +1301,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &3015034029933393970
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 259896881445445032}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bcf9a3787b842754b98f2cf5c515fb84, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  questDb: {fileID: 11400000, guid: ea3f8a6482bfc5a44b1aba410b41ee4e, type: 2}
-  roundController: {fileID: 4785299728678821728}
-  endGame: {fileID: 11400000, guid: 769bfef652e2b3145af49095ee1a77c2, type: 2}
-  scoreManager: {fileID: 1042311664893750730}
-  novelController: {fileID: 9094678126858894759}
-  chatShower: {fileID: 6939740034554404049}
-  waitTimeBeforeTransition: 1
 --- !u!224 &3028026911917217366
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1681,6 +1662,25 @@ MonoBehaviour:
   inputEvent: {fileID: 11400000, guid: d618f751b6ffbb144934e3773bc965a1, type: 2}
   endInput: {fileID: 11400000, guid: 3f43eeaa73cc2824eab02d43a62674d7, type: 2}
   timelineManager: {fileID: 1704441459}
+--- !u!114 &4785299728678821729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 259896881445445032}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cce8e1c3c3a9fa4da61f2606cbbfbd3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  questDb: {fileID: 11400000, guid: ea3f8a6482bfc5a44b1aba410b41ee4e, type: 2}
+  roundController: {fileID: 4785299728678821728}
+  endGame: {fileID: 11400000, guid: 769bfef652e2b3145af49095ee1a77c2, type: 2}
+  scoreManager: {fileID: 1042311664893750730}
+  novelController: {fileID: 9094678126858894759}
+  chatShower: {fileID: 6939740034554404049}
+  waitTimeBeforeTransition: 1
 --- !u!224 &4861387314662195380
 RectTransform:
   m_ObjectHideFlags: 0
