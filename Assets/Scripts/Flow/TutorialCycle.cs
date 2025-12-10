@@ -62,6 +62,8 @@ public class TutorialCycle : MonoBehaviour
 
                 await UniTask.WaitForEndOfFrame();
             }
+
+            GameOver();
         }
         finally
         {
