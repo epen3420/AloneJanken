@@ -2036,6 +2036,10 @@ MonoBehaviour:
     button: {fileID: 575357240}
   - sceneName: Manual
     button: {fileID: 416948861}
+  - sceneName: Story
+    button: {fileID: 464427146}
+  - sceneName: Credit
+    button: {fileID: 1915349234}
 --- !u!1 &1915349232
 GameObject:
   m_ObjectHideFlags: 0
