@@ -2034,6 +2034,8 @@ MonoBehaviour:
     button: {fileID: 2068850047}
   - sceneName: NormalLevel
     button: {fileID: 575357240}
+  - sceneName: Manual
+    button: {fileID: 416948861}
 --- !u!1 &1915349232
 GameObject:
   m_ObjectHideFlags: 0

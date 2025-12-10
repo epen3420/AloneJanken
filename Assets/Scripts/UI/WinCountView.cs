@@ -28,6 +28,6 @@ public class WinCountView : MonoBehaviour
 
     private void SetText(int count)
     {
-        winCountText.SetText($"Win: {count}");
+        winCountText.SetText($"Score: {ScoreManager.Instance.GetCurrentScore()}");
     }
 }
