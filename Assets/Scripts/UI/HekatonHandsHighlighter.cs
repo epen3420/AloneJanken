@@ -55,7 +55,12 @@ public class HekatonHandsHighlighter : MonoBehaviour
         foreach (var cts in stopHighlightCtsDict)
         {
             cts.Value?.Cancel();
-            handPosImageDict[cts.Key].gameObject.SetActive(false);
+            var image = handPosImageDict[cts.Key];
+            image.gameObject.SetActive(false);
+
+            var color = image.color;
+            color.a = 1.0f;
+            image.color = color;
         }
     }
 
