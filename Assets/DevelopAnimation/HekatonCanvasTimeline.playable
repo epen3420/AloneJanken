@@ -498,6 +498,7 @@ MonoBehaviour:
   - {fileID: 1755283413539328590}
   - {fileID: -7120038852517801544}
   - {fileID: 8593969465620343638}
+  - {fileID: 6832574718306101432}
   m_FixedDuration: 0
   m_EditorSettings:
     m_Framerate: 60
@@ -710,6 +711,22 @@ MonoBehaviour:
     volume: 1
     stereoPan: 0
     spatialBlend: 0
+--- !u!114 &3012513103290071465
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15c38f6fa1940124db1ab7f6fe7268d1, type: 3}
+  m_Name: Signal Emitter
+  m_EditorClassIdentifier: 
+  m_Time: 7.75
+  m_Retroactive: 0
+  m_EmitOnce: 1
+  m_Asset: {fileID: 11400000, guid: ff58fc4b190271946a926c0ece469b49, type: 2}
 --- !u!114 &3189272108134519887
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -936,6 +953,30 @@ MonoBehaviour:
     volume: 1
     stereoPan: 0
     spatialBlend: 0
+--- !u!114 &6832574718306101432
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b46e36075dd1c124a8422c228e75e1fb, type: 3}
+  m_Name: Signal Track
+  m_EditorClassIdentifier: 
+  m_Version: 3
+  m_AnimClip: {fileID: 0}
+  m_Locked: 0
+  m_Muted: 0
+  m_CustomPlayableFullTypename: 
+  m_Curves: {fileID: 0}
+  m_Parent: {fileID: 11400000}
+  m_Children: []
+  m_Clips: []
+  m_Markers:
+    m_Objects:
+    - {fileID: 3012513103290071465}
 --- !u!114 &8593969465620343638
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1141,10 +1182,10 @@ MonoBehaviour:
   m_Name: AudioPlayableAsset
   m_EditorClassIdentifier: 
   m_Clip: {fileID: 8300000, guid: 9da38458b420fcf469a04e88c6ba3410, type: 3}
-  m_Loop: 1
+  m_Loop: 0
   m_bufferingTime: 0.1
   m_ClipProperties:
-    volume: 0.01
+    volume: 0.4
 --- !u!114 &9032262082614339337
 MonoBehaviour:
   m_ObjectHideFlags: 1
