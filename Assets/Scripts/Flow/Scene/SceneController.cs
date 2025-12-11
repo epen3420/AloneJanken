@@ -34,23 +34,27 @@ public static class SceneController
 
     public static void LoadScene(string name)
     {
+        InternalLoadScene(name, true).Forget();
+    }
+
+    public static void LoadSceneImmediately(string name)
+    {
+        InternalLoadScene(name, false).Forget();
+    }
+
+    private static async UniTask InternalLoadScene(string name, bool isAsync = false)
+    {
+        if (isLoading) return;
+        isLoading = true;
+
         if (name == "Current")
         {
             name = CurrentSceneName;
         }
-
-        if (name == "Previous")
+        else if (name == "Previous")
         {
             name = PreviousSceneName;
         }
-
-        InternalLoadScene(name).Forget();
-    }
-
-    private static async UniTask InternalLoadScene(string name)
-    {
-        if (isLoading) return;
-        isLoading = true;
 
         Init();
 
@@ -59,11 +63,26 @@ public static class SceneController
 
         OnStartLoading?.Invoke();
 
-        float timer = 0f;
+        if (isAsync)
+        {
+            await LoadAsync(name);
+        }
+        else
+        {
+            SceneManager.LoadScene(name);
+        }
 
+        OnLoadedScene?.Invoke();
+
+        isLoading = false;
+    }
+
+    private static async UniTask LoadAsync(string name)
+    {
         AsyncOperation operation = SceneManager.LoadSceneAsync(name);
         operation.allowSceneActivation = false;
 
+        float timer = 0f;
         while (!operation.isDone)
         {
             timer += Time.deltaTime;
@@ -85,9 +104,5 @@ public static class SceneController
 
             await UniTask.DelayFrame(1);
         }
-
-        OnLoadedScene?.Invoke();
-
-        isLoading = false;
     }
 }
