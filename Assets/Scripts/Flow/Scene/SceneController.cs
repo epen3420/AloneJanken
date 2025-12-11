@@ -5,6 +5,22 @@ using TimeSpan = System.TimeSpan;
 
 public static class SceneController
 {
+    private static bool isInit = false;
+
+    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
+    private static void Init()
+    {
+        if (isInit) return;
+
+        if (string.IsNullOrEmpty(CurrentSceneName))
+        {
+            CurrentSceneName = SceneManager.GetActiveScene().name;
+        }
+
+        isInit = true;
+    }
+
+
     public static event System.Action OnStartLoading;
     public static event System.Action<float> OnLoadingScene;
     public static event System.Action OnLoadedScene;
@@ -12,9 +28,9 @@ public static class SceneController
     public static string PreviousSceneName { get; private set; }
 
     private static bool isLoading = false;
-    private static bool isInit = false;
 
     private const float MIN_LOAD_DURATION = 2.0f;
+
 
     public static void LoadScene(string name)
     {
@@ -31,7 +47,7 @@ public static class SceneController
         InternalLoadScene(name).Forget();
     }
 
-    public static async UniTask InternalLoadScene(string name)
+    private static async UniTask InternalLoadScene(string name)
     {
         if (isLoading) return;
         isLoading = true;
@@ -73,17 +89,5 @@ public static class SceneController
         OnLoadedScene?.Invoke();
 
         isLoading = false;
-    }
-
-    public static void Init()
-    {
-        if (isInit) return;
-
-        if (string.IsNullOrEmpty(CurrentSceneName))
-        {
-            CurrentSceneName = SceneManager.GetActiveScene().name;
-        }
-
-        isInit = true;
     }
 }
