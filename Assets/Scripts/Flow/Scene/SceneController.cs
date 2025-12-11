@@ -5,19 +5,13 @@ using TimeSpan = System.TimeSpan;
 
 public static class SceneController
 {
-    private static bool isInit = false;
-
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
     private static void Init()
     {
-        if (isInit) return;
-
         if (string.IsNullOrEmpty(CurrentSceneName))
         {
             CurrentSceneName = SceneManager.GetActiveScene().name;
         }
-
-        isInit = true;
     }
 
 
@@ -26,23 +20,19 @@ public static class SceneController
     public static event System.Action OnLoadedScene;
     public static string CurrentSceneName { get; private set; }
     public static string PreviousSceneName { get; private set; }
+    public static float FADE_DURATION = 0.2f;
 
     private static bool isLoading = false;
 
     private const float MIN_LOAD_DURATION = 2.0f;
 
 
-    public static void LoadScene(string name)
+    public static void LoadScene(string name, LoadMethod method = LoadMethod.Async)
     {
-        InternalLoadScene(name, true).Forget();
+        InternalLoadScene(name, method).Forget();
     }
 
-    public static void LoadSceneImmediately(string name)
-    {
-        InternalLoadScene(name, false).Forget();
-    }
-
-    private static async UniTask InternalLoadScene(string name, bool isAsync = false)
+    private static async UniTask InternalLoadScene(string name, LoadMethod method)
     {
         if (isLoading) return;
         isLoading = true;
@@ -56,20 +46,21 @@ public static class SceneController
             name = PreviousSceneName;
         }
 
-        Init();
-
         PreviousSceneName = CurrentSceneName;
         CurrentSceneName = name;
 
         OnStartLoading?.Invoke();
 
-        if (isAsync)
+        switch (method)
         {
-            await LoadAsync(name);
-        }
-        else
-        {
-            SceneManager.LoadScene(name);
+            case LoadMethod.Async:
+                await LoadAsync(name);
+                break;
+            case LoadMethod.Immediate:
+                await UniTask.Delay(TimeSpan.FromSeconds(FADE_DURATION));
+                SceneManager.LoadScene(name);
+                await UniTask.Delay(TimeSpan.FromSeconds(FADE_DURATION));
+                break;
         }
 
         OnLoadedScene?.Invoke();

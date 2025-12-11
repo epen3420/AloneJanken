@@ -8,6 +8,7 @@ public class SceneChangeByButton : MonoBehaviour
     {
         public string sceneName;
         public Button button;
+        public LoadMethod method;
     }
 
     [SerializeField]
@@ -18,7 +19,7 @@ public class SceneChangeByButton : MonoBehaviour
     {
         foreach (var map in sceneButtonMaps)
         {
-            map.button.onClick.AddListener(() => SceneController.LoadScene(map.sceneName));
+            map.button.onClick.AddListener(() => SceneController.LoadScene(map.sceneName, map.method));
         }
     }
 

@@ -57,7 +57,12 @@ public class LoadingScreen : MonoBehaviour
 
     private async UniTask Fade(float to)
     {
-        await DOTween.To(() => canvasGroup.alpha, x => canvasGroup.alpha = x, to, 0.2f)
-                    .ToUniTask(cancellationToken: destroyCancellationToken);
+        await DOTween
+            .To(
+                () => canvasGroup.alpha,
+                x => canvasGroup.alpha = x,
+                to,
+                SceneController.FADE_DURATION)
+            .ToUniTask(cancellationToken: destroyCancellationToken);
     }
 }

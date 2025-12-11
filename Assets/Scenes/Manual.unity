@@ -1440,6 +1440,7 @@ MonoBehaviour:
   sceneButtonMaps:
   - sceneName: Previous
     button: {fileID: 1508229691}
+    method: 1
 --- !u!1 &1991940949
 GameObject:
   m_ObjectHideFlags: 0

@@ -2032,14 +2032,19 @@ MonoBehaviour:
   sceneButtonMaps:
   - sceneName: Tutorial
     button: {fileID: 2068850047}
+    method: 0
   - sceneName: NormalLevel
     button: {fileID: 575357240}
+    method: 0
   - sceneName: Manual
     button: {fileID: 416948861}
+    method: 1
   - sceneName: Story
     button: {fileID: 464427146}
+    method: 1
   - sceneName: Credit
     button: {fileID: 1915349234}
+    method: 1
 --- !u!1 &1915349232
 GameObject:
   m_ObjectHideFlags: 0
