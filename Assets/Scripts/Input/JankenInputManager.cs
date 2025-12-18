@@ -1,130 +1,47 @@
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class JankenInputManager : MonoBehaviour
 {
     [SerializeField]
-    private HandsEventChannelSO inputHandsEvent;
+    private HandsEventChannelSO onInputHands;
     [SerializeField]
-    private VoidEventChannelSO startRound;
-    [SerializeField]
-    private VoidEventChannelSO endJanken;
+    private IInputDetectable[] inputHandlers;
 
-    private GameInputActions inputActions;
-    // InputActionをキーにしてctx.actionで値を取れるようにしている
-    private Dictionary<InputAction, Hand> actionMap;
-    private List<Hand> currentInputHands = new List<Hand>();
-    private bool isEnable = false;
+    private List<Hand> currentInputHands;
 
 
-    private void Awake()
+    public void StartInput(IEnumerable<HandPosType> useableHandPos)
     {
-        inputActions = new GameInputActions();
-        actionMap = new Dictionary<InputAction, Hand>();
-
-        // --- LeftUp (左上) ---
-        AddActionMap(inputActions.Janken.LeftUpRock, HandPosType.LeftUp, HandType.Rock);
-        AddActionMap(inputActions.Janken.LeftUpScissors, HandPosType.LeftUp, HandType.Scissors);
-        AddActionMap(inputActions.Janken.LeftUpPaper, HandPosType.LeftUp, HandType.Paper);
-
-        // --- LeftDown (左下) ---
-        AddActionMap(inputActions.Janken.LeftDownRock, HandPosType.LeftDown, HandType.Rock);
-        AddActionMap(inputActions.Janken.LeftDownScissors, HandPosType.LeftDown, HandType.Scissors);
-        AddActionMap(inputActions.Janken.LeftDownPaper, HandPosType.LeftDown, HandType.Paper);
-
-        // --- RightUp (右上) ---
-        AddActionMap(inputActions.Janken.RightUpRock, HandPosType.RightUp, HandType.Rock);
-        AddActionMap(inputActions.Janken.RightUpScissors, HandPosType.RightUp, HandType.Scissors);
-        AddActionMap(inputActions.Janken.RightUpPaper, HandPosType.RightUp, HandType.Paper);
-
-        // --- RightDown (右下) ---
-        AddActionMap(inputActions.Janken.RightDownRock, HandPosType.RightDown, HandType.Rock);
-        AddActionMap(inputActions.Janken.RightDownScissors, HandPosType.RightDown, HandType.Scissors);
-        AddActionMap(inputActions.Janken.RightDownPaper, HandPosType.RightDown, HandType.Paper);
-    }
-
-    /// <summary>
-    /// actionMapに値を追加するためのヘルパー
-    /// </summary>
-    /// <param name="action"></param>
-    /// <param name="pos"></param>
-    /// <param name="type"></param>
-    private void AddActionMap(InputAction action, HandPosType pos, HandType type)
-    {
-        var handPair = new Hand(type, pos);
-        actionMap.Add(action, handPair);
-    }
-
-    private void OnEnable()
-    {
-        foreach (var action in actionMap.Keys)
+        foreach (var inputHandler in inputHandlers)
         {
-            action.performed += OnHandInput;
+            inputHandler.OnInputHand += RaiseCurrentInputHands;
         }
-
-        startRound.OnVoidRaised += Enable;
-        endJanken.OnVoidRaised += Disable;
     }
 
-    private void OnDisable()
+    public IEnumerable<Hand> GetCurrentInputHands() => currentInputHands;
+
+    public void EndInput()
     {
-        foreach (var action in actionMap.Keys)
+        foreach (var inputHandler in inputHandlers)
         {
-            action.performed -= OnHandInput;
+            inputHandler?.Disable();
         }
-
-        startRound.OnVoidRaised -= Enable;
-        endJanken.OnVoidRaised -= Disable;
     }
 
-    private void OnDestroy()
+    private void RaiseCurrentInputHands(Hand inputHand)
     {
-        inputActions?.Disable();
-        inputActions?.Dispose();
-
-        inputActions = null;
-    }
-
-    private void OnHandInput(InputAction.CallbackContext ctx)
-    {
-        if (!isEnable) return;
-        if (!actionMap.TryGetValue(ctx.action, out var value)) return;
-
-        ChangeHandInput(value);
-    }
-
-    public void ChangeHandInput(Hand hand)
-    {
-        int index = currentInputHands.FindIndex(h => h.pair.OwnerPos == hand.pair.OwnerPos);
+        int index = currentInputHands.FindIndex(h => h.pair.OwnerPos == inputHand.pair.OwnerPos);
 
         if (index != -1)
         {
-            currentInputHands[index] = hand;
+            currentInputHands[index] = inputHand;
         }
         else
         {
-            currentInputHands.Add(hand);
+            currentInputHands.Add(inputHand);
         }
 
-        inputHandsEvent.Raise(currentInputHands);
-    }
-
-    public void Enable()
-    {
-        isEnable = true;
-        currentInputHands.Clear();
-        inputActions.Enable();
-
-        Debug.Log("入力受付を開始");
-    }
-
-    public void Disable()
-    {
-        isEnable = false;
-        inputActions?.Disable();
-
-        Debug.Log("入力受付を終了");
+        onInputHands.Raise(currentInputHands);
     }
 }

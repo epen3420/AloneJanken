@@ -1,8 +1,10 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-public class TapInputManager : MonoBehaviour
+public class TapInputDetector : MonoBehaviour, IInputDetectable
 {
+    public event UnityAction<Hand> OnInputHand;
+
     [System.Serializable]
     private struct PosTypeButtonMap
     {
@@ -12,12 +14,7 @@ public class TapInputManager : MonoBehaviour
 
     [SerializeField]
     private PosTypeButtonMap[] posTypeButtonMaps;
-    [SerializeField]
-    private JankenInputManager inputManager;
-    [SerializeField]
-    private VoidEventChannelSO startRound;
-    [SerializeField]
-    private VoidEventChannelSO endJanken;
+
 
     private UnityAction<HandType>[] onClickActions;
 
@@ -29,14 +26,11 @@ public class TapInputManager : MonoBehaviour
         {
             int index = i;
             UnityAction<HandType> action = (hand) =>
-                inputManager.ChangeHandInput(new Hand(hand, posTypeButtonMaps[index].posType));
+                OnInputHand.Invoke(new Hand(hand, posTypeButtonMaps[index].posType));
 
             posTypeButtonMaps[index].tapInputController.OnClick += action;
             onClickActions[index] = action;
         }
-
-        startRound.OnVoidRaised += EnableButtons;
-        endJanken.OnVoidRaised += DisableButtons;
     }
 
     private void OnDisable()
@@ -45,12 +39,9 @@ public class TapInputManager : MonoBehaviour
         {
             posTypeButtonMaps[i].tapInputController.OnClick -= onClickActions[i];
         }
-
-        startRound.OnVoidRaised -= EnableButtons;
-        endJanken.OnVoidRaised -= DisableButtons;
     }
 
-    private void EnableButtons()
+    public void Enable()
     {
         foreach (var map in posTypeButtonMaps)
         {
@@ -58,7 +49,7 @@ public class TapInputManager : MonoBehaviour
         }
     }
 
-    private void DisableButtons()
+    public void Disable()
     {
         foreach (var map in posTypeButtonMaps)
         {
