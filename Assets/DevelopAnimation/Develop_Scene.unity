@@ -608,6 +608,54 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1460387078}
   m_CullTransparentMesh: 1
+--- !u!1 &1849877393
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1849877394}
+  - component: {fileID: 1849877395}
+  m_Layer: 0
+  m_Name: SpeedController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1849877394
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1849877393}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1849877395
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1849877393}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02ab6b4fe02a9b94c8b93078b33b3256, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeline: {fileID: 8496378036917336213}
+  speed: 1
+  useBpm: 0
+  bpm: 60
 --- !u!1 &2130895206
 GameObject:
   m_ObjectHideFlags: 0
@@ -1290,13 +1338,33 @@ PlayableDirector:
   m_Enabled: 1
   serializedVersion: 3
   m_PlayableAsset: {fileID: 11400000, guid: f6a6abedd01894a47aa015b7afe524ef, type: 2}
-  m_InitialState: 1
+  m_InitialState: 0
   m_WrapMode: 2
   m_DirectorUpdateMode: 1
   m_InitialTime: 0
   m_SceneBindings:
   - key: {fileID: 1182890014587875219, guid: f6a6abedd01894a47aa015b7afe524ef, type: 2}
     value: {fileID: 8496378036917336212}
+  - key: {fileID: -5567446128342543741, guid: f6a6abedd01894a47aa015b7afe524ef, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: -3885781906766940477, guid: f6a6abedd01894a47aa015b7afe524ef, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: 8865215244493459818, guid: f6a6abedd01894a47aa015b7afe524ef, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: -8620831808308791456, guid: f6a6abedd01894a47aa015b7afe524ef, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: 3189272108134519887, guid: f6a6abedd01894a47aa015b7afe524ef, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: 6263035342543021597, guid: f6a6abedd01894a47aa015b7afe524ef, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: 1755283413539328590, guid: f6a6abedd01894a47aa015b7afe524ef, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: -7120038852517801544, guid: f6a6abedd01894a47aa015b7afe524ef, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: 8593969465620343638, guid: f6a6abedd01894a47aa015b7afe524ef, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: 6832574718306101432, guid: f6a6abedd01894a47aa015b7afe524ef, type: 2}
+    value: {fileID: 0}
   m_ExposedReferences:
     m_References: []
 --- !u!114 &8496378036917336214
@@ -1337,3 +1405,4 @@ SceneRoots:
   - {fileID: 203844589}
   - {fileID: 1157109224}
   - {fileID: 4550152404304009381}
+  - {fileID: 1849877394}
