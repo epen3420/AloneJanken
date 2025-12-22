@@ -1,4 +1,4 @@
-public enum LoadMethod
+public enum LoadMethodType
 {
     Async,
     Immediate,

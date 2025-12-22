@@ -8,7 +8,7 @@ public class SceneChangeByButton : MonoBehaviour
     {
         public string sceneName;
         public Button button;
-        public LoadMethod method;
+        public LoadMethodType method;
     }
 
     [SerializeField]

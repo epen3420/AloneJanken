@@ -18,8 +18,8 @@ public static class SceneController
     public static event System.Action OnStartLoading;
     public static event System.Action<float> OnLoadingScene;
     public static event System.Action OnLoadedScene;
-    public static string CurrentSceneName { get; private set; }
-    public static string PreviousSceneName { get; private set; }
+    public static string CurrentSceneName { get; private set; } = "";
+    public static string PreviousSceneName { get; private set; } = "";
     public static float FADE_DURATION = 0.2f;
 
     private static bool isLoading = false;
@@ -27,12 +27,12 @@ public static class SceneController
     private const float MIN_LOAD_DURATION = 2.0f;
 
 
-    public static void LoadScene(string name, LoadMethod method = LoadMethod.Async)
+    public static void LoadScene(string name, LoadMethodType method = LoadMethodType.Async)
     {
         InternalLoadScene(name, method).Forget();
     }
 
-    private static async UniTask InternalLoadScene(string name, LoadMethod method)
+    private static async UniTask InternalLoadScene(string name, LoadMethodType method)
     {
         if (isLoading) return;
         isLoading = true;
@@ -53,10 +53,10 @@ public static class SceneController
 
         switch (method)
         {
-            case LoadMethod.Async:
+            case LoadMethodType.Async:
                 await LoadAsync(name);
                 break;
-            case LoadMethod.Immediate:
+            case LoadMethodType.Immediate:
                 await UniTask.Delay(TimeSpan.FromSeconds(FADE_DURATION));
                 SceneManager.LoadScene(name);
                 await UniTask.Delay(TimeSpan.FromSeconds(FADE_DURATION));
