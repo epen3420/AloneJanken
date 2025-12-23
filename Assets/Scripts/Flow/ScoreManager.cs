@@ -40,11 +40,13 @@ public class ScoreManager : MonoBehaviour
     private void OnEnable()
     {
         endJanken.OnRaised += UpdateScore;
+        SceneController.OnLoadedScene += ResetScore;
     }
 
     private void OnDisable()
     {
         endJanken.OnRaised -= UpdateScore;
+        SceneController.OnLoadedScene -= ResetScore;
     }
 
     private void UpdateScore(bool isWin)
@@ -60,6 +62,16 @@ public class ScoreManager : MonoBehaviour
         {
             continuousCounts.Add(continuousWinCount.Value);
             continuousWinCount.Value = 0;
+        }
+    }
+
+    private void ResetScore(string sceneName)
+    {
+        if (sceneName == "Title")
+        {
+            winCount.Value = 0;
+            continuousWinCount.Value = 0;
+            score.Value = 0;
         }
     }
 
