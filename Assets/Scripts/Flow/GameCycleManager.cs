@@ -54,7 +54,6 @@ public class GameCycleManager : MonoBehaviour
             await SoundPlayer.Instance.PlaySe("start_game", ctn);
             while (!ctn.IsCancellationRequested)
             {
-                // await UniTask.Delay(3000);
                 var targetHand = HandTypeUtil.GetRandomlyHandType();
                 int randomNum = Random.Range(0, questDb.UseableHandPotTypes.Length);
                 var targetHandPos = questDb.UseableHandPotTypes[randomNum];
