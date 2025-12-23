@@ -1850,20 +1850,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d8ed7420b5612e44b9daf00ec64bcda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneHekatonMaps:
-  - SceneName: Tutorial
-    sprite: {fileID: -4561515378857845965, guid: bfad92bfe18358e4d80417bfd0585088, type: 3}
-  - SceneName: NormalLevel
-    sprite: {fileID: 4780095547730234564, guid: 986465271d1c15d48998eac6e912c31e, type: 3}
-  - SceneName: 
-    sprite: {fileID: 4780095547730234564, guid: 986465271d1c15d48998eac6e912c31e, type: 3}
   hekatonMapByScores:
   - SceneName: 
+    useScoreLimit: 1
+    sprite: {fileID: 0}
     scores:
     - score: 1240
       sprite: {fileID: 4305132013011699466, guid: d6bf5056dc550054b918016b46545b75, type: 3}
     - score: 1230
       sprite: {fileID: -7372912095179936824, guid: 622beeb7d0569a549abcfde82315f4e9, type: 3}
+  - SceneName: Tutorial
+    useScoreLimit: 0
+    sprite: {fileID: -4561515378857845965, guid: bfad92bfe18358e4d80417bfd0585088, type: 3}
+    scores: []
   image: {fileID: 116044929}
 --- !u!1 &1849783464
 GameObject:
