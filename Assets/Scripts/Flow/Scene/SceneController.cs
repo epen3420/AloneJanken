@@ -17,7 +17,7 @@ public static class SceneController
 
     public static event System.Action OnStartLoading;
     public static event System.Action<float> OnLoadingScene;
-    public static event System.Action OnLoadedScene;
+    public static event System.Action<string> OnLoadedScene;
     public static string CurrentSceneName { get; private set; } = "";
     public static string PreviousSceneName { get; private set; } = "";
     public static float FADE_DURATION = 0.2f;
@@ -63,7 +63,7 @@ public static class SceneController
                 break;
         }
 
-        OnLoadedScene?.Invoke();
+        OnLoadedScene?.Invoke(name);
 
         isLoading = false;
     }

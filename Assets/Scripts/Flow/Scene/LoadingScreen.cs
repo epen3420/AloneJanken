@@ -36,7 +36,7 @@ public class LoadingScreen : MonoBehaviour
         sliderController.UpdateSliderWithEasing(progress, 0.2f).Forget();
     }
 
-    private void Disable()
+    private void Disable(string _ = "")
     {
         SceneController.OnLoadingScene -= SetView;
         SceneController.OnLoadedScene -= Disable;
