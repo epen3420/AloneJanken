@@ -53,7 +53,7 @@ public class ChangeImageByButton : MonoBehaviour
             image.sprite = sprites[newIndex];
         }
 
-        previousButton.interactable = newIndex > 0;
-        nextButton.interactable = newIndex < sprites.Length - 1;
+        previousButton.gameObject.SetActive(newIndex > 0);
+        nextButton.gameObject.SetActive(newIndex < sprites.Length - 1);
     }
 }

@@ -12,7 +12,7 @@ public class MouseHoverView : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     private Vector3 defaultScale;
     private Vector3 targetScale;
 
-    private void Start()
+    private void Awake()
     {
         // 初期サイズを保存
         defaultScale = transform.localScale;
@@ -23,6 +23,12 @@ public class MouseHoverView : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     {
         // 毎フレーム滑らかにサイズを変化させる (線形補間)
         transform.localScale = Vector3.Lerp(transform.localScale, targetScale, Time.deltaTime * smoothSpeed);
+    }
+
+    private void OnDisable()
+    {
+        targetScale = defaultScale;
+        transform.localScale = defaultScale;
     }
 
     // マウスカーソルが乗ったときに呼ばれる
