@@ -19,3 +19,27 @@ MonoBehaviour:
   - title: start_beep
     audioClip: {fileID: 8300000, guid: 4fb495dbfe25090418ccc22f0b9cbe27, type: 3}
     volume: 1
+  - title: click_button
+    audioClip: {fileID: 8300000, guid: 69cf99ac118df5347a20b6f478f89fa7, type: 3}
+    volume: 1
+  - title: hover_button
+    audioClip: {fileID: 8300000, guid: 3619950cd65578f4fa29a3a63e02dff5, type: 3}
+    volume: 1
+  - title: start_game
+    audioClip: {fileID: 8300000, guid: 5af69e97514a3cc408d2f88b099239b1, type: 3}
+    volume: 1
+  - title: ene_game
+    audioClip: {fileID: 8300000, guid: adc71840d659240418c20817f93c4f89, type: 3}
+    volume: 1
+  - title: success_quest
+    audioClip: {fileID: 8300000, guid: c7e45df3cb8ce88479edc005b0df3fa7, type: 3}
+    volume: 1
+  - title: fail_quest
+    audioClip: {fileID: 8300000, guid: 23781f52dd0299d4d87b61eb374051de, type: 3}
+    volume: 1
+  - title: score_anim
+    audioClip: {fileID: 8300000, guid: af461117e7f30314f8269b34c00e52a4, type: 3}
+    volume: 1
+  - title: show_score
+    audioClip: {fileID: 8300000, guid: 04fb395960eaff344b0c31354744eda3, type: 3}
+    volume: 1
