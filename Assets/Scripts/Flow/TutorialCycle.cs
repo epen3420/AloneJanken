@@ -88,13 +88,14 @@ public class TutorialCycle : MonoBehaviour
 
         Debug.Log($"{scoreManager.GetCurrentScore()}");
 
-        if (scoreManager.GetCurrentWinCount() < maxCycleCount)
+        int winCount = scoreManager.GetCurrentWinCount();
+        if (winCount < maxCycleCount)
         {
             await chatShower.ShowAsTypeWriter("Game Over");
         }
         else
         {
-            await chatShower.ShowAsTypeWriter("10回クリアー！");
+            await chatShower.ShowAsTypeWriter($"{winCount}回クリアー！");
         }
 
         await UniTask.Delay(System.TimeSpan.FromSeconds(waitTimeBeforeTransition));
