@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.EventSystems; // これが必要です
+using UnityEngine.EventSystems;
+using SoundSystem; // これが必要です
 
 [RequireComponent(typeof(Button))]
 public class MouseHoverView : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
@@ -34,6 +35,7 @@ public class MouseHoverView : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     // マウスカーソルが乗ったときに呼ばれる
     public void OnPointerEnter(PointerEventData eventData)
     {
+        SoundPlayer.Instance.PlaySe("hover_button");
         targetScale = defaultScale * hoverScaleAmount;
     }
 
