@@ -13,7 +13,9 @@ public class HekatonFaceController : MonoBehaviour
     }
 
     [SerializeField]
-    private Image image;
+    private Image faceImage;
+    [SerializeField]
+    private Image eyeImage;
     [SerializeField]
     private CountFaceMap[] countFaceMaps;
     [SerializeField]
@@ -44,15 +46,17 @@ public class HekatonFaceController : MonoBehaviour
             continuousIndex++;
             if (!countFaceMaps.Any(map => map.count == continuousIndex))
             {
-                image.sprite = countFaceMaps[0].face;
+                faceImage.sprite = countFaceMaps[0].face;
                 return;
             }
 
             foreach (var map in countFaceMaps)
             {
+                eyeImage.enabled = map.needEye;
                 if (map.count == continuousIndex)
                 {
-                    image.sprite = map.face;
+                    faceImage.sprite = map.face;
+                    break;
                 }
             }
 
@@ -68,15 +72,17 @@ public class HekatonFaceController : MonoBehaviour
 
             if (!missCountFaceMaps.Any(map => map.count == missCountIndex))
             {
-                image.sprite = countFaceMaps[0].face;
+                faceImage.sprite = countFaceMaps[0].face;
                 return;
             }
 
             foreach (var map in missCountFaceMaps)
             {
+                eyeImage.enabled = map.needEye;
                 if (map.count == missCountIndex)
                 {
-                    image.sprite = map.face;
+                    faceImage.sprite = map.face;
+                    break;
                 }
             }
 

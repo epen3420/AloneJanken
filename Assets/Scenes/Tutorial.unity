@@ -1681,6 +1681,7 @@ MonoBehaviour:
   novelController: {fileID: 9094678126858894759}
   chatShower: {fileID: 6939740034554404049}
   waitTimeBeforeTransition: 1
+  maxCycleCount: 10
 --- !u!224 &4861387314662195380
 RectTransform:
   m_ObjectHideFlags: 0
