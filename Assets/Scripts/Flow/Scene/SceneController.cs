@@ -5,7 +5,7 @@ using TimeSpan = System.TimeSpan;
 
 public static class SceneController
 {
-    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
+    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterAssembliesLoaded)]
     private static void Init()
     {
         if (string.IsNullOrEmpty(CurrentSceneName))
