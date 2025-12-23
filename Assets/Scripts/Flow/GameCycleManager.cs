@@ -1,6 +1,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 using Cysharp.Threading.Tasks;
+using SoundSystem;
 using UnityEngine;
 
 public class GameCycleManager : MonoBehaviour
@@ -50,6 +51,7 @@ public class GameCycleManager : MonoBehaviour
         {
             await novelController.Execute(chatShower);
 
+            await SoundPlayer.Instance.PlaySe("start_game", ctn);
             while (!ctn.IsCancellationRequested)
             {
                 // await UniTask.Delay(3000);
@@ -73,6 +75,7 @@ public class GameCycleManager : MonoBehaviour
 
     private void GameOver()
     {
+        SoundPlayer.Instance.PlaySe("end_game");
         AsyncGameOver().Forget();
     }
 

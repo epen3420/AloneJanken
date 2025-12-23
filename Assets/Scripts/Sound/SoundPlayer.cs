@@ -115,21 +115,7 @@ namespace SoundSystem
         /// </summary>
         public void PlaySe(string seTitle)
         {
-            var seData = seDatas.GetSoundData(seTitle);
-            if (seData == null) return;
-
-            // テンプレートからAudioSourceを生成
-            AudioSource tempSource = Instantiate(seAudioSourcePrefab, transform);
-            tempSource.enabled = true; // テンプレートを有効化
-
-            tempSource.clip = seData.AudioClip;
-            VolumeApply(tempSource, SoundSetting.SeVolume, seData.Volume);
-            tempSource.mute = isMute; // ミュート状態を適用
-
-            tempSource.Play();
-
-            // 再生が終わったら自動で破棄する
-            Destroy(tempSource.gameObject, tempSource.clip.length);
+            InternalPlay(seTitle, true, destroyCancellationToken).Forget();
         }
 
         /// <summary>
@@ -137,21 +123,38 @@ namespace SoundSystem
         /// </summary>
         public void PlayVoice(string voiceTitle)
         {
-            var voiceData = voiceSoundDatas.GetSoundData(voiceTitle);
-            if (voiceData == null) return;
+            InternalPlay(voiceTitle, false, destroyCancellationToken).Forget();
+        }
 
-            // テンプレートからAudioSourceを生成
+        public async UniTask PlaySe(string seTitle, CancellationToken ctn)
+        {
+            await InternalPlay(seTitle, true, ctn);
+        }
+
+        public async UniTask PlayVoice(string voiceTitle, CancellationToken ctn)
+        {
+            await InternalPlay(voiceTitle, false, ctn);
+        }
+
+        private async UniTask InternalPlay(string title, bool isSE, CancellationToken ctn)
+        {
+            SoundDataBase<SoundData> datas = isSE ? seDatas : voiceSoundDatas;
+            var data = datas.GetSoundData(title);
+            if (data == null) return;
+
             AudioSource tempSource = Instantiate(voiceAudioSourcePrefab, transform);
             tempSource.enabled = true; // テンプレートを有効化
 
-            tempSource.clip = voiceData.AudioClip;
-            VolumeApply(tempSource, SoundSetting.VoiceVolume, voiceData.Volume);
+            tempSource.clip = data.AudioClip;
+            var typeVolume = isSE ? SoundSetting.SeVolume : SoundSetting.VoiceVolume;
+            VolumeApply(tempSource, typeVolume, data.Volume);
             tempSource.mute = isMute; // ミュート状態を適用
 
             tempSource.Play();
 
+            await UniTask.Delay(System.TimeSpan.FromSeconds(tempSource.clip.length), cancellationToken: ctn);
             // 再生が終わったら自動で破棄する
-            Destroy(tempSource.gameObject, tempSource.clip.length);
+            Destroy(tempSource.gameObject);
         }
 
         public void PauseBgm()

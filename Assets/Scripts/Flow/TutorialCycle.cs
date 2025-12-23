@@ -1,6 +1,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 using Cysharp.Threading.Tasks;
+using SoundSystem;
 using UnityEngine;
 
 public class TutorialCycle : MonoBehaviour
@@ -52,6 +53,7 @@ public class TutorialCycle : MonoBehaviour
         {
             await novelController.Execute(chatShower);
 
+            await SoundPlayer.Instance.PlaySe("start_game", ctn);
             while (!ctn.IsCancellationRequested && scoreManager.GetCurrentWinCount() < maxCycleCount)
             {
                 var targetHand = HandTypeUtil.GetRandomlyHandType();
@@ -77,6 +79,7 @@ public class TutorialCycle : MonoBehaviour
 
     private void GameOver()
     {
+        SoundPlayer.Instance.PlaySe("end_game");
         AsyncGameOver().Forget();
     }
 
