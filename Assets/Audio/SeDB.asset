@@ -37,8 +37,8 @@ MonoBehaviour:
   - title: fail_quest
     audioClip: {fileID: 8300000, guid: 23781f52dd0299d4d87b61eb374051de, type: 3}
     volume: 1
-  - title: score_anim
-    audioClip: {fileID: 8300000, guid: af461117e7f30314f8269b34c00e52a4, type: 3}
+  - title: score
+    audioClip: {fileID: 8300000, guid: 04fb395960eaff344b0c31354744eda3, type: 3}
     volume: 1
   - title: show_score
     audioClip: {fileID: 8300000, guid: 04fb395960eaff344b0c31354744eda3, type: 3}

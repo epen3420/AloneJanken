@@ -16,6 +16,13 @@ public class ResultViewer : MonoBehaviour
 
     public async UniTask CountScore(int score, float duration = 1.0f)
     {
-        await DOTween.To(() => 0, x => text.SetText($"{x}"), score, duration);
+        await DOTween.To(
+            () => 0,
+            async x =>
+            {
+                text.SetText($"{x}");
+            },
+            score,
+            duration);
     }
 }

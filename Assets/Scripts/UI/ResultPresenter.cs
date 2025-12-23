@@ -1,4 +1,5 @@
 using Cysharp.Threading.Tasks;
+using SoundSystem;
 using UnityEngine;
 
 public class ResultPresenter : MonoBehaviour
@@ -15,18 +16,25 @@ public class ResultPresenter : MonoBehaviour
     private int continuous = 12;
 #endif
 
-    private void Start()
+    private async void Start()
     {
 #if UNITY_EDITOR
         if (ScoreManager.Instance == null)
         {
-            resultViewer.CountScore(score, 1f).Forget();
             continuousViewer.CountScore(continuous, 0.5f).Forget();
+
+            SoundPlayer.Instance.PlayBgm("score_anim", ctn: destroyCancellationToken).Forget();
+            await resultViewer.CountScore(score, 1);
+            SoundPlayer.Instance.StopBgm();
+            SoundPlayer.Instance.PlaySe("score");
             return;
         }
 #endif
         continuousViewer.CountScore(ScoreManager.Instance.GetMaxContinuous(), 0.5f).Forget();
 
-        resultViewer.CountScore(ScoreManager.Instance.GetCurrentScore(), 1).Forget();
+        SoundPlayer.Instance.PlayBgm("score_anim", ctn: destroyCancellationToken).Forget();
+        await resultViewer.CountScore(ScoreManager.Instance.GetCurrentScore(), 1);
+        SoundPlayer.Instance.StopBgm();
+        SoundPlayer.Instance.PlaySe("score");
     }
 }
