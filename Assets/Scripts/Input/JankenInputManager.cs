@@ -34,6 +34,8 @@ public class JankenInputManager : MonoBehaviour
         AddActionMap(inputActions.Janken.LeftDownScissors, HandPosType.LeftDown, HandType.Scissors);
         AddActionMap(inputActions.Janken.LeftDownPaper, HandPosType.LeftDown, HandType.Paper);
 
+        // やば実装
+        if (SceneController.CurrentSceneName == "Tutorial") return;
         // --- RightUp (右上) ---
         AddActionMap(inputActions.Janken.RightUpRock, HandPosType.RightUp, HandType.Rock);
         AddActionMap(inputActions.Janken.RightUpScissors, HandPosType.RightUp, HandType.Scissors);
