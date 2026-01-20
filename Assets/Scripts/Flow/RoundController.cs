@@ -3,8 +3,6 @@ using Cysharp.Threading.Tasks;
 using System.Linq;
 using UnityEngine;
 using System.Collections.Generic;
-using SoundSystem;
-using System.Threading.Tasks;
 
 public class RoundController : MonoBehaviour
 {
@@ -28,12 +26,9 @@ public class RoundController : MonoBehaviour
     [SerializeField]
     private TimelineManager timelineManager;
 
-    private bool isPlaying = false;
     private QuestBase currentQuest;
     private List<HandPosType> useableHandPos;
     private List<Hand> inputHands = new List<Hand>();
-    private CancellationToken ctn;
-
 
 
     private void OnEnable()
@@ -60,7 +55,6 @@ public class RoundController : MonoBehaviour
     {
         // キャンセルされているかチェック
         ctn.ThrowIfCancellationRequested();
-        this.ctn = ctn;
 
         currentQuest = quest;
         this.useableHandPos = useableHandPos.ToList();
@@ -69,16 +63,16 @@ public class RoundController : MonoBehaviour
 
         startRound.Raise(currentQuest);
 
+        timelineManager.EndJanken += EndJanken;
         await timelineManager.Execute(ctn);
     }
 
-    public void EndJanken()
+    private void EndJanken()
     {
+        timelineManager.EndJanken -= EndJanken;
+
         bool isWin = CheckWin();
-        if (isWin)
-            SoundPlayer.Instance.PlaySe("success_quest");
-        else
-            SoundPlayer.Instance.PlaySe("fail_quest");
+
         Debug.Log($"Win: {isWin}");
         endJanken.Raise(isWin);
         inputHands.Clear();
