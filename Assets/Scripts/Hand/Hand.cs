@@ -1,56 +1,37 @@
-public enum HandPosType
-{
-    None,
-    LeftUp,
-    LeftDown,
-    RightUp,
-    RightDown
-}
 
-public enum HandType
-{
-    None,
-    Rock,
-    Scissors,
-    Paper,
-    Strange,
-}
 
 [System.Serializable]
-public class Hand
+public class Hand : System.IEquatable<Hand>
 {
-    [System.Serializable]
-    public struct Pair
-    {
-        public HandPosType OwnerPos;
-        public HandType HandType;
-    }
+    [UnityEngine.SerializeField] private HandType type;
+    [UnityEngine.SerializeField] private HandPosType pos;
 
-    public readonly Pair pair;
+    public HandType Type => type;
+    public HandPosType Pos => pos;
 
     public Hand(HandType type, HandPosType pos)
     {
-        pair = new Pair
-        {
-            OwnerPos = pos,
-            HandType = type,
-        };
+        this.type = type;
+        this.pos = pos;
     }
 
     /// <summary>
-    /// thisインスタンスから見てenemyHandに対して勝っているかどうかを判定する
-    /// あいこの場合はfalseが返る
+    /// この手が enemyHand に対して勝っているかどうかを判定する
     /// </summary>
-    /// <param name="enemyHand"></param>
-    /// <returns></returns>
     public bool IsWin(HandType enemyHand)
     {
-        var meHand = this.pair.HandType;
-
-        if (meHand == HandType.Rock && enemyHand == HandType.Scissors) return true;
-        if (meHand == HandType.Scissors && enemyHand == HandType.Paper) return true;
-        if (meHand == HandType.Paper && enemyHand == HandType.Rock) return true;
-
+        if (type == HandType.Rock && enemyHand == HandType.Scissors) return true;
+        if (type == HandType.Scissors && enemyHand == HandType.Paper) return true;
+        if (type == HandType.Paper && enemyHand == HandType.Rock) return true;
         return false;
     }
+
+    public bool Equals(Hand other)
+    {
+        if (other is null) return false;
+        return this.type == other.type && this.pos == other.pos;
+    }
+
+    public override bool Equals(object obj) => Equals(obj as Hand);
+    public override int GetHashCode() => (type, pos).GetHashCode();
 }

@@ -99,7 +99,7 @@ public class JankenInputManager : MonoBehaviour
 
     public void ChangeHandInput(Hand hand)
     {
-        int index = currentInputHands.FindIndex(h => h.pair.OwnerPos == hand.pair.OwnerPos);
+        int index = currentInputHands.FindIndex(h => h.Pos == hand.Pos);
 
         if (index != -1)
         {

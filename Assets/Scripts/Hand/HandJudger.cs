@@ -1,14 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-public enum ResultType
-{
-    None = -1,
-    DrawOne,
-    DrawAll,
-    Win,
-    Lose,
-}
+
 
 public static class HandJudger
 {
@@ -17,13 +10,12 @@ public static class HandJudger
         var handList = hands.ToList();
 
         // 重複を削除
-        var uniqueHandTypes = handList.Select(h => h.pair.HandType)
+        var uniqueHandTypes = handList.Select(h => h.Type)
                                       .Distinct()
                                       .ToList();
 
         int uniqueHandTypeCount = uniqueHandTypes.Count();
 
-        var results = new List<HandResultTypePair>();
         // 一種類か三種類全部か
         if (uniqueHandTypeCount == 1)
         {
@@ -40,7 +32,13 @@ public static class HandJudger
         var typeA = uniqueHandTypes[0];
         var typeB = uniqueHandTypes[1];
 
-        var handA = handList.FirstOrDefault(h => h.pair.HandType == typeA);
+        // typeA が typeB に勝つかどうか
+        // HandインスタンスがなくてもHandTypeだけで勝敗判定できるロジックがあれば便利だが
+        // ここでは仮の手を作って判定するか、ロジックを分離するか。
+        // Hand.IsWinはインスタンスメソッドだが、staticな比較メソッドも欲しいところ。
+        // しかし現状はインスタンスから判定する。
+        // typeAを持つ最初の手を探す
+        var handA = handList.First(h => h.Type == typeA);
         var isWinHandA = handA.IsWin(typeB);
         var winnerHandType = isWinHandA ? typeA : typeB;
 
@@ -48,7 +46,7 @@ public static class HandJudger
             new HandResultTypePair
             (
                 h,
-                (h.pair.HandType == winnerHandType) ? ResultType.Win : ResultType.Lose
+                (h.Type == winnerHandType) ? ResultType.Win : ResultType.Lose
             )
         );
     }

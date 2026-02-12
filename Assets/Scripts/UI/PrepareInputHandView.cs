@@ -75,8 +75,8 @@ public class PrepareInputHandView : MonoBehaviour
     {
         foreach (var hand in hands)
         {
-            var sprite = handTypeSpriteDict[hand.pair.HandType];
-            var image = handPairImageDict[hand.pair.OwnerPos];
+            var sprite = handTypeSpriteDict[hand.Type];
+            var image = handPairImageDict[hand.Pos];
 
             image.enabled = true;
             if (image.sprite != sprite)

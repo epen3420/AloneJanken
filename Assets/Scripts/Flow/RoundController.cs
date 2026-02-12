@@ -85,7 +85,7 @@ public class RoundController : MonoBehaviour
         else
         {
             Debug.Log($"入力キーの数が手の数と異なります input: {inputHands.Count}");
-            var inputHandPosList = inputHands.Select(hand => hand.pair.OwnerPos).ToList();
+            var inputHandPosList = inputHands.Select(hand => hand.Pos).ToList();
             foreach (var handPos in useableHandPos)
             {
                 if (!inputHandPosList.Contains(handPos))

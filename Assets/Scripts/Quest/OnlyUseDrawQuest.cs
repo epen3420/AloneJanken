@@ -15,7 +15,7 @@ public class OnlyUseDrawQuest : QuestBase
     {
         var inputPairs = UnMatchTargetPosPairs.Append(MatchTargetPosPair);
 
-        return inputPairs.All(pair => pair.Hand.pair.HandType == TargetHand);
+        return inputPairs.All(pair => pair.Hand.Type == TargetHand);
     }
 
     public override string ToString()

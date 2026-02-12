@@ -31,9 +31,9 @@ public abstract class QuestBase
 
     public bool Judge(IEnumerable<HandResultTypePair> handResultPairs)
     {
-        matchTargetPosPair = handResultPairs.First(pairs => pairs.Hand.pair.OwnerPos == targetHandPos);
+        matchTargetPosPair = handResultPairs.First(pairs => pairs.Hand.Pos == targetHandPos);
 
-        unMatchTargetPosPairs = handResultPairs.Where(pairs => pairs.Hand.pair.OwnerPos != targetHandPos);
+        unMatchTargetPosPairs = handResultPairs.Where(pairs => pairs.Hand.Pos != targetHandPos);
 
         return InternalJudge();
     }
