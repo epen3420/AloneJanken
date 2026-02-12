@@ -883,7 +883,7 @@ MonoBehaviour:
   timeline: {fileID: 8496378036917336213}
   speed: 1
   useBpm: 0
-  bpm: 60
+  bpm: 120
 --- !u!1 &2130895206
 GameObject:
   m_ObjectHideFlags: 0
