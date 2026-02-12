@@ -1,131 +1,135 @@
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+/// <summary>
+/// プレイヤーの入力を管理し、イベントを発行するクラス
+/// </summary>
 public class JankenInputManager : MonoBehaviour
 {
-    [SerializeField]
-    private HandsEventChannelSO inputHandsEvent;
-    [SerializeField]
-    private VoidEventChannelSO startRound;
-    [SerializeField]
-    private VoidEventChannelSO endJanken;
+    [Header("Event Channels")]
+    [SerializeField] private HandsEventChannelSO inputHandsEvent;
+    [SerializeField] private VoidEventChannelSO startRoundEvent;
+    [SerializeField] private VoidEventChannelSO endJankenEvent;
 
-    private GameInputActions inputActions;
-    // InputActionをキーにしてctx.actionで値を取れるようにしている
-    private Dictionary<InputAction, Hand> actionMap;
+    [Header("Configuration")]
+    [SerializeField] private bool useRightHand = true;
+
+    private GameInputActions gameInputActions;
+    private Dictionary<InputAction, Hand> inputActionToHandMap;
     private List<Hand> currentInputHands = new List<Hand>();
-    private bool isEnable = false;
-
+    private bool isEnabled = false;
 
     private void Awake()
     {
-        inputActions = new GameInputActions();
-        actionMap = new Dictionary<InputAction, Hand>();
+        gameInputActions = new GameInputActions();
+        inputActionToHandMap = new Dictionary<InputAction, Hand>();
 
-        // --- LeftUp (左上) ---
-        AddActionMap(inputActions.Janken.LeftUpRock, HandPosType.LeftUp, HandType.Rock);
-        AddActionMap(inputActions.Janken.LeftUpScissors, HandPosType.LeftUp, HandType.Scissors);
-        AddActionMap(inputActions.Janken.LeftUpPaper, HandPosType.LeftUp, HandType.Paper);
+        // --- Left Hand Registration ---
+        RegisterInputAction(gameInputActions.Janken.LeftUpRock, HandPosType.LeftUp, HandType.Rock);
+        RegisterInputAction(gameInputActions.Janken.LeftUpScissors, HandPosType.LeftUp, HandType.Scissors);
+        RegisterInputAction(gameInputActions.Janken.LeftUpPaper, HandPosType.LeftUp, HandType.Paper);
 
-        // --- LeftDown (左下) ---
-        AddActionMap(inputActions.Janken.LeftDownRock, HandPosType.LeftDown, HandType.Rock);
-        AddActionMap(inputActions.Janken.LeftDownScissors, HandPosType.LeftDown, HandType.Scissors);
-        AddActionMap(inputActions.Janken.LeftDownPaper, HandPosType.LeftDown, HandType.Paper);
+        RegisterInputAction(gameInputActions.Janken.LeftDownRock, HandPosType.LeftDown, HandType.Rock);
+        RegisterInputAction(gameInputActions.Janken.LeftDownScissors, HandPosType.LeftDown, HandType.Scissors);
+        RegisterInputAction(gameInputActions.Janken.LeftDownPaper, HandPosType.LeftDown, HandType.Paper);
 
-        // やば実装
-        if (SceneController.CurrentSceneName == "Tutorial") return;
-        // --- RightUp (右上) ---
-        AddActionMap(inputActions.Janken.RightUpRock, HandPosType.RightUp, HandType.Rock);
-        AddActionMap(inputActions.Janken.RightUpScissors, HandPosType.RightUp, HandType.Scissors);
-        AddActionMap(inputActions.Janken.RightUpPaper, HandPosType.RightUp, HandType.Paper);
+        // check if right hand is allowed
+        if (IsRightHandAllowed())
+        {
+            // --- Right Hand Registration ---
+            RegisterInputAction(gameInputActions.Janken.RightUpRock, HandPosType.RightUp, HandType.Rock);
+            RegisterInputAction(gameInputActions.Janken.RightUpScissors, HandPosType.RightUp, HandType.Scissors);
+            RegisterInputAction(gameInputActions.Janken.RightUpPaper, HandPosType.RightUp, HandType.Paper);
 
-        // --- RightDown (右下) ---
-        AddActionMap(inputActions.Janken.RightDownRock, HandPosType.RightDown, HandType.Rock);
-        AddActionMap(inputActions.Janken.RightDownScissors, HandPosType.RightDown, HandType.Scissors);
-        AddActionMap(inputActions.Janken.RightDownPaper, HandPosType.RightDown, HandType.Paper);
+            RegisterInputAction(gameInputActions.Janken.RightDownRock, HandPosType.RightDown, HandType.Rock);
+            RegisterInputAction(gameInputActions.Janken.RightDownScissors, HandPosType.RightDown, HandType.Scissors);
+            RegisterInputAction(gameInputActions.Janken.RightDownPaper, HandPosType.RightDown, HandType.Paper);
+        }
     }
 
-    /// <summary>
-    /// actionMapに値を追加するためのヘルパー
-    /// </summary>
-    /// <param name="action"></param>
-    /// <param name="pos"></param>
-    /// <param name="type"></param>
-    private void AddActionMap(InputAction action, HandPosType pos, HandType type)
+    private bool IsRightHandAllowed()
     {
-        var handPair = new Hand(type, pos);
-        actionMap.Add(action, handPair);
+        // TODO: Remove dependency on SceneController by configuring 'useRightHand' in the inspector for each scene.
+        // For now, adhere to legacy logic for Tutorial scene equality.
+        if (SceneController.CurrentSceneName == "Tutorial") return false;
+
+        return useRightHand;
+    }
+
+    private void RegisterInputAction(InputAction action, HandPosType pos, HandType type)
+    {
+        var hand = new Hand(type, pos);
+        inputActionToHandMap.Add(action, hand);
     }
 
     private void OnEnable()
     {
-        foreach (var action in actionMap.Keys)
+        foreach (var action in inputActionToHandMap.Keys)
         {
-            action.performed += OnHandInput;
+            action.performed += OnHandInputPerformed;
         }
 
-        startRound.OnVoidRaised += Enable;
-        endJanken.OnVoidRaised += Disable;
+        startRoundEvent.OnVoidRaised += EnableInput;
+        endJankenEvent.OnVoidRaised += DisableInput;
     }
 
     private void OnDisable()
     {
-        foreach (var action in actionMap.Keys)
+        foreach (var action in inputActionToHandMap.Keys)
         {
-            action.performed -= OnHandInput;
+            action.performed -= OnHandInputPerformed;
         }
 
-        startRound.OnVoidRaised -= Enable;
-        endJanken.OnVoidRaised -= Disable;
+        startRoundEvent.OnVoidRaised -= EnableInput;
+        endJankenEvent.OnVoidRaised -= DisableInput;
     }
 
     private void OnDestroy()
     {
-        inputActions?.Disable();
-        inputActions?.Dispose();
-
-        inputActions = null;
+        gameInputActions?.Disable();
+        gameInputActions?.Dispose();
+        gameInputActions = null;
     }
 
-    private void OnHandInput(InputAction.CallbackContext ctx)
+    private void OnHandInputPerformed(InputAction.CallbackContext ctx)
     {
-        if (!isEnable) return;
-        if (!actionMap.TryGetValue(ctx.action, out var value)) return;
+        if (!isEnabled) return;
+        if (!inputActionToHandMap.TryGetValue(ctx.action, out var hand)) return;
 
-        ChangeHandInput(value);
+        UpdateInputHands(hand);
     }
 
-    public void ChangeHandInput(Hand hand)
+    private void UpdateInputHands(Hand newHand)
     {
-        int index = currentInputHands.FindIndex(h => h.Pos == hand.Pos);
+        // Replace existing hand for the same position, or add new
+        int index = currentInputHands.FindIndex(h => h.Pos == newHand.Pos);
 
         if (index != -1)
         {
-            currentInputHands[index] = hand;
+            currentInputHands[index] = newHand;
         }
         else
         {
-            currentInputHands.Add(hand);
+            currentInputHands.Add(newHand);
         }
 
         inputHandsEvent.Raise(currentInputHands);
     }
 
-    public void Enable()
+    public void EnableInput()
     {
-        isEnable = true;
+        isEnabled = true;
         currentInputHands.Clear();
-        inputActions.Enable();
+        gameInputActions.Enable();
 
         Debug.Log("入力受付を開始");
     }
 
-    public void Disable()
+    public void DisableInput()
     {
-        isEnable = false;
-        inputActions?.Disable();
+        isEnabled = false;
+        gameInputActions?.Disable();
 
         Debug.Log("入力受付を終了");
     }
