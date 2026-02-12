@@ -6,19 +6,11 @@ using System.Collections.Generic;
 
 public class RoundController : MonoBehaviour
 {
-    [SerializeField]
-    private int bpm = 60;
-    [SerializeField]
-    private int beatsNum = 8;
     [Header("Events")]
     [SerializeField]
     private QuestEventChannelSO startRound;
     [SerializeField]
     private BoolEventChannelSO endJanken;
-    [SerializeField]
-    private IntEventChannelSO changeBeats;
-    [SerializeField]
-    private VoidEventChannelSO endBeats;
     [SerializeField]
     private HandsEventChannelSO inputEvent;
     [SerializeField]
@@ -33,13 +25,11 @@ public class RoundController : MonoBehaviour
 
     private void OnEnable()
     {
-        // changeBeats.OnRaised += EndJanken;
         inputEvent.OnRaised += SetInputHands;
     }
 
     private void OnDisable()
     {
-        // changeBeats.OnRaised -= EndJanken;
         inputEvent.OnRaised -= SetInputHands;
     }
 

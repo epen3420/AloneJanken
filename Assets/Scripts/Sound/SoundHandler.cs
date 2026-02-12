@@ -12,8 +12,8 @@ public class SoundHandler : MonoBehaviour
     private VoidEventChannelSO changeTimeEvent;
     [SerializeField]
     private VoidEventChannelSO startRound;
-    [SerializeField]
-    private VoidEventChannelSO endBeats;
+    // [SerializeField]
+    // private VoidEventChannelSO endBeats;
     [SerializeField]
     private VoidEventChannelSO endGame;
     [SerializeField]
@@ -26,8 +26,8 @@ public class SoundHandler : MonoBehaviour
     {
         startRound.OnVoidRaised += StartRoundSound;
         endGame.OnVoidRaised += StopBgm;
-        endBeats.OnVoidRaised += ResetIndex;
-        endBeats.OnVoidRaised += ResetIndex;
+        // endBeats.OnVoidRaised += ResetIndex;
+        // endBeats.OnVoidRaised += ResetIndex;
         changeTimeEvent.OnVoidRaised += ChangeTimeSound;
     }
 
@@ -35,7 +35,7 @@ public class SoundHandler : MonoBehaviour
     {
         startRound.OnVoidRaised -= StartRoundSound;
         endGame.OnVoidRaised -= StopBgm;
-        endBeats.OnVoidRaised -= ResetIndex;
+        // endBeats.OnVoidRaised -= ResetIndex;
         changeTimeEvent.OnVoidRaised -= ChangeTimeSound;
     }
 
