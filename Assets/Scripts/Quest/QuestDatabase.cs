@@ -9,7 +9,7 @@ public class QuestDatabase : ScriptableObject
     private HandPosType[] useableHandPosTypes;
 
     public QuestType[] QuestTypes => questTypes;
-    public HandPosType[] UseableHandPotTypes => useableHandPosTypes;
+    public HandPosType[] UseableHandPosTypes => useableHandPosTypes;
 
     public QuestType GetQuestTypeRandomly()
     {
