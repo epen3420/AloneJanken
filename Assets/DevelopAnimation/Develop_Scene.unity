@@ -933,6 +933,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: RightUpArm
       objectReference: {fileID: 0}
+    - target: {fileID: 8104569403654852674, guid: 564556535506a094ca50577dbf16c7c0, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 3015177024873187116, guid: 874d723123acca04193979096293b3be, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -986,7 +990,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -1448597462409345744, guid: da61db78d9902bb44b1ab5988ca3b315, type: 3}
+  m_Sprite: {fileID: -1880120661550918566, guid: 6b9deb3f3e47f1741b80a2b3e24699ff, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -1189,6 +1193,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4550152404304009381}
     m_Modifications:
+    - target: {fileID: 5814680351988325313, guid: 1673990780746ce4db6c8373b9413df2, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 3015177024873187116, guid: 874d723123acca04193979096293b3be, type: 3}
     - target: {fileID: 7053045209792353989, guid: 1673990780746ce4db6c8373b9413df2, type: 3}
       propertyPath: m_Name
       value: LeftUpArm

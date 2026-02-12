@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 83172291e660de74aa44cb2451520718
+guid: 0bac0e4724f8a16488bea5775dc9a397
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6512041137673882361
-    second: body_hekaton_0
+      213: 7293075221452782878
+    second: headbody_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -96,53 +96,27 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: body_hekaton_0
+      name: headbody_0
       rect:
         serializedVersion: 2
-        x: 455
+        x: 682
         y: 0
-        width: 1011
-        height: 1022
+        width: 556
+        height: 1023
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 705b73a661590a5a0800000000000000
-      internalID: -6512041137673882361
+      spriteID: e1d75e60645363560800000000000000
+      internalID: 7293075221452782878
       vertices: []
       indices: 
       edges: []
@@ -151,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: a3fa3e2f2b76b2f47a73cc90c8d6c576
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -161,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      body_hekaton_0: -6512041137673882361
+      headbody_0: 7293075221452782878
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
