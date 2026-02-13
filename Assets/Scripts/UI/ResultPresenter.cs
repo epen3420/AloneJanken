@@ -18,23 +18,41 @@ public class ResultPresenter : MonoBehaviour
 
     private async void Start()
     {
-#if UNITY_EDITOR
-        if (ScoreManager.Instance == null)
-        {
-            continuousViewer.CountScore(continuous, 0.5f).Forget();
+        int finalScore = 0;
+        int maxContinuous = 0;
 
-            SoundPlayer.Instance.PlayBgm("score_anim", ctn: destroyCancellationToken).Forget();
-            await resultViewer.CountScore(score, 1);
-            SoundPlayer.Instance.StopBgm();
-            SoundPlayer.Instance.PlaySe("score");
-            return;
+        if (ScoreManager.Instance != null)
+        {
+            finalScore = ScoreManager.Instance.GetCurrentScore();
+            maxContinuous = ScoreManager.Instance.GetMaxContinuous();
+        }
+#if UNITY_EDITOR
+        else
+        {
+            finalScore = score;
+            maxContinuous = continuous;
         }
 #endif
-        continuousViewer.CountScore(ScoreManager.Instance.GetMaxContinuous(), 0.5f).Forget();
 
-        SoundPlayer.Instance.PlayBgm("score_anim", ctn: destroyCancellationToken).Forget();
-        await resultViewer.CountScore(ScoreManager.Instance.GetCurrentScore(), 1);
-        SoundPlayer.Instance.StopBgm();
-        SoundPlayer.Instance.PlaySe("score");
+        if (continuousViewer != null)
+        {
+            continuousViewer.CountScore(maxContinuous, 0.5f).Forget();
+        }
+
+        if (SoundPlayer.Instance != null)
+        {
+            SoundPlayer.Instance.PlayBgm("score_anim", ctn: destroyCancellationToken).Forget();
+        }
+
+        if (resultViewer != null)
+        {
+            await resultViewer.CountScore(finalScore, 1f);
+        }
+
+        if (SoundPlayer.Instance != null)
+        {
+            SoundPlayer.Instance.StopBgm();
+            SoundPlayer.Instance.PlaySe("score");
+        }
     }
 }

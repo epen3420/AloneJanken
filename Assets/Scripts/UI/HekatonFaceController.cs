@@ -12,84 +12,81 @@ public class HekatonFaceController : MonoBehaviour
         public bool needEye;
     }
 
-    [SerializeField]
-    private Image faceImage;
-    [SerializeField]
-    private Image eyeImage;
-    [SerializeField]
-    private CountFaceMap[] countFaceMaps;
-    [SerializeField]
-    private CountFaceMap[] missCountFaceMaps;
-    [SerializeField]
-    private BoolEventChannelSO endJanken;
-    [SerializeField]
-    private IntEventChannelSO continuousCount;
+    [Header("UI References")]
+    [SerializeField] private Image faceImage;
+    [SerializeField] private Image eyeImage;
 
-    private int missCountIndex = 0;
-    private int continuousIndex = 0;
+    [Header("Settings")]
+    [SerializeField] private CountFaceMap[] winFaceMaps;
+    [SerializeField] private CountFaceMap[] loseFaceMaps;
 
+    [Header("Events")]
+    [SerializeField] private BoolEventChannelSO endJankenEvent;
+
+    private int currentLoseCount = 0;
+    private int currentWinCount = 0;
 
     private void OnEnable()
     {
-        endJanken.OnRaised += Miss;
+        if (endJankenEvent != null)
+            endJankenEvent.OnRaised += OnJankenEnd;
     }
 
     private void OnDisable()
     {
-        endJanken.OnRaised -= Miss;
+        if (endJankenEvent != null)
+            endJankenEvent.OnRaised -= OnJankenEnd;
     }
 
-    private void Miss(bool isWin)
+    private void OnJankenEnd(bool isWin)
     {
         if (isWin)
         {
-            continuousIndex++;
-            if (!countFaceMaps.Any(map => map.count == continuousIndex))
-            {
-                faceImage.sprite = countFaceMaps[0].face;
-                return;
-            }
-
-            foreach (var map in countFaceMaps)
-            {
-                eyeImage.enabled = map.needEye;
-                if (map.count == continuousIndex)
-                {
-                    faceImage.sprite = map.face;
-                    break;
-                }
-            }
-
-            if (continuousIndex >= countFaceMaps.Length)
-            {
-                continuousIndex = 0;
-            }
+            HandleWin();
         }
         else
         {
-            continuousIndex = 0;
-            missCountIndex++;
-
-            if (!missCountFaceMaps.Any(map => map.count == missCountIndex))
-            {
-                faceImage.sprite = countFaceMaps[0].face;
-                return;
-            }
-
-            foreach (var map in missCountFaceMaps)
-            {
-                eyeImage.enabled = map.needEye;
-                if (map.count == missCountIndex)
-                {
-                    faceImage.sprite = map.face;
-                    break;
-                }
-            }
-
-            if (missCountIndex >= missCountFaceMaps.Length)
-            {
-                missCountIndex = 0;
-            }
+            HandleLose();
         }
+    }
+
+    private void HandleWin()
+    {
+        currentLoseCount = 0;
+        currentWinCount++;
+
+        UpdateFace(winFaceMaps, currentWinCount);
+    }
+
+    private void HandleLose()
+    {
+        currentWinCount = 0;
+        currentLoseCount++;
+
+        UpdateFace(loseFaceMaps, currentLoseCount);
+    }
+
+    private void UpdateFace(CountFaceMap[] maps, int count)
+    {
+        var map = maps.FirstOrDefault(m => m.count == count);
+
+        // If no specific map found for this count, fallback to the first one (default)
+        if (map.Equals(default(CountFaceMap)))
+        {
+             if (maps.Length > 0)
+             {
+                 SetFace(maps[0]);
+             }
+        }
+        else
+        {
+            SetFace(map);
+        }
+    }
+
+    private void SetFace(CountFaceMap map)
+    {
+        if (faceImage != null) faceImage.sprite = map.face;
+        if (eyeImage != null) eyeImage.enabled = map.needEye;
     }
 }
