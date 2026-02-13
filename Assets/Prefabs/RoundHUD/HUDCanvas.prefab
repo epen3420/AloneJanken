@@ -280,7 +280,7 @@ MonoBehaviour:
   m_text: 'Win: 0'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9b0983cd34c1fd94da0f26ac0496801e, type: 2}
-  m_sharedMaterial: {fileID: 4206598320347003282, guid: 9b0983cd34c1fd94da0f26ac0496801e, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 75df7c9fad72647499b4f7e7e08c2755, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -851,13 +851,13 @@ PrefabInstance:
       addedObject: {fileID: 3002813188762245439}
     - targetCorrespondingSourceObject: {fileID: 2567019357443813550, guid: 0d1e92a4cdf26df4e8568f7430be4f7d, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 4422640573738488088}
-    - targetCorrespondingSourceObject: {fileID: 2567019357443813550, guid: 0d1e92a4cdf26df4e8568f7430be4f7d, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 2745083820861184813}
     - targetCorrespondingSourceObject: {fileID: 2567019357443813550, guid: 0d1e92a4cdf26df4e8568f7430be4f7d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6576696494681109948}
+    - targetCorrespondingSourceObject: {fileID: 2567019357443813550, guid: 0d1e92a4cdf26df4e8568f7430be4f7d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7349073756717877732}
   m_SourcePrefab: {fileID: 100100000, guid: 0d1e92a4cdf26df4e8568f7430be4f7d, type: 3}
 --- !u!224 &132640364560843343 stripped
 RectTransform:
@@ -899,30 +899,6 @@ MonoBehaviour:
     setImage: {fileID: 1749921669880329596}
   - handPosType: 4
     setImage: {fileID: 1550159636393680641}
---- !u!114 &4422640573738488088
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 776324172467200274}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 71c9d9810fbceb04bb795217ede61d8e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  posTypeButtonMaps:
-  - posType: 1
-    tapInputController: {fileID: 2195695554849259226}
-  - posType: 2
-    tapInputController: {fileID: 3856424541218107956}
-  - posType: 3
-    tapInputController: {fileID: 4929810721734557497}
-  - posType: 4
-    tapInputController: {fileID: 2308381460859599556}
-  inputManager: {fileID: 0}
-  startRound: {fileID: 11400000, guid: 4a82f8c22b448f5418f24830a5105a0c, type: 2}
-  endJanken: {fileID: 11400000, guid: c66a0c8af2342684388e93dd2cf2e02f, type: 2}
 --- !u!114 &2745083820861184813
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -954,3 +930,24 @@ MonoBehaviour:
   textboxImage: {fileID: 3451721910213793916}
   chatTextboxSprite: {fileID: 1477084187498140963, guid: 417f28022a7a2bb4c956498fd0e51d39, type: 3}
   questTextboxSprite: {fileID: 2053296592404884609, guid: 7600841e41c7bca4bb0a7b3fce67a584, type: 3}
+--- !u!114 &7349073756717877732
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 776324172467200274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da05d5b5de2bc1c4cbc30bba4e0de81e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  posTypeButtonMaps:
+  - posType: 1
+    tapInputController: {fileID: 2195695554849259226}
+  - posType: 2
+    tapInputController: {fileID: 3856424541218107956}
+  - posType: 3
+    tapInputController: {fileID: 4929810721734557497}
+  - posType: 4
+    tapInputController: {fileID: 2308381460859599556}

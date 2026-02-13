@@ -12,63 +12,25 @@ public class JankenInputManager : MonoBehaviour
     [SerializeField] private VoidEventChannelSO startRoundEvent;
     [SerializeField] private VoidEventChannelSO endJankenEvent;
 
-    [Header("Configuration")]
-    [SerializeField] private bool useRightHand = true;
+    [Header("Input Providers")]
+    [SerializeField] private List<BaseInputProvider> inputProviders;
 
-    private GameInputActions gameInputActions;
-    private Dictionary<InputAction, Hand> inputActionToHandMap;
     private List<Hand> currentInputHands = new List<Hand>();
     private bool isEnabled = false;
 
     private void Awake()
     {
-        gameInputActions = new GameInputActions();
-        inputActionToHandMap = new Dictionary<InputAction, Hand>();
-
-        // --- Left Hand Registration ---
-        RegisterInputAction(gameInputActions.Janken.LeftUpRock, HandPosType.LeftUp, HandType.Rock);
-        RegisterInputAction(gameInputActions.Janken.LeftUpScissors, HandPosType.LeftUp, HandType.Scissors);
-        RegisterInputAction(gameInputActions.Janken.LeftUpPaper, HandPosType.LeftUp, HandType.Paper);
-
-        RegisterInputAction(gameInputActions.Janken.LeftDownRock, HandPosType.LeftDown, HandType.Rock);
-        RegisterInputAction(gameInputActions.Janken.LeftDownScissors, HandPosType.LeftDown, HandType.Scissors);
-        RegisterInputAction(gameInputActions.Janken.LeftDownPaper, HandPosType.LeftDown, HandType.Paper);
-
-        // check if right hand is allowed
-        if (IsRightHandAllowed())
+        // Auto-detect providers if not manually assigned
+        if (inputProviders == null || inputProviders.Count == 0)
         {
-            // --- Right Hand Registration ---
-            RegisterInputAction(gameInputActions.Janken.RightUpRock, HandPosType.RightUp, HandType.Rock);
-            RegisterInputAction(gameInputActions.Janken.RightUpScissors, HandPosType.RightUp, HandType.Scissors);
-            RegisterInputAction(gameInputActions.Janken.RightUpPaper, HandPosType.RightUp, HandType.Paper);
-
-            RegisterInputAction(gameInputActions.Janken.RightDownRock, HandPosType.RightDown, HandType.Rock);
-            RegisterInputAction(gameInputActions.Janken.RightDownScissors, HandPosType.RightDown, HandType.Scissors);
-            RegisterInputAction(gameInputActions.Janken.RightDownPaper, HandPosType.RightDown, HandType.Paper);
+            inputProviders = new List<BaseInputProvider>(GetComponents<BaseInputProvider>());
+            inputProviders.AddRange(GetComponentsInChildren<BaseInputProvider>());
         }
-    }
-
-    private bool IsRightHandAllowed()
-    {
-        // TODO: Remove dependency on SceneController by configuring 'useRightHand' in the inspector for each scene.
-        // For now, adhere to legacy logic for Tutorial scene equality.
-        if (SceneController.CurrentSceneName == "Tutorial") return false;
-
-        return useRightHand;
-    }
-
-    private void RegisterInputAction(InputAction action, HandPosType pos, HandType type)
-    {
-        var hand = new Hand(type, pos);
-        inputActionToHandMap.Add(action, hand);
     }
 
     private void OnEnable()
     {
-        foreach (var action in inputActionToHandMap.Keys)
-        {
-            action.performed += OnHandInputPerformed;
-        }
+        SubscribeToProviders();
 
         startRoundEvent.OnVoidRaised += EnableInput;
         endJankenEvent.OnVoidRaised += DisableInput;
@@ -76,32 +38,36 @@ public class JankenInputManager : MonoBehaviour
 
     private void OnDisable()
     {
-        foreach (var action in inputActionToHandMap.Keys)
-        {
-            action.performed -= OnHandInputPerformed;
-        }
+        UnsubscribeFromProviders();
 
         startRoundEvent.OnVoidRaised -= EnableInput;
         endJankenEvent.OnVoidRaised -= DisableInput;
     }
 
-    private void OnDestroy()
+    private void SubscribeToProviders()
     {
-        gameInputActions?.Disable();
-        gameInputActions?.Dispose();
-        gameInputActions = null;
+        if (inputProviders == null) return;
+        foreach (var provider in inputProviders)
+        {
+            if (provider != null)
+                provider.OnInputDetected += UpdateInputHands;
+        }
     }
 
-    private void OnHandInputPerformed(InputAction.CallbackContext ctx)
+    private void UnsubscribeFromProviders()
     {
-        if (!isEnabled) return;
-        if (!inputActionToHandMap.TryGetValue(ctx.action, out var hand)) return;
-
-        UpdateInputHands(hand);
+        if (inputProviders == null) return;
+        foreach (var provider in inputProviders)
+        {
+            if (provider != null)
+                provider.OnInputDetected -= UpdateInputHands;
+        }
     }
 
     private void UpdateInputHands(Hand newHand)
     {
+        if (!isEnabled) return;
+
         // Replace existing hand for the same position, or add new
         int index = currentInputHands.FindIndex(h => h.Pos == newHand.Pos);
 
@@ -121,7 +87,14 @@ public class JankenInputManager : MonoBehaviour
     {
         isEnabled = true;
         currentInputHands.Clear();
-        gameInputActions.Enable();
+
+        if (inputProviders != null)
+        {
+            foreach (var provider in inputProviders)
+            {
+                provider?.EnableInput();
+            }
+        }
 
         Debug.Log("入力受付を開始");
     }
@@ -129,7 +102,14 @@ public class JankenInputManager : MonoBehaviour
     public void DisableInput()
     {
         isEnabled = false;
-        gameInputActions?.Disable();
+
+        if (inputProviders != null)
+        {
+            foreach (var provider in inputProviders)
+            {
+                provider?.DisableInput();
+            }
+        }
 
         Debug.Log("入力受付を終了");
     }
