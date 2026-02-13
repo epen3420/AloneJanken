@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4929839431030404458}
   - component: {fileID: 7576720791526482925}
+  - component: {fileID: 8820303407388400657}
   m_Layer: 0
   m_Name: Input
   m_TagString: Untagged
@@ -45,5 +46,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inputHandsEvent: {fileID: 11400000, guid: d618f751b6ffbb144934e3773bc965a1, type: 2}
-  startRound: {fileID: 11400000, guid: 4a82f8c22b448f5418f24830a5105a0c, type: 2}
-  endJanken: {fileID: 11400000, guid: c66a0c8af2342684388e93dd2cf2e02f, type: 2}
+  startRoundEvent: {fileID: 11400000, guid: 4a82f8c22b448f5418f24830a5105a0c, type: 2}
+  endJankenEvent: {fileID: 11400000, guid: c66a0c8af2342684388e93dd2cf2e02f, type: 2}
+  inputProviders:
+  - {fileID: 8820303407388400657}
+  - {fileID: 0}
+--- !u!114 &8820303407388400657
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1537223984935066695}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbf287e78d2ab0f4a9013a60aba10894, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  useUpHand: 1

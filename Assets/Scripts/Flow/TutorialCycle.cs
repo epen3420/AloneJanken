@@ -57,12 +57,12 @@ public class TutorialCycle : MonoBehaviour
             while (!ctn.IsCancellationRequested && scoreManager.GetCurrentWinCount() < maxCycleCount)
             {
                 var targetHand = HandTypeUtil.GetRandomlyHandType();
-                int randomNum = Random.Range(0, questDb.UseableHandPotTypes.Length);
-                var targetHandPos = questDb.UseableHandPotTypes[randomNum];
+                int randomNum = Random.Range(0, questDb.UseableHandPosTypes.Length);
+                var targetHandPos = questDb.UseableHandPosTypes[randomNum];
                 var questType = questDb.GetQuestTypeRandomly();
                 var quest = QuestFactory.GetQuestByType(questType, targetHand, targetHandPos);
                 chatShower.ShowText(quest.ToString());
-                await roundController.StartRound(quest, questDb.UseableHandPotTypes, ctn);
+                await roundController.StartRound(quest, questDb.UseableHandPosTypes, ctn);
 
                 await UniTask.WaitForEndOfFrame();
                 Debug.Log(scoreManager.GetCurrentWinCount());

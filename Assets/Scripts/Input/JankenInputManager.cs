@@ -1,131 +1,115 @@
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+/// <summary>
+/// プレイヤーの入力を管理し、イベントを発行するクラス
+/// </summary>
 public class JankenInputManager : MonoBehaviour
 {
-    [SerializeField]
-    private HandsEventChannelSO inputHandsEvent;
-    [SerializeField]
-    private VoidEventChannelSO startRound;
-    [SerializeField]
-    private VoidEventChannelSO endJanken;
+    [Header("Event Channels")]
+    [SerializeField] private HandsEventChannelSO inputHandsEvent;
+    [SerializeField] private VoidEventChannelSO startRoundEvent;
+    [SerializeField] private VoidEventChannelSO endJankenEvent;
 
-    private GameInputActions inputActions;
-    // InputActionをキーにしてctx.actionで値を取れるようにしている
-    private Dictionary<InputAction, Hand> actionMap;
+    [Header("Input Providers")]
+    [SerializeField] private List<BaseInputProvider> inputProviders;
+
     private List<Hand> currentInputHands = new List<Hand>();
-    private bool isEnable = false;
-
+    private bool isEnabled = false;
 
     private void Awake()
     {
-        inputActions = new GameInputActions();
-        actionMap = new Dictionary<InputAction, Hand>();
-
-        // --- LeftUp (左上) ---
-        AddActionMap(inputActions.Janken.LeftUpRock, HandPosType.LeftUp, HandType.Rock);
-        AddActionMap(inputActions.Janken.LeftUpScissors, HandPosType.LeftUp, HandType.Scissors);
-        AddActionMap(inputActions.Janken.LeftUpPaper, HandPosType.LeftUp, HandType.Paper);
-
-        // --- LeftDown (左下) ---
-        AddActionMap(inputActions.Janken.LeftDownRock, HandPosType.LeftDown, HandType.Rock);
-        AddActionMap(inputActions.Janken.LeftDownScissors, HandPosType.LeftDown, HandType.Scissors);
-        AddActionMap(inputActions.Janken.LeftDownPaper, HandPosType.LeftDown, HandType.Paper);
-
-        // やば実装
-        if (SceneController.CurrentSceneName == "Tutorial") return;
-        // --- RightUp (右上) ---
-        AddActionMap(inputActions.Janken.RightUpRock, HandPosType.RightUp, HandType.Rock);
-        AddActionMap(inputActions.Janken.RightUpScissors, HandPosType.RightUp, HandType.Scissors);
-        AddActionMap(inputActions.Janken.RightUpPaper, HandPosType.RightUp, HandType.Paper);
-
-        // --- RightDown (右下) ---
-        AddActionMap(inputActions.Janken.RightDownRock, HandPosType.RightDown, HandType.Rock);
-        AddActionMap(inputActions.Janken.RightDownScissors, HandPosType.RightDown, HandType.Scissors);
-        AddActionMap(inputActions.Janken.RightDownPaper, HandPosType.RightDown, HandType.Paper);
-    }
-
-    /// <summary>
-    /// actionMapに値を追加するためのヘルパー
-    /// </summary>
-    /// <param name="action"></param>
-    /// <param name="pos"></param>
-    /// <param name="type"></param>
-    private void AddActionMap(InputAction action, HandPosType pos, HandType type)
-    {
-        var handPair = new Hand(type, pos);
-        actionMap.Add(action, handPair);
+        // Auto-detect providers if not manually assigned
+        if (inputProviders == null || inputProviders.Count == 0)
+        {
+            inputProviders = new List<BaseInputProvider>(GetComponents<BaseInputProvider>());
+            inputProviders.AddRange(GetComponentsInChildren<BaseInputProvider>());
+        }
     }
 
     private void OnEnable()
     {
-        foreach (var action in actionMap.Keys)
-        {
-            action.performed += OnHandInput;
-        }
+        SubscribeToProviders();
 
-        startRound.OnVoidRaised += Enable;
-        endJanken.OnVoidRaised += Disable;
+        startRoundEvent.OnVoidRaised += EnableInput;
+        endJankenEvent.OnVoidRaised += DisableInput;
     }
 
     private void OnDisable()
     {
-        foreach (var action in actionMap.Keys)
+        UnsubscribeFromProviders();
+
+        startRoundEvent.OnVoidRaised -= EnableInput;
+        endJankenEvent.OnVoidRaised -= DisableInput;
+    }
+
+    private void SubscribeToProviders()
+    {
+        if (inputProviders == null) return;
+        foreach (var provider in inputProviders)
         {
-            action.performed -= OnHandInput;
+            if (provider != null)
+                provider.OnInputDetected += UpdateInputHands;
         }
-
-        startRound.OnVoidRaised -= Enable;
-        endJanken.OnVoidRaised -= Disable;
     }
 
-    private void OnDestroy()
+    private void UnsubscribeFromProviders()
     {
-        inputActions?.Disable();
-        inputActions?.Dispose();
-
-        inputActions = null;
+        if (inputProviders == null) return;
+        foreach (var provider in inputProviders)
+        {
+            if (provider != null)
+                provider.OnInputDetected -= UpdateInputHands;
+        }
     }
 
-    private void OnHandInput(InputAction.CallbackContext ctx)
+    private void UpdateInputHands(Hand newHand)
     {
-        if (!isEnable) return;
-        if (!actionMap.TryGetValue(ctx.action, out var value)) return;
+        if (!isEnabled) return;
 
-        ChangeHandInput(value);
-    }
-
-    public void ChangeHandInput(Hand hand)
-    {
-        int index = currentInputHands.FindIndex(h => h.pair.OwnerPos == hand.pair.OwnerPos);
+        // Replace existing hand for the same position, or add new
+        int index = currentInputHands.FindIndex(h => h.Pos == newHand.Pos);
 
         if (index != -1)
         {
-            currentInputHands[index] = hand;
+            currentInputHands[index] = newHand;
         }
         else
         {
-            currentInputHands.Add(hand);
+            currentInputHands.Add(newHand);
         }
 
         inputHandsEvent.Raise(currentInputHands);
     }
 
-    public void Enable()
+    public void EnableInput()
     {
-        isEnable = true;
+        isEnabled = true;
         currentInputHands.Clear();
-        inputActions.Enable();
+
+        if (inputProviders != null)
+        {
+            foreach (var provider in inputProviders)
+            {
+                provider?.EnableInput();
+            }
+        }
 
         Debug.Log("入力受付を開始");
     }
 
-    public void Disable()
+    public void DisableInput()
     {
-        isEnable = false;
-        inputActions?.Disable();
+        isEnabled = false;
+
+        if (inputProviders != null)
+        {
+            foreach (var provider in inputProviders)
+            {
+                provider?.DisableInput();
+            }
+        }
 
         Debug.Log("入力受付を終了");
     }

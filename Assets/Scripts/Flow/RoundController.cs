@@ -6,19 +6,11 @@ using System.Collections.Generic;
 
 public class RoundController : MonoBehaviour
 {
-    [SerializeField]
-    private int bpm = 60;
-    [SerializeField]
-    private int beatsNum = 8;
     [Header("Events")]
     [SerializeField]
     private QuestEventChannelSO startRound;
     [SerializeField]
     private BoolEventChannelSO endJanken;
-    [SerializeField]
-    private IntEventChannelSO changeBeats;
-    [SerializeField]
-    private VoidEventChannelSO endBeats;
     [SerializeField]
     private HandsEventChannelSO inputEvent;
     [SerializeField]
@@ -33,13 +25,11 @@ public class RoundController : MonoBehaviour
 
     private void OnEnable()
     {
-        // changeBeats.OnRaised += EndJanken;
         inputEvent.OnRaised += SetInputHands;
     }
 
     private void OnDisable()
     {
-        // changeBeats.OnRaised -= EndJanken;
         inputEvent.OnRaised -= SetInputHands;
     }
 
@@ -67,27 +57,23 @@ public class RoundController : MonoBehaviour
         await timelineManager.Execute(ctn);
     }
 
+    private RoundJudge roundJudge = new RoundJudge();
+
     private void EndJanken()
     {
         timelineManager.EndJanken -= EndJanken;
 
-        bool isWin = CheckWin();
+        var result = roundJudge.Judge(currentQuest, useableHandPos, inputHands);
 
-        Debug.Log($"Win: {isWin}");
-        endJanken.Raise(isWin);
-        inputHands.Clear();
-    }
+        // 結果を反映 (不足分の補完など)
+        inputHands = result.FinalHands.ToList();
 
-    private bool CheckWin()
-    {
-        bool isWin = false;
-        if (inputHands.Count == useableHandPos.Count)
+        // 入力完了イベント通知
+        endInput.Raise(inputHands);
+
+        if (result.JudgedHands != null)
         {
-            endInput.Raise(inputHands);
-            var resultHands = HandJudger.Judge(inputHands);
-            isWin = currentQuest.Judge(resultHands);
-
-            foreach (var hand in resultHands)
+            foreach (var hand in result.JudgedHands)
             {
                 Debug.Log($"{hand}");
             }
@@ -95,17 +81,10 @@ public class RoundController : MonoBehaviour
         else
         {
             Debug.Log($"入力キーの数が手の数と異なります input: {inputHands.Count}");
-            var inputHandPosList = inputHands.Select(hand => hand.pair.OwnerPos).ToList();
-            foreach (var handPos in useableHandPos)
-            {
-                if (!inputHandPosList.Contains(handPos))
-                {
-                    inputHands.Add(new Hand(HandType.Strange, handPos));
-                }
-            }
-            endInput.Raise(inputHands);
         }
 
-        return isWin;
+        Debug.Log($"Win: {result.IsWin}");
+        endJanken.Raise(result.IsWin);
+        inputHands.Clear();
     }
 }

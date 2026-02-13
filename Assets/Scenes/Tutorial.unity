@@ -1653,12 +1653,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f8bde4bb7253b647b794a3daa30dea1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bpm: 60
-  beatsNum: 8
   startRound: {fileID: 11400000, guid: 4a82f8c22b448f5418f24830a5105a0c, type: 2}
   endJanken: {fileID: 11400000, guid: c66a0c8af2342684388e93dd2cf2e02f, type: 2}
-  changeBeats: {fileID: 11400000, guid: 9c98e49cc8503d240bd6fdd2dd3a1297, type: 2}
-  endBeats: {fileID: 11400000, guid: 18d5179b94293914688ba7931eedabab, type: 2}
   inputEvent: {fileID: 11400000, guid: d618f751b6ffbb144934e3773bc965a1, type: 2}
   endInput: {fileID: 11400000, guid: 3f43eeaa73cc2824eab02d43a62674d7, type: 2}
   timelineManager: {fileID: 1704441459}
@@ -1979,26 +1975,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &8090202679073752865
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8751683123235798926}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 71c9d9810fbceb04bb795217ede61d8e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  posTypeButtonMaps:
-  - posType: 2
-    tapInputController: {fileID: 5059497752427474088}
-  - posType: 4
-    tapInputController: {fileID: 6033472626986771544}
-  inputManager: {fileID: 8240201118231059016}
-  startRound: {fileID: 11400000, guid: 4a82f8c22b448f5418f24830a5105a0c, type: 2}
-  endJanken: {fileID: 11400000, guid: c66a0c8af2342684388e93dd2cf2e02f, type: 2}
 --- !u!114 &8091793068089056603
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2205,6 +2181,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7576720791526482925, guid: 437b7de66fadbd74f9eae624f6331c7a, type: 3}
+      propertyPath: 'inputProviders.Array.data[1]'
+      value: 
+      objectReference: {fileID: 8751683123235798927}
+    - target: {fileID: 8820303407388400657, guid: 437b7de66fadbd74f9eae624f6331c7a, type: 3}
+      propertyPath: useUpHand
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2215,17 +2199,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4929839431030404458, guid: 437b7de66fadbd74f9eae624f6331c7a, type: 3}
   m_PrefabInstance: {fileID: 8240201118231059014}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &8240201118231059016 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7576720791526482925, guid: 437b7de66fadbd74f9eae624f6331c7a, type: 3}
-  m_PrefabInstance: {fileID: 8240201118231059014}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc80a2475a7ca404782398e2df058bdd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!224 &8243008312676965587
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2372,9 +2345,9 @@ GameObject:
   m_Component:
   - component: {fileID: 8243008312676965587}
   - component: {fileID: 3420276058653970495}
-  - component: {fileID: 8090202679073752865}
   - component: {fileID: 2632735788144276795}
   - component: {fileID: 6939740034554404049}
+  - component: {fileID: 8751683123235798927}
   m_Layer: 5
   m_Name: Manager
   m_TagString: Untagged
@@ -2382,6 +2355,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &8751683123235798927
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8751683123235798926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da05d5b5de2bc1c4cbc30bba4e0de81e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  posTypeButtonMaps:
+  - posType: 2
+    tapInputController: {fileID: 5059497752427474088}
+  - posType: 4
+    tapInputController: {fileID: 6033472626986771544}
 --- !u!1001 &9094678126858894757
 PrefabInstance:
   m_ObjectHideFlags: 0

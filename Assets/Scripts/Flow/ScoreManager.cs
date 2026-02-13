@@ -5,6 +5,8 @@ using UnityEngine;
 public class ScoreManager : MonoBehaviour
 {
     public static ScoreManager Instance;
+    private ScoreCalculator scoreCalculator;
+
     private void Awake()
     {
         if (Instance == null)
@@ -17,6 +19,8 @@ public class ScoreManager : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+
+        scoreCalculator = new ScoreCalculator(baseScore, continuousMultiplier, maxAddContinuous);
     }
 
     [SerializeField]
@@ -53,8 +57,8 @@ public class ScoreManager : MonoBehaviour
     {
         if (isWin)
         {
-            int clampedContinuousCount = Mathf.Clamp(continuousWinCount.Value, 0, maxAddContinuous);
-            score.Value += baseScore + (int)(baseScore * continuousMultiplier * clampedContinuousCount);
+            int addedScore = scoreCalculator.CalculateAddScore(continuousWinCount.Value);
+            score.Value += addedScore;
             winCount.Value++;
             continuousWinCount.Value++;
 
