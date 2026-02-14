@@ -5,6 +5,8 @@ using UnityEngine;
 [RequireComponent(typeof(CanvasGroup))]
 public class LoadingScreen : MonoBehaviour
 {
+    protected static LoadingScreen Instance;
+
     [SerializeField]
     private SliderController sliderController;
 
@@ -13,7 +15,15 @@ public class LoadingScreen : MonoBehaviour
 
     private void Awake()
     {
-        DontDestroyOnLoad(this.gameObject);
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(this.gameObject);
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
 
         canvasGroup = GetComponent<CanvasGroup>();
         canvasGroup.alpha = 0f;
@@ -36,7 +46,7 @@ public class LoadingScreen : MonoBehaviour
         sliderController.UpdateSliderWithEasing(progress, 0.2f).Forget();
     }
 
-    private void Disable()
+    private void Disable(string _ = "")
     {
         SceneController.OnLoadingScene -= SetView;
         SceneController.OnLoadedScene -= Disable;

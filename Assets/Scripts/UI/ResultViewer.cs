@@ -14,8 +14,17 @@ public class ResultViewer : MonoBehaviour
         text = GetComponent<TMP_Text>();
     }
 
-    public async UniTask CountScore(int score, float duration = 1.0f)
+    public async UniTask CountScore(int targetScore, float duration = 1.0f)
     {
-        await DOTween.To(() => 0, x => text.SetText($"{x}"), score, duration);
+        int currentScore = 0;
+        await DOTween.To(
+            () => currentScore,
+            x =>
+            {
+                currentScore = x;
+                text.SetText($"{currentScore}");
+            },
+            targetScore,
+            duration);
     }
 }

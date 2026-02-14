@@ -1,16 +1,6 @@
 using Debug = UnityEngine.Debug;
 
-public enum QuestType
-{
-    None,
-    OnlyWin,
-    OnlyLose,
-    LeastWin,
-    LeastLose,
-    UseAllDraw,
-    OnlyUseDraw,
-    LeastDraw,
-}
+
 
 public static class QuestFactory
 {

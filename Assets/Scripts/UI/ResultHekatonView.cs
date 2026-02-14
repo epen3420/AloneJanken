@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
@@ -5,20 +6,53 @@ using UnityEngine.UI;
 public class ResultHekatonView : MonoBehaviour
 {
     [System.Serializable]
-    private struct SceneHekatonMap
+    private struct SceneHekatonMapByScore
     {
+        [System.Serializable]
+        public struct SpriteScoreMap
+        {
+            public int score;
+            public Sprite sprite;
+        }
+
         public string SceneName;
-        public Sprite sprite;
+        public bool useScoreLimit;
+        public Sprite sprite; // useScoreLimit == true
+        public SpriteScoreMap[] scores; // useScoreLimit == false
     }
 
+
     [SerializeField]
-    private SceneHekatonMap[] sceneHekatonMaps;
+    private SceneHekatonMapByScore[] hekatonMapByScores;
     [SerializeField]
     private Image image;
 
 
-    private void Awake()
+    private void Start()
     {
-        image.sprite = sceneHekatonMaps.FirstOrDefault(map => map.SceneName == SceneController.PreviousSceneName).sprite;
+        var currentSceneMap = hekatonMapByScores.FirstOrDefault(map => map.SceneName == SceneController.PreviousSceneName);
+
+        if (!currentSceneMap.useScoreLimit)
+        {
+            image.sprite = currentSceneMap.sprite;
+            return;
+        }
+
+        var spriteScoreMaps = currentSceneMap.scores.ToList();
+
+        spriteScoreMaps.Sort((a, b) =>
+        {
+            if (a.score < b.score) return 1;
+            else return -1;
+        });
+
+        var score = ScoreManager.Instance.GetCurrentScore();
+        foreach (var spriteScoreMap in spriteScoreMaps)
+        {
+            if (score < spriteScoreMap.score)
+            {
+                image.sprite = spriteScoreMap.sprite;
+            }
+        }
     }
 }

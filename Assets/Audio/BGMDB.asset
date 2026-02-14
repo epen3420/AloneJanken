@@ -20,3 +20,10 @@ MonoBehaviour:
     loopStartSample: 0
     loopEndSample: 0
     frequency: 0
+  - title: score_anim
+    audioClip: {fileID: 8300000, guid: 5f65a1b5203267e44a9dc77bfe56475f, type: 3}
+    volume: 1
+    loop: 0
+    loopStartSample: 0
+    loopEndSample: 0
+    frequency: 0

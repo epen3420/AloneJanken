@@ -9,7 +9,7 @@ public class LeastDrawQuest : QuestBase
 
     public override bool InternalJudge()
     {
-        return MatchTargetPosPair.Hand.pair.HandType == TargetHand &&
+        return MatchTargetPosPair.Hand.Type == TargetHand &&
                (MatchTargetPosPair.Result == ResultType.DrawOne ||
                MatchTargetPosPair.Result == ResultType.DrawAll);
     }

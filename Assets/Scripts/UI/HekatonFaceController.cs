@@ -12,78 +12,86 @@ public class HekatonFaceController : MonoBehaviour
         public bool needEye;
     }
 
-    [SerializeField]
-    private Image image;
-    [SerializeField]
-    private CountFaceMap[] countFaceMaps;
-    [SerializeField]
-    private CountFaceMap[] missCountFaceMaps;
-    [SerializeField]
-    private BoolEventChannelSO endJanken;
-    [SerializeField]
-    private IntEventChannelSO continuousCount;
+    [Header("UI References")]
+    [SerializeField] private Image faceImage;
+    [SerializeField] private Image eyeImage;
 
-    private int missCountIndex = 0;
-    private int continuousIndex = 0;
+    [Header("Settings")]
+    [SerializeField] private CountFaceMap[] winFaceMaps;
+    [SerializeField] private CountFaceMap[] loseFaceMaps;
 
+    [Header("Events")]
+    [SerializeField] private BoolEventChannelSO endJankenEvent;
+
+    private int currentLoseCount = 0;
+    private int currentWinCount = 0;
 
     private void OnEnable()
     {
-        endJanken.OnRaised += Miss;
+        if (endJankenEvent != null)
+            endJankenEvent.OnRaised += OnJankenEnd;
     }
 
     private void OnDisable()
     {
-        endJanken.OnRaised -= Miss;
+        if (endJankenEvent != null)
+            endJankenEvent.OnRaised -= OnJankenEnd;
     }
 
-    private void Miss(bool isWin)
+    private void OnJankenEnd(bool isWin)
     {
         if (isWin)
         {
-            continuousIndex++;
-            if (!countFaceMaps.Any(map => map.count == continuousIndex))
-            {
-                image.sprite = countFaceMaps[0].face;
-                return;
-            }
-
-            foreach (var map in countFaceMaps)
-            {
-                if (map.count == continuousIndex)
-                {
-                    image.sprite = map.face;
-                }
-            }
-
-            if (continuousIndex >= countFaceMaps.Length)
-            {
-                continuousIndex = 0;
-            }
+            HandleWin();
         }
         else
         {
-            continuousIndex = 0;
-            missCountIndex++;
-
-            if (!missCountFaceMaps.Any(map => map.count == missCountIndex))
-            {
-                image.sprite = countFaceMaps[0].face;
-                return;
-            }
-
-            foreach (var map in missCountFaceMaps)
-            {
-                if (map.count == missCountIndex)
-                {
-                    image.sprite = map.face;
-                }
-            }
-
-            if (missCountIndex >= missCountFaceMaps.Length)
-            {
-                missCountIndex = 0;
-            }
+            HandleLose();
         }
+    }
+
+    private void HandleWin()
+    {
+        currentLoseCount = 0;
+        currentWinCount++;
+
+        UpdateFace(winFaceMaps, currentWinCount);
+    }
+
+    private void HandleLose()
+    {
+        currentWinCount = 0;
+        currentLoseCount++;
+
+        UpdateFace(loseFaceMaps, currentLoseCount);
+    }
+
+    private void UpdateFace(CountFaceMap[] maps, int count)
+    {
+        if (maps == null || maps.Length == 0) return;
+
+        // Find the map with the highest count that is less than or equal to the current count
+        // maps should be sorted or we sort them effectively by ordering results
+        var validMaps = maps.Where(m => m.count <= count);
+
+        if (validMaps.Any())
+        {
+            var map = validMaps.OrderByDescending(m => m.count).First();
+            SetFace(map);
+        }
+        else
+        {
+            // Fallback: If no map matches (e.g. count is lower than the smallest threshold),
+            // use the one with the smallest count (usually index 0 if sorted, but we sort to be safe)
+            // This ensures we switch to 'some' face mode (Win/Lose) even if count is low.
+            var map = maps.OrderBy(m => m.count).First();
+            SetFace(map);
+        }
+    }
+
+    private void SetFace(CountFaceMap map)
+    {
+        if (faceImage != null) faceImage.sprite = map.face;
+        if (eyeImage != null) eyeImage.enabled = map.needEye;
     }
 }

@@ -1,6 +1,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 using Cysharp.Threading.Tasks;
+using SoundSystem;
 using UnityEngine;
 
 public class GameCycleManager : MonoBehaviour
@@ -50,16 +51,16 @@ public class GameCycleManager : MonoBehaviour
         {
             await novelController.Execute(chatShower);
 
+            await SoundPlayer.Instance.PlaySe("start_game", ctn);
             while (!ctn.IsCancellationRequested)
             {
-                // await UniTask.Delay(3000);
                 var targetHand = HandTypeUtil.GetRandomlyHandType();
-                int randomNum = Random.Range(0, questDb.UseableHandPotTypes.Length);
-                var targetHandPos = questDb.UseableHandPotTypes[randomNum];
+                int randomNum = Random.Range(0, questDb.UseableHandPosTypes.Length);
+                var targetHandPos = questDb.UseableHandPosTypes[randomNum];
                 var questType = questDb.GetQuestTypeRandomly();
                 var quest = QuestFactory.GetQuestByType(questType, targetHand, targetHandPos);
                 chatShower.ShowText(quest.ToString());
-                await roundController.StartRound(quest, questDb.UseableHandPotTypes, ctn);
+                await roundController.StartRound(quest, questDb.UseableHandPosTypes, ctn);
 
                 await UniTask.WaitForEndOfFrame();
             }
@@ -73,6 +74,7 @@ public class GameCycleManager : MonoBehaviour
 
     private void GameOver()
     {
+        SoundPlayer.Instance.PlaySe("end_game");
         AsyncGameOver().Forget();
     }
 

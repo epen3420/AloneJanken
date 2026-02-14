@@ -90,32 +90,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc6bbed30515fd449a2bb1b2ea90fdac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  image: {fileID: 5767893887831222642}
-  countFaceMaps:
-  - count: 0
+  faceImage: {fileID: 5767893887831222642}
+  eyeImage: {fileID: 2844522568968935203}
+  winFaceMaps:
+  - count: 4
     face: {fileID: 21300000, guid: 53a4659b960ac3d40b8bfa718b74bf87, type: 3}
-    needEye: 0
+    needEye: 1
   - count: 5
-    face: {fileID: 21300000, guid: 97987cb5ad382b448a24092d43c6043b, type: 3}
-    needEye: 0
-  - count: 7
     face: {fileID: 21300000, guid: e9d8a62a27af8f843bcc608de9abb84c, type: 3}
+    needEye: 1
+  - count: 7
+    face: {fileID: 21300000, guid: 4644a89e0842d6747bb52e8834661d9f, type: 3}
     needEye: 0
-  missCountFaceMaps:
+  loseFaceMaps:
   - count: 0
     face: {fileID: 21300000, guid: 53a4659b960ac3d40b8bfa718b74bf87, type: 3}
     needEye: 1
   - count: 1
     face: {fileID: 21300000, guid: e8e7302d1d38c9f4b99fda87c84082f4, type: 3}
-    needEye: 0
+    needEye: 1
   - count: 2
     face: {fileID: 21300000, guid: a1a863d76cbf8e74b921a0e71af7124c, type: 3}
-    needEye: 0
+    needEye: 1
   - count: 3
     face: {fileID: 21300000, guid: bfa63f69f93165544af0a91c7a7eb636, type: 3}
-    needEye: 1
-  endJanken: {fileID: 11400000, guid: c66a0c8af2342684388e93dd2cf2e02f, type: 2}
-  continuousCount: {fileID: 11400000, guid: 4bfb4cbce6db31644bf7cd94ed411949, type: 2}
+    needEye: 0
+  endJankenEvent: {fileID: 11400000, guid: c66a0c8af2342684388e93dd2cf2e02f, type: 2}
 --- !u!1 &5590347437245867237
 GameObject:
   m_ObjectHideFlags: 0
@@ -230,9 +230,9 @@ MonoBehaviour:
     m_Events:
     - m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: RoundController, Assembly-CSharp
-          m_MethodName: EndJanken
+        - m_Target: {fileID: 2975670633284551173}
+          m_TargetAssemblyTypeName: TimelineManager, Assembly-CSharp
+          m_MethodName: RaiseEndJanken
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -724,7 +724,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -1880120661550918566, guid: 1bf718cd6f1f942449275efde63a88dd, type: 3}
+  m_Sprite: {fileID: -1880120661550918566, guid: 6b9deb3f3e47f1741b80a2b3e24699ff, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1

@@ -1,11 +1,13 @@
 using System.Threading;
 using Cysharp.Threading.Tasks;
-using Cysharp.Threading.Tasks.Triggers;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.Playables;
 
 public class TimelineManager : MonoBehaviour
 {
+    public event UnityAction EndJanken;
+
     private PlayableDirector director;
 
 
@@ -35,5 +37,10 @@ public class TimelineManager : MonoBehaviour
         {
             director.stopped -= listener;
         }
+    }
+
+    public void RaiseEndJanken()
+    {
+        EndJanken?.Invoke();
     }
 }

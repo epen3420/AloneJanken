@@ -1,6 +1,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 using Cysharp.Threading.Tasks;
+using SoundSystem;
 using UnityEngine;
 
 public class TutorialCycle : MonoBehaviour
@@ -19,6 +20,8 @@ public class TutorialCycle : MonoBehaviour
     private ChatShower chatShower;
     [SerializeField]
     private float waitTimeBeforeTransition = 1f;
+    [SerializeField]
+    private int maxCycleCount = 10;
 
     private bool isPlaying = false;
     private CancellationTokenSource cycleStopCts;
@@ -50,17 +53,19 @@ public class TutorialCycle : MonoBehaviour
         {
             await novelController.Execute(chatShower);
 
-            while (!ctn.IsCancellationRequested && scoreManager.GetCurrentWinCount() < 10)
+            await SoundPlayer.Instance.PlaySe("start_game", ctn);
+            while (!ctn.IsCancellationRequested && scoreManager.GetCurrentWinCount() < maxCycleCount)
             {
                 var targetHand = HandTypeUtil.GetRandomlyHandType();
-                int randomNum = Random.Range(0, questDb.UseableHandPotTypes.Length);
-                var targetHandPos = questDb.UseableHandPotTypes[randomNum];
+                int randomNum = Random.Range(0, questDb.UseableHandPosTypes.Length);
+                var targetHandPos = questDb.UseableHandPosTypes[randomNum];
                 var questType = questDb.GetQuestTypeRandomly();
                 var quest = QuestFactory.GetQuestByType(questType, targetHand, targetHandPos);
                 chatShower.ShowText(quest.ToString());
-                await roundController.StartRound(quest, questDb.UseableHandPotTypes, ctn);
+                await roundController.StartRound(quest, questDb.UseableHandPosTypes, ctn);
 
                 await UniTask.WaitForEndOfFrame();
+                Debug.Log(scoreManager.GetCurrentWinCount());
             }
 
             GameOver();
@@ -74,6 +79,7 @@ public class TutorialCycle : MonoBehaviour
 
     private void GameOver()
     {
+        SoundPlayer.Instance.PlaySe("end_game");
         AsyncGameOver().Forget();
     }
 
@@ -85,9 +91,17 @@ public class TutorialCycle : MonoBehaviour
 
         Debug.Log($"{scoreManager.GetCurrentScore()}");
 
-        await chatShower.ShowAsTypeWriter("10回クリアー！");
+        int winCount = scoreManager.GetCurrentWinCount();
+        if (winCount < maxCycleCount)
+        {
+            await chatShower.ShowAsTypeWriter("Game Over");
+        }
+        else
+        {
+            await chatShower.ShowAsTypeWriter($"{winCount}回クリアー！");
+        }
+
         await UniTask.Delay(System.TimeSpan.FromSeconds(waitTimeBeforeTransition));
-        Debug.Log("Game Over");
         SceneController.LoadScene("Result");
     }
 }

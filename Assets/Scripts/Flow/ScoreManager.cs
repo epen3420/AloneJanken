@@ -5,6 +5,8 @@ using UnityEngine;
 public class ScoreManager : MonoBehaviour
 {
     public static ScoreManager Instance;
+    private ScoreCalculator scoreCalculator;
+
     private void Awake()
     {
         if (Instance == null)
@@ -17,6 +19,8 @@ public class ScoreManager : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+
+        scoreCalculator = new ScoreCalculator(baseScore, continuousMultiplier, maxAddContinuous);
     }
 
     [SerializeField]
@@ -34,32 +38,48 @@ public class ScoreManager : MonoBehaviour
     [SerializeField]
     private int maxAddContinuous = 10;
 
-    private List<int> continuousCounts = new List<int>();
+    private int maxContinuousCount = 0;
 
 
     private void OnEnable()
     {
         endJanken.OnRaised += UpdateScore;
+        SceneController.OnStartLoading += ResetScore;
     }
 
     private void OnDisable()
     {
         endJanken.OnRaised -= UpdateScore;
+        SceneController.OnStartLoading -= ResetScore;
     }
 
     private void UpdateScore(bool isWin)
     {
         if (isWin)
         {
-            int clampedContinuousCount = Mathf.Clamp(continuousWinCount.Value, 0, maxAddContinuous);
-            score.Value += baseScore + (int)(baseScore * continuousMultiplier * clampedContinuousCount);
+            int addedScore = scoreCalculator.CalculateAddScore(continuousWinCount.Value);
+            score.Value += addedScore;
             winCount.Value++;
             continuousWinCount.Value++;
+
+            if (maxContinuousCount < continuousWinCount.Value)
+            {
+                maxContinuousCount = continuousWinCount.Value;
+            }
         }
         else
         {
-            continuousCounts.Add(continuousWinCount.Value);
             continuousWinCount.Value = 0;
+        }
+    }
+
+    private void ResetScore()
+    {
+        if (SceneController.PreviousSceneName == "Result")
+        {
+            winCount.Value = 0;
+            continuousWinCount.Value = 0;
+            score.Value = 0;
         }
     }
 
@@ -80,6 +100,6 @@ public class ScoreManager : MonoBehaviour
 
     public int GetMaxContinuous()
     {
-        return continuousCounts.Max();
+        return maxContinuousCount;
     }
 }
