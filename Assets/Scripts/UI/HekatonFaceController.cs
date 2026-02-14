@@ -68,18 +68,23 @@ public class HekatonFaceController : MonoBehaviour
 
     private void UpdateFace(CountFaceMap[] maps, int count)
     {
-        var map = maps.FirstOrDefault(m => m.count == count);
+        if (maps == null || maps.Length == 0) return;
 
-        // If no specific map found for this count, fallback to the first one (default)
-        if (map.Equals(default(CountFaceMap)))
+        // Find the map with the highest count that is less than or equal to the current count
+        // maps should be sorted or we sort them effectively by ordering results
+        var validMaps = maps.Where(m => m.count <= count);
+
+        if (validMaps.Any())
         {
-             if (maps.Length > 0)
-             {
-                 SetFace(maps[0]);
-             }
+            var map = validMaps.OrderByDescending(m => m.count).First();
+            SetFace(map);
         }
         else
         {
+            // Fallback: If no map matches (e.g. count is lower than the smallest threshold),
+            // use the one with the smallest count (usually index 0 if sorted, but we sort to be safe)
+            // This ensures we switch to 'some' face mode (Win/Lose) even if count is low.
+            var map = maps.OrderBy(m => m.count).First();
             SetFace(map);
         }
     }
