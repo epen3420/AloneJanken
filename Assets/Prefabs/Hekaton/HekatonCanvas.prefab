@@ -101,7 +101,7 @@ MonoBehaviour:
     needEye: 1
   - count: 7
     face: {fileID: 21300000, guid: 4644a89e0842d6747bb52e8834661d9f, type: 3}
-    needEye: 1
+    needEye: 0
   loseFaceMaps:
   - count: 0
     face: {fileID: 21300000, guid: 53a4659b960ac3d40b8bfa718b74bf87, type: 3}
