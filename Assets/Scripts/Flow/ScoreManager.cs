@@ -80,6 +80,7 @@ public class ScoreManager : MonoBehaviour
             winCount.Value = 0;
             continuousWinCount.Value = 0;
             score.Value = 0;
+            maxContinuousCount = 0;
         }
     }
 
