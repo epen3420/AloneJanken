@@ -12,6 +12,11 @@ public class TutorialCycle : GameCycleBase
         return scoreManager.GetCurrentWinCount() < maxCycleCount;
     }
 
+    protected override void OnGameCycleFinished()
+    {
+        GameOver();
+    }
+
     protected override void OnRoundFinished()
     {
         Debug.Log(scoreManager.GetCurrentWinCount());
