@@ -32,6 +32,12 @@ TextureImporter:
   - first:
       213: -3529123720696259174
     second: face3b_9
+  - first:
+      213: -3212263854824239505
+    second: face3b_10
+  - first:
+      213: -8516497678529160293
+    second: face3b_11
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -112,32 +118,6 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
     buildTarget: Standalone
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -288,10 +268,10 @@ TextureImporter:
       name: face3b_6
       rect:
         serializedVersion: 2
-        x: 86
-        y: 86
-        width: 19
-        height: 11
+        x: 108
+        y: 105
+        width: 33
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -310,10 +290,10 @@ TextureImporter:
       name: face3b_7
       rect:
         serializedVersion: 2
-        x: 103
-        y: 86
-        width: 11
-        height: 10
+        x: 231
+        y: 105
+        width: 33
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -332,10 +312,10 @@ TextureImporter:
       name: face3b_8
       rect:
         serializedVersion: 2
-        x: 163
-        y: 32
-        width: 56
-        height: 63
+        x: 86
+        y: 86
+        width: 19
+        height: 11
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -354,6 +334,50 @@ TextureImporter:
       name: face3b_9
       rect:
         serializedVersion: 2
+        x: 103
+        y: 86
+        width: 11
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a9d9e739ca8060fc0800000000000000
+      internalID: -3529123720696259174
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: face3b_10
+      rect:
+        serializedVersion: 2
+        x: 163
+        y: 32
+        width: 56
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f6ecf581b0fbb63d0800000000000000
+      internalID: -3212263854824239505
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: face3b_11
+      rect:
+        serializedVersion: 2
         x: 251
         y: 88
         width: 34
@@ -366,8 +390,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a9d9e739ca8060fc0800000000000000
-      internalID: -3529123720696259174
+      spriteID: b9b94d4db725fc980800000000000000
+      internalID: -8516497678529160293
       vertices: []
       indices: 
       edges: []
@@ -388,6 +412,8 @@ TextureImporter:
     nameFileIdTable:
       face3b_0: -4687091245198598200
       face3b_1: 8239337225285388544
+      face3b_10: -3212263854824239505
+      face3b_11: -8516497678529160293
       face3b_2: -1071352962497991060
       face3b_3: 7938747456304483178
       face3b_4: -4603877675716198874
