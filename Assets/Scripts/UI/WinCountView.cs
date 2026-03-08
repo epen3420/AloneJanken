@@ -8,26 +8,36 @@ public class WinCountView : MonoBehaviour
     [SerializeField]
     private IntEventChannelSO changeContinuousWinCount;
     [SerializeField]
+    private TMP_Text scoreText;
+    [SerializeField]
     private TMP_Text winCountText;
 
 
     private void Start()
     {
-        SetText(0);
+        SetScoreText();
+        SetWinCountText();
     }
 
     private void OnEnable()
     {
-        changeWinCount.OnRaised += SetText;
+        changeWinCount.OnVoidRaised += SetScoreText;
+        changeContinuousWinCount.OnVoidRaised += SetWinCountText;
     }
 
     private void OnDisable()
     {
-        changeWinCount.OnRaised += SetText;
+        changeWinCount.OnVoidRaised += SetScoreText;
+        changeContinuousWinCount.OnVoidRaised -= SetWinCountText;
     }
 
-    private void SetText(int count)
+    private void SetScoreText()
     {
-        winCountText.SetText($"Score: {ScoreManager.Instance.GetCurrentScore()}");
+        scoreText.SetText($"Score {ScoreManager.Instance.GetCurrentScore()}");
+    }
+
+    private void SetWinCountText()
+    {
+        winCountText.SetText($"連続成功 {ScoreManager.Instance.GetCurrentContinuous()}回");
     }
 }
