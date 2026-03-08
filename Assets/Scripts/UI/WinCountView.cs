@@ -12,9 +12,13 @@ public class WinCountView : MonoBehaviour
     [SerializeField]
     private TMP_Text winCountText;
 
+    private ScoreManager scoreManager;
+
 
     private void Start()
     {
+        scoreManager = ScoreManager.Instance;
+
         SetScoreText();
         SetWinCountText();
     }
@@ -33,11 +37,17 @@ public class WinCountView : MonoBehaviour
 
     private void SetScoreText()
     {
-        scoreText.SetText($"Score {ScoreManager.Instance.GetCurrentScore()}");
+        if (scoreManager == null)
+            scoreManager = ScoreManager.Instance;
+
+        scoreText.SetText($"Score {scoreManager.GetCurrentScore()}");
     }
 
     private void SetWinCountText()
     {
-        winCountText.SetText($"連続成功 {ScoreManager.Instance.GetCurrentContinuous()}回");
+        if (scoreManager == null)
+            scoreManager = ScoreManager.Instance;
+
+        winCountText.SetText($"連続成功 {scoreManager.GetCurrentContinuous()}回");
     }
 }
