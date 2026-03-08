@@ -208,11 +208,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 693395367386994425, guid: a8429511e3dcb514399a24deb60d38cf, type: 3}
       propertyPath: m_text
-      value: "\u3082\u3046\u3084\u3081\u308B"
+      value: "\u30BF\u30A4\u30C8\u30EB\u3078\u623B\u308B"
       objectReference: {fileID: 0}
     - target: {fileID: 693395367386994425, guid: a8429511e3dcb514399a24deb60d38cf, type: 3}
       propertyPath: m_fontSize
-      value: 70.15
+      value: 50.1
       objectReference: {fileID: 0}
     - target: {fileID: 693395367386994425, guid: a8429511e3dcb514399a24deb60d38cf, type: 3}
       propertyPath: m_HorizontalAlignment
@@ -1015,7 +1015,7 @@ MonoBehaviour:
     m_Top: 15
     m_Bottom: 15
   m_ChildAlignment: 4
-  m_Spacing: 400
+  m_Spacing: 200
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 1
