@@ -27,7 +27,6 @@ public class HekatonFaceController : MonoBehaviour
     [Header("Settings")]
     [SerializeField] private Face defaultFace;
     [SerializeField] private Face winFace;
-    [SerializeField] private Face loseFace;
     [SerializeField] private float judgeFaceDuration = 0.5f;
     [SerializeField] private CountFaceMap[] winFaceMaps;
     [SerializeField] private CountFaceMap[] loseFaceMaps;
@@ -70,7 +69,6 @@ public class HekatonFaceController : MonoBehaviour
 
     private async void HandleWin()
     {
-        currentLoseCount = 0;
         currentWinCount++;
 
         SetFace(winFace);
@@ -84,9 +82,6 @@ public class HekatonFaceController : MonoBehaviour
     {
         currentWinCount = 0;
         currentLoseCount++;
-        SetFace(loseFace);
-
-        await UniTask.Delay(TimeSpan.FromSeconds(judgeFaceDuration));
 
         UpdateFace(loseFaceMaps, currentLoseCount);
     }
@@ -95,13 +90,20 @@ public class HekatonFaceController : MonoBehaviour
     {
         if (maps == null || maps.Length == 0) return;
 
-        foreach (var map in maps)
+        if (maps.Any(m => count >= m.count))
         {
-            if (map.count == count)
+            foreach (var map in maps)
             {
-                SetFace(map.face);
-                break;
+                if (count >= map.count)
+                {
+                    SetFace(map.face);
+                    break;
+                }
             }
+        }
+        else
+        {
+            SetFace(defaultFace);
         }
     }
 

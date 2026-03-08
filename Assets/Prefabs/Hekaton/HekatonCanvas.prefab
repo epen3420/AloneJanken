@@ -98,10 +98,7 @@ MonoBehaviour:
   winFace:
     FaceSprite: {fileID: 21300000, guid: 4644a89e0842d6747bb52e8834661d9f, type: 3}
     NeedEye: 0
-  loseFace:
-    FaceSprite: {fileID: 0}
-    NeedEye: 0
-  judgeFaceDuration: 0.5
+  judgeFaceDuration: 1
   winFaceMaps:
   - count: 3
     face:
