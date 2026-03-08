@@ -43,3 +43,9 @@ MonoBehaviour:
   - title: show_score
     audioClip: {fileID: 8300000, guid: 04fb395960eaff344b0c31354744eda3, type: 3}
     volume: 1
+  - title: win_janken
+    audioClip: {fileID: 8300000, guid: c7e45df3cb8ce88479edc005b0df3fa7, type: 3}
+    volume: 1
+  - title: loose_janken
+    audioClip: {fileID: 8300000, guid: 23781f52dd0299d4d87b61eb374051de, type: 3}
+    volume: 1

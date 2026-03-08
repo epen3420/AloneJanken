@@ -44,5 +44,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa5c5d3423a97f9499d32f0ccbe2d80b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeTimeEvent: {fileID: 11400000, guid: 9c98e49cc8503d240bd6fdd2dd3a1297, type: 2}
-  startRound: {fileID: 11400000, guid: 4a82f8c22b448f5418f24830a5105a0c, type: 2}
+  endJanken: {fileID: 11400000, guid: c66a0c8af2342684388e93dd2cf2e02f, type: 2}
+  endGame: {fileID: 11400000, guid: 769bfef652e2b3145af49095ee1a77c2, type: 2}
