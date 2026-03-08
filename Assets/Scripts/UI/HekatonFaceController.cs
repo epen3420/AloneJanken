@@ -1,4 +1,6 @@
+using System;
 using System.Linq;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,8 +10,14 @@ public class HekatonFaceController : MonoBehaviour
     private struct CountFaceMap
     {
         public int count;
-        public Sprite face;
-        public bool needEye;
+        public Face face;
+    }
+
+    [System.Serializable]
+    private struct Face
+    {
+        public Sprite FaceSprite;
+        public bool NeedEye;
     }
 
     [Header("UI References")]
@@ -17,6 +25,10 @@ public class HekatonFaceController : MonoBehaviour
     [SerializeField] private Image eyeImage;
 
     [Header("Settings")]
+    [SerializeField] private Face defaultFace;
+    [SerializeField] private Face winFace;
+    [SerializeField] private Face loseFace;
+    [SerializeField] private float judgeFaceDuration = 0.5f;
     [SerializeField] private CountFaceMap[] winFaceMaps;
     [SerializeField] private CountFaceMap[] loseFaceMaps;
 
@@ -25,6 +37,12 @@ public class HekatonFaceController : MonoBehaviour
 
     private int currentLoseCount = 0;
     private int currentWinCount = 0;
+
+
+    private void Start()
+    {
+        SetFace(defaultFace);
+    }
 
     private void OnEnable()
     {
@@ -50,18 +68,25 @@ public class HekatonFaceController : MonoBehaviour
         }
     }
 
-    private void HandleWin()
+    private async void HandleWin()
     {
         currentLoseCount = 0;
         currentWinCount++;
 
+        SetFace(winFace);
+
+        await UniTask.Delay(TimeSpan.FromSeconds(judgeFaceDuration));
+
         UpdateFace(winFaceMaps, currentWinCount);
     }
 
-    private void HandleLose()
+    private async void HandleLose()
     {
         currentWinCount = 0;
         currentLoseCount++;
+        SetFace(loseFace);
+
+        await UniTask.Delay(TimeSpan.FromSeconds(judgeFaceDuration));
 
         UpdateFace(loseFaceMaps, currentLoseCount);
     }
@@ -70,28 +95,22 @@ public class HekatonFaceController : MonoBehaviour
     {
         if (maps == null || maps.Length == 0) return;
 
-        // Find the map with the highest count that is less than or equal to the current count
-        // maps should be sorted or we sort them effectively by ordering results
-        var validMaps = maps.Where(m => m.count <= count);
-
-        if (validMaps.Any())
+        foreach (var map in maps)
         {
-            var map = validMaps.OrderByDescending(m => m.count).First();
-            SetFace(map);
-        }
-        else
-        {
-            // Fallback: If no map matches (e.g. count is lower than the smallest threshold),
-            // use the one with the smallest count (usually index 0 if sorted, but we sort to be safe)
-            // This ensures we switch to 'some' face mode (Win/Lose) even if count is low.
-            var map = maps.OrderBy(m => m.count).First();
-            SetFace(map);
+            if (map.count == count)
+            {
+                SetFace(map.face);
+                break;
+            }
         }
     }
 
-    private void SetFace(CountFaceMap map)
+    private void SetFace(Face face)
     {
-        if (faceImage != null) faceImage.sprite = map.face;
-        if (eyeImage != null) eyeImage.enabled = map.needEye;
+        if (face.FaceSprite == null)
+            face = defaultFace;
+
+        if (faceImage != null) faceImage.sprite = face.FaceSprite;
+        if (eyeImage != null) eyeImage.enabled = face.NeedEye;
     }
 }

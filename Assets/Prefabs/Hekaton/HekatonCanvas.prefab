@@ -92,29 +92,42 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   faceImage: {fileID: 5767893887831222642}
   eyeImage: {fileID: 2844522568968935203}
+  defaultFace:
+    FaceSprite: {fileID: 21300000, guid: 53a4659b960ac3d40b8bfa718b74bf87, type: 3}
+    NeedEye: 1
+  winFace:
+    FaceSprite: {fileID: 21300000, guid: 4644a89e0842d6747bb52e8834661d9f, type: 3}
+    NeedEye: 0
+  loseFace:
+    FaceSprite: {fileID: 0}
+    NeedEye: 0
+  judgeFaceDuration: 0.5
   winFaceMaps:
-  - count: 4
-    face: {fileID: 21300000, guid: 53a4659b960ac3d40b8bfa718b74bf87, type: 3}
-    needEye: 1
-  - count: 5
-    face: {fileID: 21300000, guid: e9d8a62a27af8f843bcc608de9abb84c, type: 3}
-    needEye: 1
-  - count: 7
-    face: {fileID: 21300000, guid: 4644a89e0842d6747bb52e8834661d9f, type: 3}
-    needEye: 0
-  loseFaceMaps:
-  - count: 0
-    face: {fileID: 21300000, guid: 53a4659b960ac3d40b8bfa718b74bf87, type: 3}
-    needEye: 1
-  - count: 1
-    face: {fileID: 21300000, guid: e8e7302d1d38c9f4b99fda87c84082f4, type: 3}
-    needEye: 1
-  - count: 2
-    face: {fileID: 21300000, guid: a1a863d76cbf8e74b921a0e71af7124c, type: 3}
-    needEye: 1
   - count: 3
-    face: {fileID: 21300000, guid: bfa63f69f93165544af0a91c7a7eb636, type: 3}
-    needEye: 0
+    face:
+      FaceSprite: {fileID: 21300000, guid: 97987cb5ad382b448a24092d43c6043b, type: 3}
+      NeedEye: 1
+  - count: 5
+    face:
+      FaceSprite: {fileID: 21300000, guid: e9d8a62a27af8f843bcc608de9abb84c, type: 3}
+      NeedEye: 1
+  - count: 7
+    face:
+      FaceSprite: {fileID: 21300000, guid: 4644a89e0842d6747bb52e8834661d9f, type: 3}
+      NeedEye: 0
+  loseFaceMaps:
+  - count: 1
+    face:
+      FaceSprite: {fileID: 21300000, guid: e8e7302d1d38c9f4b99fda87c84082f4, type: 3}
+      NeedEye: 1
+  - count: 2
+    face:
+      FaceSprite: {fileID: 21300000, guid: a1a863d76cbf8e74b921a0e71af7124c, type: 3}
+      NeedEye: 1
+  - count: 3
+    face:
+      FaceSprite: {fileID: 21300000, guid: bfa63f69f93165544af0a91c7a7eb636, type: 3}
+      NeedEye: 0
   endJankenEvent: {fileID: 11400000, guid: c66a0c8af2342684388e93dd2cf2e02f, type: 2}
 --- !u!1 &5590347437245867237
 GameObject:
@@ -133,6 +146,7 @@ GameObject:
   - component: {fileID: 3648833142696676382}
   - component: {fileID: 5116564191357054474}
   - component: {fileID: 5785589931847878152}
+  - component: {fileID: 5128748311272715305}
   m_Layer: 5
   m_Name: HekatonCanvas
   m_TagString: Untagged
@@ -509,6 +523,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &5128748311272715305
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5590347437245867237}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a427fb62c980ec1418b37c2f167f7fd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 3648833142696676382}
+  startNormalLevel: {fileID: 11400000, guid: 2577ab0ff406bed4eba900a90abf28e1, type: 2}
 --- !u!1 &6265313100125844798
 GameObject:
   m_ObjectHideFlags: 0
