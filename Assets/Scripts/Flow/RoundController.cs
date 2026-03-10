@@ -19,6 +19,7 @@ public class RoundController : MonoBehaviour
     private TimelineManager timelineManager;
 
     private QuestBase currentQuest;
+    private RoundResult currentResult;
     private List<HandPosType> useableHandPos;
     private List<Hand> inputHands = new List<Hand>();
 
@@ -53,27 +54,28 @@ public class RoundController : MonoBehaviour
 
         startRound.Raise(currentQuest);
 
+        timelineManager.EndInput += EndInput;
         timelineManager.EndJanken += EndJanken;
         await timelineManager.Execute(ctn);
     }
 
     private RoundJudge roundJudge = new RoundJudge();
 
-    private void EndJanken()
+    private void EndInput()
     {
-        timelineManager.EndJanken -= EndJanken;
+        timelineManager.EndInput -= EndInput;
 
-        var result = roundJudge.Judge(currentQuest, useableHandPos, inputHands);
+        currentResult = roundJudge.Judge(currentQuest, useableHandPos, inputHands);
 
         // 結果を反映 (不足分の補完など)
-        inputHands = result.FinalHands.ToList();
+        inputHands = currentResult.FinalHands.ToList();
 
         // 入力完了イベント通知
         endInput.Raise(inputHands);
 
-        if (result.JudgedHands != null)
+        if (currentResult.JudgedHands != null)
         {
-            foreach (var hand in result.JudgedHands)
+            foreach (var hand in currentResult.JudgedHands)
             {
                 Debug.Log($"{hand}");
             }
@@ -83,8 +85,15 @@ public class RoundController : MonoBehaviour
             Debug.Log($"入力キーの数が手の数と異なります input: {inputHands.Count}");
         }
 
-        Debug.Log($"Win: {result.IsWin}");
-        endJanken.Raise(result.IsWin);
+        Debug.Log($"Win: {currentResult.IsWin}");
+    }
+
+    private void EndJanken()
+    {
+        timelineManager.EndJanken -= EndJanken;
+
+        endJanken.Raise(currentResult.IsWin);
+        currentResult = null;
         inputHands.Clear();
     }
 }

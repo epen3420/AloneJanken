@@ -90,21 +90,14 @@ public class HekatonFaceController : MonoBehaviour
     {
         if (maps == null || maps.Length == 0) return;
 
-        if (maps.Any(m => count >= m.count))
-        {
-            foreach (var map in maps)
-            {
-                if (count >= map.count)
-                {
-                    SetFace(map.face);
-                    break;
-                }
-            }
-        }
-        else
-        {
-            SetFace(defaultFace);
-        }
+        var targetMap = maps
+            .Where(m => count >= m.count)
+            .OrderBy(m => m.count)
+            .LastOrDefault();
+
+        Face updateFace = targetMap.face.FaceSprite != null ? targetMap.face : defaultFace;
+
+        SetFace(updateFace);
     }
 
     private void SetFace(Face face)

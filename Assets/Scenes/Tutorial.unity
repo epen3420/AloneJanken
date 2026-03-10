@@ -648,6 +648,28 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 2849354155280261250, guid: 7f1bd37dc2a76564e918013dacf64cd9, type: 3}
   m_PrefabInstance: {fileID: 962095111}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &962095113 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2877011882051464186, guid: 7f1bd37dc2a76564e918013dacf64cd9, type: 3}
+  m_PrefabInstance: {fileID: 962095111}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &962095114 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3916482622058686386, guid: 7f1bd37dc2a76564e918013dacf64cd9, type: 3}
+  m_PrefabInstance: {fileID: 962095111}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1009030380
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -712,6 +734,10 @@ PrefabInstance:
       propertyPath: handPosImageMaps.Array.data[2].imageForHighlight
       value: 
       objectReference: {fileID: 566356257}
+    - target: {fileID: 1992789657078857505, guid: 03086ea8d610ef34595c814d4187f8b5, type: 3}
+      propertyPath: judgeFaceDuration
+      value: 0.75
+      objectReference: {fileID: 0}
     - target: {fileID: 2510631452263691423, guid: 03086ea8d610ef34595c814d4187f8b5, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -719,10 +745,10 @@ PrefabInstance:
     - target: {fileID: 3055588517953537188, guid: 03086ea8d610ef34595c814d4187f8b5, type: 3}
       propertyPath: m_Events.m_Events.Array.data[0].m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 4785299728678821728}
+      objectReference: {fileID: 1704441459}
     - target: {fileID: 3055588517953537188, guid: 03086ea8d610ef34595c814d4187f8b5, type: 3}
       propertyPath: m_Events.m_Events.Array.data[0].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: EndJanken
+      value: RaiseEndInput
       objectReference: {fileID: 0}
     - target: {fileID: 4050539408363840239, guid: 03086ea8d610ef34595c814d4187f8b5, type: 3}
       propertyPath: m_Pivot.x
@@ -1332,8 +1358,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeWinCount: {fileID: 11400000, guid: 0d0cb20f27927414dbf29247d87d6495, type: 2}
   changeContinuousWinCount: {fileID: 11400000, guid: 4bfb4cbce6db31644bf7cd94ed411949, type: 2}
-  scoreText: {fileID: 0}
-  winCountText: {fileID: 0}
+  scoreText: {fileID: 962095114}
+  winCountText: {fileID: 962095113}
 --- !u!1 &2975863327663716847
 GameObject:
   m_ObjectHideFlags: 0

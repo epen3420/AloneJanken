@@ -238,7 +238,22 @@ MonoBehaviour:
   m_Events:
     m_Signals:
     - {fileID: 11400000, guid: ff58fc4b190271946a926c0ece469b49, type: 2}
+    - {fileID: 11400000, guid: 5bb19e4337b8bdb43a66dcdad607902e, type: 2}
     m_Events:
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2975670633284551173}
+          m_TargetAssemblyTypeName: TimelineManager, Assembly-CSharp
+          m_MethodName: RaiseEndInput
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
     - m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 2975670633284551173}
@@ -1151,6 +1166,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Manager
       objectReference: {fileID: 0}
+    - target: {fileID: 5392215688901373786, guid: 9d1955635bcfd2048b65d9a28342ec39, type: 3}
+      propertyPath: endJanken
+      value: 
+      objectReference: {fileID: 11400000, guid: 3f43eeaa73cc2824eab02d43a62674d7, type: 2}
     - target: {fileID: 5392215688901373786, guid: 9d1955635bcfd2048b65d9a28342ec39, type: 3}
       propertyPath: handPosImageMaps.Array.data[0].imageForHighlight
       value: 

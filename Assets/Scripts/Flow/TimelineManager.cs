@@ -6,6 +6,7 @@ using UnityEngine.Playables;
 
 public class TimelineManager : MonoBehaviour
 {
+    public event UnityAction EndInput;
     public event UnityAction EndJanken;
 
     private PlayableDirector director;
@@ -37,6 +38,11 @@ public class TimelineManager : MonoBehaviour
         {
             director.stopped -= listener;
         }
+    }
+
+    public void RaiseEndInput()
+    {
+        EndInput?.Invoke();
     }
 
     public void RaiseEndJanken()
