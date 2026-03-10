@@ -1183,6 +1183,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5443831741872556021, guid: 7a13579bceb6c3f418177754e63b8e4a, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 210
+      objectReference: {fileID: 0}
     - target: {fileID: 6349268314749431612, guid: 7a13579bceb6c3f418177754e63b8e4a, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -1266,6 +1270,10 @@ PrefabInstance:
     - target: {fileID: 7632496699115334412, guid: 7a13579bceb6c3f418177754e63b8e4a, type: 3}
       propertyPath: m_Name
       value: HUDCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 7960191728311032359, guid: 7a13579bceb6c3f418177754e63b8e4a, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 210
       objectReference: {fileID: 0}
     - target: {fileID: 9058846138667641888, guid: 7a13579bceb6c3f418177754e63b8e4a, type: 3}
       propertyPath: m_Camera
@@ -1381,8 +1389,8 @@ SceneRoots:
   - {fileID: 203844589}
   - {fileID: 691859452}
   - {fileID: 2927346472276907260}
-  - {fileID: 7449925582237340791}
   - {fileID: 473068712}
   - {fileID: 5108864248103012867}
   - {fileID: 5727079321921137962}
   - {fileID: 6867813862805814969}
+  - {fileID: 7449925582237340791}

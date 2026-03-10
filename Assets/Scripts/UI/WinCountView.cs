@@ -40,7 +40,7 @@ public class WinCountView : MonoBehaviour
         if (scoreManager == null)
             scoreManager = ScoreManager.Instance;
 
-        scoreText.SetText($"スコア {scoreManager.GetCurrentScore()}");
+        scoreText.SetText($"{scoreManager.GetCurrentScore()}");
     }
 
     private void SetWinCountText()
@@ -48,6 +48,6 @@ public class WinCountView : MonoBehaviour
         if (scoreManager == null)
             scoreManager = ScoreManager.Instance;
 
-        winCountText.SetText($"連続成功 {scoreManager.GetCurrentContinuous()}");
+        winCountText.SetText($"{scoreManager.GetCurrentContinuous()}");
     }
 }
