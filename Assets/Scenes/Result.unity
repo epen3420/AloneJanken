@@ -208,11 +208,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 693395367386994425, guid: a8429511e3dcb514399a24deb60d38cf, type: 3}
       propertyPath: m_text
-      value: "\u30BF\u30A4\u30C8\u30EB\u3078\u623B\u308B"
+      value: "\u30BF\u30A4\u30C8\u30EB\u3078"
       objectReference: {fileID: 0}
     - target: {fileID: 693395367386994425, guid: a8429511e3dcb514399a24deb60d38cf, type: 3}
       propertyPath: m_fontSize
-      value: 50.1
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 693395367386994425, guid: a8429511e3dcb514399a24deb60d38cf, type: 3}
       propertyPath: m_HorizontalAlignment
@@ -488,7 +488,7 @@ RectTransform:
   m_Father: {fileID: 1219932581}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0.3, y: 1}
+  m_AnchorMax: {x: 0.4, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0.5}
@@ -539,7 +539,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 100
+  m_fontSize: 133.3
   m_fontSizeBase: 36.84
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1155,8 +1155,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1483147899}
   - {fileID: 1219932581}
+  - {fileID: 1483147899}
   m_Father: {fileID: 783939929}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
@@ -1568,8 +1568,8 @@ RectTransform:
   - {fileID: 1849783465}
   m_Father: {fileID: 631352132}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1681,8 +1681,8 @@ RectTransform:
   - {fileID: 572713193}
   m_Father: {fileID: 631352132}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.5}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
