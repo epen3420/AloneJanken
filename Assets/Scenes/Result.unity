@@ -365,7 +365,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u3044\u3044\u6687\u3064\u3076\u3057\u306B\u306A\u3063\u305F\u3088\uFF01"
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9b0983cd34c1fd94da0f26ac0496801e, type: 2}
   m_sharedMaterial: {fileID: 4206598320347003282, guid: 9b0983cd34c1fd94da0f26ac0496801e, type: 2}
@@ -392,7 +392,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 83.3
+  m_fontSize: 36
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1902,7 +1902,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1823737530}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0d8ed7420b5612e44b9daf00ec64bcda, type: 3}
   m_Name: 
@@ -1910,17 +1910,37 @@ MonoBehaviour:
   hekatonMapByScores:
   - SceneName: 
     useScoreLimit: 1
+    text: 
     sprite: {fileID: 0}
     scores:
-    - score: 1240
+    - score: 500
       sprite: {fileID: 4305132013011699466, guid: d6bf5056dc550054b918016b46545b75, type: 3}
-    - score: 1230
+      text: "\u3042\u308A\u3083\uFF01\u5931\u6557\uFF01"
+    - score: 1000
       sprite: {fileID: -7372912095179936824, guid: 622beeb7d0569a549abcfde82315f4e9, type: 3}
+      text: "\u3082\u3046\u3061\u3087\u3063\u3068\u7D9A\u3051\u305F\u304B\u3063\u305F\u306A\uFF5E"
+    - score: 2000
+      sprite: {fileID: -7372912095179936824, guid: 622beeb7d0569a549abcfde82315f4e9, type: 3}
+      text: "\u3044\u3044\u6687\u3064\u3076\u3057\u306B\u306A\u3063\u305F\u3088\uFF01"
+    - score: 3000
+      sprite: {fileID: -7372912095179936824, guid: 622beeb7d0569a549abcfde82315f4e9, type: 3}
+      text: "\u3068\u3063\u3066\u3082\u3044\u3044\u611F\u3058\uFF01\u307E\u3060\u307E\u3060\u3044\u3051\u308B\u306D\uFF01"
+    - score: 4000
+      sprite: {fileID: -7372912095179936824, guid: 622beeb7d0569a549abcfde82315f4e9, type: 3}
+      text: "\u3084\u3063\u307B\u30FC\u3044\uFF01\u6700\u9AD8\uFF5E\uFF01"
+    - score: 5000
+      sprite: {fileID: -7372912095179936824, guid: 622beeb7d0569a549abcfde82315f4e9, type: 3}
+      text: "\u3053\u308C\u306F\u2026!\u3068\u3093\u3067\u3082\u306A\u3044\u8A18\u9332\u3060\u3088\u2026\uFF01"
+    - score: 10000
+      sprite: {fileID: -7372912095179936824, guid: 622beeb7d0569a549abcfde82315f4e9, type: 3}
+      text: "\u3048\u3078\u3078\u2026\u3061\u3087\u3063\u3068\u6642\u9593\u6F70\u3057\u3059\u304E\u305F\u304B\u3082\u2026"
   - SceneName: Tutorial
     useScoreLimit: 0
+    text: "\u3044\u3044\u6687\u3064\u3076\u3057\u306B\u306A\u3063\u305F\u3088\uFF01"
     sprite: {fileID: -4561515378857845965, guid: bfad92bfe18358e4d80417bfd0585088, type: 3}
     scores: []
   image: {fileID: 116044929}
+  text: {fileID: 284259001}
 --- !u!1 &1849783464
 GameObject:
   m_ObjectHideFlags: 0

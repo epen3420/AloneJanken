@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,10 +14,12 @@ public class ResultHekatonView : MonoBehaviour
         {
             public int score;
             public Sprite sprite;
+            public string text;
         }
 
         public string SceneName;
         public bool useScoreLimit;
+        public string text;
         public Sprite sprite; // useScoreLimit == true
         public SpriteScoreMap[] scores; // useScoreLimit == false
     }
@@ -26,6 +29,8 @@ public class ResultHekatonView : MonoBehaviour
     private SceneHekatonMapByScore[] hekatonMapByScores;
     [SerializeField]
     private Image image;
+    [SerializeField]
+    private TMP_Text text;
 
 
     private void Start()
@@ -35,6 +40,7 @@ public class ResultHekatonView : MonoBehaviour
         if (!currentSceneMap.useScoreLimit)
         {
             image.sprite = currentSceneMap.sprite;
+            text.SetText(currentSceneMap.text);
             return;
         }
 
@@ -52,6 +58,7 @@ public class ResultHekatonView : MonoBehaviour
             if (score < spriteScoreMap.score)
             {
                 image.sprite = spriteScoreMap.sprite;
+                text.SetText(spriteScoreMap.text);
             }
         }
     }
