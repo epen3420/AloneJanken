@@ -3,6 +3,7 @@ using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Playables;
+using UnityEngine.Timeline;
 
 public class TimelineManager : MonoBehaviour
 {
@@ -20,8 +21,10 @@ public class TimelineManager : MonoBehaviour
         director = GetComponent<PlayableDirector>();
     }
 
-    public async UniTask Execute(CancellationToken ctn)
+    public async UniTask Execute(CancellationToken ctn, bool isMute = false)
     {
+        Mute(isMute);
+
         director.Play();
 
         var utcs = new UniTaskCompletionSource<PlayableDirector>();
@@ -36,6 +39,12 @@ public class TimelineManager : MonoBehaviour
         try
         {
             await utcs.Task.AttachExternalCancellation(ctn);
+        }
+        catch (System.OperationCanceledException)
+        {
+            director.Stop();
+
+            throw;
         }
         finally
         {
@@ -61,5 +70,23 @@ public class TimelineManager : MonoBehaviour
     public void RaiseEndJanken()
     {
         EndJanken?.Invoke();
+    }
+
+    private void Mute(bool isMute)
+    {
+        var timelineAsset = director.playableAsset as TimelineAsset;
+        if (timelineAsset == null) return;
+
+        foreach (var track in timelineAsset.GetOutputTracks())
+        {
+            if (track is AudioTrack)
+            {
+                track.muted = isMute;
+            }
+        }
+
+        var time = director.time;
+        director.RebuildGraph();
+        director.time = time;
     }
 }
