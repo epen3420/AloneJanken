@@ -1908,7 +1908,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hekatonMapByScores:
-  - SceneName: 
+  - SceneName: NormalLevel
     useScoreLimit: 1
     text: 
     sprite: {fileID: 0}
