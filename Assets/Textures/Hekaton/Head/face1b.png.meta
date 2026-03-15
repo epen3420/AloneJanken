@@ -23,6 +23,12 @@ TextureImporter:
   - first:
       213: -5465309728010359982
     second: face1b_6
+  - first:
+      213: -8405574067506230799
+    second: face1b_7
+  - first:
+      213: -3318418461107502735
+    second: face1b_8
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -103,32 +109,6 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
     buildTarget: Standalone
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -279,6 +259,50 @@ TextureImporter:
       name: face1b_6
       rect:
         serializedVersion: 2
+        x: 108
+        y: 105
+        width: 33
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 25ba47242c15724b0800000000000000
+      internalID: -5465309728010359982
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: face1b_7
+      rect:
+        serializedVersion: 2
+        x: 231
+        y: 105
+        width: 33
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1f94e059be6695b80800000000000000
+      internalID: -8405574067506230799
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: face1b_8
+      rect:
+        serializedVersion: 2
         x: 163
         y: 32
         width: 56
@@ -291,8 +315,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 25ba47242c15724b0800000000000000
-      internalID: -5465309728010359982
+      spriteID: 171c699cdfb92f1d0800000000000000
+      internalID: -3318418461107502735
       vertices: []
       indices: 
       edges: []
@@ -318,6 +342,8 @@ TextureImporter:
       face1b_4: -5075676774795617702
       face1b_5: 5064913019110346363
       face1b_6: -5465309728010359982
+      face1b_7: -8405574067506230799
+      face1b_8: -3318418461107502735
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

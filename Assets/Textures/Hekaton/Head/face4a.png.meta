@@ -26,6 +26,12 @@ TextureImporter:
   - first:
       213: -4584606919956194486
     second: face4a_7
+  - first:
+      213: 3747575852346626538
+    second: face4a_8
+  - first:
+      213: -5647736000815314115
+    second: face4a_9
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -106,32 +112,6 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
     buildTarget: Standalone
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -282,10 +262,10 @@ TextureImporter:
       name: face4a_6
       rect:
         serializedVersion: 2
-        x: 271
-        y: 68
-        width: 11
-        height: 19
+        x: 108
+        y: 105
+        width: 33
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -304,6 +284,50 @@ TextureImporter:
       name: face4a_7
       rect:
         serializedVersion: 2
+        x: 231
+        y: 105
+        width: 33
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a4b963deb443060c0800000000000000
+      internalID: -4584606919956194486
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: face4a_8
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 68
+        width: 11
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ae1d3f7d160120430800000000000000
+      internalID: 3747575852346626538
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: face4a_9
+      rect:
+        serializedVersion: 2
         x: 172
         y: 45
         width: 43
@@ -316,8 +340,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a4b963deb443060c0800000000000000
-      internalID: -4584606919956194486
+      spriteID: d3bc73eb7063f91b0800000000000000
+      internalID: -5647736000815314115
       vertices: []
       indices: 
       edges: []
@@ -344,6 +368,8 @@ TextureImporter:
       face4a_5: -4250474435608253358
       face4a_6: -4832103803475582414
       face4a_7: -4584606919956194486
+      face4a_8: 3747575852346626538
+      face4a_9: -5647736000815314115
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

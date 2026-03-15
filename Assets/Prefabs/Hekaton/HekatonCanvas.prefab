@@ -32,7 +32,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2466567554964507124}
-  - {fileID: 1486180091722321044}
   m_Father: {fileID: 4050539408363840239}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -91,41 +90,41 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   faceImage: {fileID: 5767893887831222642}
-  eyeImage: {fileID: 2844522568968935203}
   defaultFace:
-    FaceSprite: {fileID: 21300000, guid: 53a4659b960ac3d40b8bfa718b74bf87, type: 3}
-    NeedEye: 1
+    openMouth: {fileID: 21300000, guid: 8c2c614e906450848bf74b9ac34e1879, type: 3}
+    closeMouth: {fileID: 21300000, guid: 53a4659b960ac3d40b8bfa718b74bf87, type: 3}
   winFace:
-    FaceSprite: {fileID: 21300000, guid: 4644a89e0842d6747bb52e8834661d9f, type: 3}
-    NeedEye: 0
-  judgeFaceDuration: 1
+    openMouth: {fileID: 21300000, guid: 5b8f16081be1d8a42aebb2cc42bcbb11, type: 3}
+    closeMouth: {fileID: 21300000, guid: 4f9abab3d3414394cbc67864e3b7aa01, type: 3}
+  judgeFaceDuration: 0.75
   winFaceMaps:
   - count: 3
     face:
-      FaceSprite: {fileID: 21300000, guid: 97987cb5ad382b448a24092d43c6043b, type: 3}
-      NeedEye: 1
+      openMouth: {fileID: 21300000, guid: e17ffd8fec2340943bd181b9744b9826, type: 3}
+      closeMouth: {fileID: 21300000, guid: 97987cb5ad382b448a24092d43c6043b, type: 3}
   - count: 5
     face:
-      FaceSprite: {fileID: 21300000, guid: e9d8a62a27af8f843bcc608de9abb84c, type: 3}
-      NeedEye: 1
+      openMouth: {fileID: 21300000, guid: a172e7def88175d48971d673ce1bcd04, type: 3}
+      closeMouth: {fileID: 21300000, guid: e9d8a62a27af8f843bcc608de9abb84c, type: 3}
   - count: 7
     face:
-      FaceSprite: {fileID: 21300000, guid: 4644a89e0842d6747bb52e8834661d9f, type: 3}
-      NeedEye: 0
+      openMouth: {fileID: 21300000, guid: 5b8f16081be1d8a42aebb2cc42bcbb11, type: 3}
+      closeMouth: {fileID: 21300000, guid: 4f9abab3d3414394cbc67864e3b7aa01, type: 3}
   loseFaceMaps:
   - count: 1
     face:
-      FaceSprite: {fileID: 21300000, guid: e8e7302d1d38c9f4b99fda87c84082f4, type: 3}
-      NeedEye: 1
+      openMouth: {fileID: 21300000, guid: 8a0342f2ff6f9184b9a17172974cad51, type: 3}
+      closeMouth: {fileID: 21300000, guid: e8e7302d1d38c9f4b99fda87c84082f4, type: 3}
   - count: 2
     face:
-      FaceSprite: {fileID: 21300000, guid: a1a863d76cbf8e74b921a0e71af7124c, type: 3}
-      NeedEye: 1
+      openMouth: {fileID: 21300000, guid: db8e323174bd48a478d23072841188ac, type: 3}
+      closeMouth: {fileID: 21300000, guid: a1a863d76cbf8e74b921a0e71af7124c, type: 3}
   - count: 3
     face:
-      FaceSprite: {fileID: 21300000, guid: bfa63f69f93165544af0a91c7a7eb636, type: 3}
-      NeedEye: 0
+      openMouth: {fileID: 21300000, guid: bfa63f69f93165544af0a91c7a7eb636, type: 3}
+      closeMouth: {fileID: 21300000, guid: bfa63f69f93165544af0a91c7a7eb636, type: 3}
   endJankenEvent: {fileID: 11400000, guid: c66a0c8af2342684388e93dd2cf2e02f, type: 2}
+  changeMouthEvent: {fileID: 11400000, guid: f23365630f75a0f4e8928808c736258a, type: 2}
 --- !u!1 &5590347437245867237
 GameObject:
   m_ObjectHideFlags: 0
@@ -239,6 +238,8 @@ MonoBehaviour:
     m_Signals:
     - {fileID: 11400000, guid: ff58fc4b190271946a926c0ece469b49, type: 2}
     - {fileID: 11400000, guid: 5bb19e4337b8bdb43a66dcdad607902e, type: 2}
+    - {fileID: 11400000, guid: 79bb9697f7e402c49a6e4734012ba1b1, type: 2}
+    - {fileID: 11400000, guid: 890cd10431681e74eac855909645b359, type: 2}
     m_Events:
     - m_PersistentCalls:
         m_Calls:
@@ -259,6 +260,34 @@ MonoBehaviour:
         - m_Target: {fileID: 2975670633284551173}
           m_TargetAssemblyTypeName: TimelineManager, Assembly-CSharp
           m_MethodName: RaiseEndJanken
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2975670633284551173}
+          m_TargetAssemblyTypeName: TimelineManager, Assembly-CSharp
+          m_MethodName: RaiseOpenMouth
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2975670633284551173}
+          m_TargetAssemblyTypeName: TimelineManager, Assembly-CSharp
+          m_MethodName: RaiseCloseMouth
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -319,6 +348,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0897e19c40513e04b88ed94782aba479, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  changeMouthEvent: {fileID: 11400000, guid: f23365630f75a0f4e8928808c736258a, type: 2}
 --- !u!95 &3648833142696676382
 Animator:
   serializedVersion: 7
@@ -615,81 +645,6 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 53a4659b960ac3d40b8bfa718b74bf87, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 1
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!1 &6550643436704650040
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1486180091722321044}
-  - component: {fileID: 5318789057856808934}
-  - component: {fileID: 2844522568968935203}
-  m_Layer: 5
-  m_Name: Eye
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1486180091722321044
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6550643436704650040}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 8801172343768937738}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 350, y: 350}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!222 &5318789057856808934
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6550643436704650040}
-  m_CullTransparentMesh: 1
---- !u!114 &2844522568968935203
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6550643436704650040}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 0
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 598fe9b7eebe1c84cabafdef39d70c56, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1

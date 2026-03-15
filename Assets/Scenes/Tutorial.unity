@@ -734,22 +734,6 @@ PrefabInstance:
       propertyPath: handPosImageMaps.Array.data[2].imageForHighlight
       value: 
       objectReference: {fileID: 566356257}
-    - target: {fileID: 1992789657078857505, guid: 03086ea8d610ef34595c814d4187f8b5, type: 3}
-      propertyPath: judgeFaceDuration
-      value: 0.75
-      objectReference: {fileID: 0}
-    - target: {fileID: 2510631452263691423, guid: 03086ea8d610ef34595c814d4187f8b5, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: -1880120661550918566, guid: 6b9deb3f3e47f1741b80a2b3e24699ff, type: 3}
-    - target: {fileID: 3055588517953537188, guid: 03086ea8d610ef34595c814d4187f8b5, type: 3}
-      propertyPath: m_Events.m_Events.Array.data[0].m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1704441459}
-    - target: {fileID: 3055588517953537188, guid: 03086ea8d610ef34595c814d4187f8b5, type: 3}
-      propertyPath: m_Events.m_Events.Array.data[0].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: RaiseEndInput
-      objectReference: {fileID: 0}
     - target: {fileID: 4050539408363840239, guid: 03086ea8d610ef34595c814d4187f8b5, type: 3}
       propertyPath: m_Pivot.x
       value: 0
