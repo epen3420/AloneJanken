@@ -1,4 +1,4 @@
-using System;
+using TimeSpan = System.TimeSpan;
 using System.Linq;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
@@ -16,13 +16,12 @@ public class HekatonFaceController : MonoBehaviour
     [System.Serializable]
     private struct Face
     {
-        public Sprite FaceSprite;
-        public bool NeedEye;
+        public Sprite openMouth;
+        public Sprite closeMouth;
     }
 
     [Header("UI References")]
     [SerializeField] private Image faceImage;
-    [SerializeField] private Image eyeImage;
 
     [Header("Settings")]
     [SerializeField] private Face defaultFace;
@@ -33,26 +32,32 @@ public class HekatonFaceController : MonoBehaviour
 
     [Header("Events")]
     [SerializeField] private BoolEventChannelSO endJankenEvent;
+    [SerializeField] private BoolEventChannelSO changeMouthEvent;
 
+    private Face currentFace;
     private int currentLoseCount = 0;
     private int currentWinCount = 0;
 
 
     private void Start()
     {
-        SetFace(defaultFace);
+        SetFace(defaultFace, false);
     }
 
     private void OnEnable()
     {
         if (endJankenEvent != null)
             endJankenEvent.OnRaised += OnJankenEnd;
+        if (changeMouthEvent != null)
+            changeMouthEvent.OnRaised += ChangeMouthFace;
     }
 
     private void OnDisable()
     {
         if (endJankenEvent != null)
             endJankenEvent.OnRaised -= OnJankenEnd;
+        if (changeMouthEvent != null)
+            changeMouthEvent.OnRaised -= ChangeMouthFace;
     }
 
     private void OnJankenEnd(bool isWin)
@@ -71,14 +76,14 @@ public class HekatonFaceController : MonoBehaviour
     {
         currentWinCount++;
 
-        SetFace(winFace);
+        SetFace(winFace, false);
 
         await UniTask.Delay(TimeSpan.FromSeconds(judgeFaceDuration));
 
         UpdateFace(winFaceMaps, currentWinCount);
     }
 
-    private async void HandleLose()
+    private void HandleLose() // awaitがないため async を削除して最適化
     {
         currentWinCount = 0;
         currentLoseCount++;
@@ -95,17 +100,22 @@ public class HekatonFaceController : MonoBehaviour
             .OrderBy(m => m.count)
             .LastOrDefault();
 
-        Face updateFace = targetMap.face.FaceSprite != null ? targetMap.face : defaultFace;
+        Face updateFace = targetMap.face.closeMouth != null ? targetMap.face : defaultFace;
 
-        SetFace(updateFace);
+        SetFace(updateFace, false);
     }
 
-    private void SetFace(Face face)
+    private void ChangeMouthFace(bool isOpen)
     {
-        if (face.FaceSprite == null)
-            face = defaultFace;
+        SetFace(currentFace, isOpen);
+    }
 
-        if (faceImage != null) faceImage.sprite = face.FaceSprite;
-        if (eyeImage != null) eyeImage.enabled = face.NeedEye;
+    private void SetFace(Face face, bool isOpenMouth)
+    {
+        if (faceImage == null) return;
+
+        currentFace = face.closeMouth != null ? face : defaultFace;
+
+        faceImage.sprite = isOpenMouth ? currentFace.openMouth : currentFace.closeMouth;
     }
 }
