@@ -1,0 +1,104 @@
+using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class RandomHekatonHandsChanger : MonoBehaviour
+{
+    [System.Serializable]
+    private struct HandTypeSpriteMap
+    {
+        public HandType handType;
+        public Sprite sprite;
+    }
+    [System.Serializable]
+    private struct HandPosImageMap
+    {
+        public HandPosType handPosType;
+        public Image setImage;
+    }
+
+    [SerializeField]
+    private TimelineManager timelineManager;
+    [SerializeField]
+    private HandTypeSpriteMap[] handTypeSpriteMaps;
+    [SerializeField]
+    private HandPosImageMap[] handPosImageMaps;
+
+    private Dictionary<HandType, Sprite> handTypeSpriteDict = new Dictionary<HandType, Sprite>();
+    private Dictionary<HandPosType, Image> handPairImageDict = new Dictionary<HandPosType, Image>();
+    private IEnumerable<Hand> defaultHands;
+
+
+    private void Awake()
+    {
+        defaultHands = HandTypeUtil.HandPosTypes.Select(pos => new Hand(HandType.Rock, pos));
+
+        foreach (var handSpritePair in handTypeSpriteMaps)
+        {
+            if (!handTypeSpriteDict.TryAdd(handSpritePair.handType, handSpritePair.sprite))
+            {
+                throw new System.Exception($"[Duplicate handTypeSpriteDictionary key at {this.name}] already exist key: {handSpritePair.handType}");
+            }
+
+        }
+
+        foreach (var handPosImagePair in handPosImageMaps)
+        {
+            if (!handPairImageDict.TryAdd(handPosImagePair.handPosType, handPosImagePair.setImage))
+            {
+                throw new System.Exception($"[Duplicate handPairImageDictionary key at {this.name}] already exist key: {handPosImagePair.handPosType}");
+            }
+        }
+    }
+
+    private void OnEnable()
+    {
+        timelineManager.EndInput += RandomSet;
+        timelineManager.EndJanken += ResetView;
+    }
+
+    private void OnDisable()
+    {
+        timelineManager.EndInput += RandomSet;
+        timelineManager.EndJanken += ResetView;
+    }
+
+    private void RandomSet()
+    {
+        List<Hand> hands = new List<Hand>();
+        foreach (var map in handPosImageMaps)
+        {
+            var randomHand = new Hand(
+                HandTypeUtil.GetRandomlyHandType(),
+                map.handPosType
+            );
+
+            hands.Add(randomHand);
+        }
+
+        SetView(hands);
+    }
+
+    private void ResetView()
+    {
+        SetView(defaultHands);
+    }
+
+    private void SetView(IEnumerable<Hand> hands)
+    {
+        foreach (var hand in hands)
+        {
+            if (!handPairImageDict.TryGetValue(hand.Pos, out var image))
+                continue;
+
+            var sprite = handTypeSpriteDict[hand.Type];
+
+            if (image.sprite != sprite)
+            {
+                image.sprite = sprite;
+                image.SetNativeSize();
+            }
+        }
+    }
+}

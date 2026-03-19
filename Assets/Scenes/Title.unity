@@ -1063,6 +1063,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4459393477455822967, guid: 5f01282f7157e4a499fbed4a428e7179, type: 3}
   m_PrefabInstance: {fileID: 2133887079284919554}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1188470348 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2713707087982985066, guid: 5f01282f7157e4a499fbed4a428e7179, type: 3}
+  m_PrefabInstance: {fileID: 2133887079284919554}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1242000341
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1530,6 +1541,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2068687446 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7357168477358517844, guid: 419282ffeb7afcb42bcb5a943ecdb828, type: 3}
+  m_PrefabInstance: {fileID: 2999350581351862440}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &44988040445525479
@@ -2225,6 +2247,7 @@ GameObject:
   - component: {fileID: 3734407106009419961}
   - component: {fileID: 2899106222295064226}
   - component: {fileID: 7521797225235353702}
+  - component: {fileID: 7521797225235353703}
   m_Layer: 5
   m_Name: HekatonCanvas
   m_TagString: Untagged
@@ -2401,6 +2424,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timelineManager: {fileID: 3734407106009419961}
+--- !u!114 &7521797225235353703
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6272411156712797785}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c4530767be5207469250910ae7415eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timelineManager: {fileID: 3734407106009419961}
+  handTypeSpriteMaps:
+  - handType: 1
+    sprite: {fileID: -7759884159647386587, guid: 934b3c2b88d24b64c8ea20837ba75150, type: 3}
+  - handType: 2
+    sprite: {fileID: -7372912095179936824, guid: 622beeb7d0569a549abcfde82315f4e9, type: 3}
+  - handType: 3
+    sprite: {fileID: 9998612124376427, guid: 0d27237a1cd214a458303bed6e35e216, type: 3}
+  - handType: 4
+    sprite: {fileID: 1367075135634323723, guid: d5ea6bdbaf5e4a24a84f60961683b360, type: 3}
+  handPosImageMaps:
+  - handPosType: 2
+    setImage: {fileID: 2068687446}
+  - handPosType: 4
+    setImage: {fileID: 1188470348}
 --- !u!1 &8002188147100272660
 GameObject:
   m_ObjectHideFlags: 0
