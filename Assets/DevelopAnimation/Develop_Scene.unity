@@ -119,6 +119,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &16207045 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6984650378623487290, guid: 419282ffeb7afcb42bcb5a943ecdb828, type: 3}
+  m_PrefabInstance: {fileID: 3752673867715950686}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &203844586
 GameObject:
   m_ObjectHideFlags: 0
@@ -1168,6 +1173,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LeftDownHand
       objectReference: {fileID: 0}
+    - target: {fileID: 6984650378623487290, guid: 419282ffeb7afcb42bcb5a943ecdb828, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1448,7 +1457,7 @@ PlayableDirector:
   - key: {fileID: 8593969465620343638, guid: f6a6abedd01894a47aa015b7afe524ef, type: 2}
     value: {fileID: 0}
   - key: {fileID: 6832574718306101432, guid: f6a6abedd01894a47aa015b7afe524ef, type: 2}
-    value: {fileID: 0}
+    value: {fileID: 8496378036917336214}
   m_ExposedReferences:
     m_References: []
 --- !u!114 &8496378036917336214
@@ -1469,17 +1478,17 @@ MonoBehaviour:
     m_Events:
     - m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 5370521392395542191}
-          m_TargetAssemblyTypeName: 
-          m_MethodName: 
-          m_Mode: 1
+        - m_Target: {fileID: 16207045}
+          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_MethodName: SetActive
+          m_Mode: 6
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: 
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
-            m_BoolArgument: 0
+            m_BoolArgument: 1
           m_CallState: 2
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
