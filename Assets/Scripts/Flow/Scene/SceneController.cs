@@ -5,6 +5,17 @@ using TimeSpan = System.TimeSpan;
 
 public static class SceneController
 {
+    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
+    private static void ResetStatics()
+    {
+        CurrentSceneName = "";
+        PreviousSceneName = "";
+        isLoading = false;
+        OnStartLoading = null;
+        OnLoadingScene = null;
+        OnLoadedScene = null;
+    }
+
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
     private static void Init()
     {

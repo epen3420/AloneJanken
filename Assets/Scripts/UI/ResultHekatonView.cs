@@ -46,19 +46,17 @@ public class ResultHekatonView : MonoBehaviour
 
         var spriteScoreMaps = currentSceneMap.scores.ToList();
 
-        spriteScoreMaps.Sort((a, b) =>
-        {
-            if (a.score < b.score) return 1;
-            else return -1;
-        });
+        spriteScoreMaps.Sort((a, b) => b.score.CompareTo(a.score));
 
         var score = ScoreManager.Instance.GetCurrentScore();
         foreach (var spriteScoreMap in spriteScoreMaps)
         {
-            if (score < spriteScoreMap.score)
+            if (score >= spriteScoreMap.score)
             {
                 image.sprite = spriteScoreMap.sprite;
                 text.SetText(spriteScoreMap.text);
+
+                break;
             }
         }
     }

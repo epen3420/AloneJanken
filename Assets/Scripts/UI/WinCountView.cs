@@ -19,8 +19,7 @@ public class WinCountView : MonoBehaviour
     {
         scoreManager = ScoreManager.Instance;
 
-        SetScoreText();
-        SetWinCountText();
+        Reset();
     }
 
     private void OnEnable()
@@ -49,5 +48,11 @@ public class WinCountView : MonoBehaviour
             scoreManager = ScoreManager.Instance;
 
         winCountText.SetText($"{scoreManager.GetCurrentContinuous()}");
+    }
+
+    private void Reset()
+    {
+        scoreText.SetText("0");
+        winCountText.SetText("0");
     }
 }

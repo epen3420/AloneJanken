@@ -44,13 +44,13 @@ public class ScoreManager : MonoBehaviour
     private void OnEnable()
     {
         endJanken.OnRaised += UpdateScore;
-        SceneController.OnStartLoading += ResetScore;
+        SceneController.OnLoadedScene += ResetScore;
     }
 
     private void OnDisable()
     {
         endJanken.OnRaised -= UpdateScore;
-        SceneController.OnStartLoading -= ResetScore;
+        SceneController.OnLoadedScene -= ResetScore;
     }
 
     private void UpdateScore(bool isWin)
@@ -73,9 +73,9 @@ public class ScoreManager : MonoBehaviour
         }
     }
 
-    private void ResetScore()
+    private void ResetScore(string _)
     {
-        if (SceneController.PreviousSceneName == "Result")
+        if (SceneController.CurrentSceneName == "Result")
         {
             winCount.Value = 0;
             continuousWinCount.Value = 0;
