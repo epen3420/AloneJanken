@@ -83,6 +83,7 @@ public class HekatonHandsChanger : MonoBehaviour
             if (image.sprite != sprite)
             {
                 image.sprite = sprite;
+                image.SetNativeSize();
             }
         }
     }
