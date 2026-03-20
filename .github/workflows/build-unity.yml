@@ -26,6 +26,12 @@ on:
         required: true
       UNITY_LICENSE:
         required: true
+      GAS_DEPLOY_ID:
+        required: false
+      GAS_AUTH_TOKEN:
+        required: false
+      GAS_SHEET_ID:
+        required: false
 
     # 生成したアーティファクト名を出力
     outputs:
@@ -150,6 +156,9 @@ jobs:
           UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
           UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+          GAS_DEPLOY_ID: ${{ secrets.GAS_DEPLOY_ID }}
+          GAS_AUTH_TOKEN: ${{ secrets.GAS_AUTH_TOKEN }}
+          GAS_SHEET_ID: ${{ secrets.GAS_SHEET_ID }}
         with:
           buildName: ${{ env.REPO_NAME }}
           targetPlatform: ${{ env.BUILD_TARGET }}
