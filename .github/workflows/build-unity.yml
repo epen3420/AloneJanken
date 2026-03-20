@@ -51,7 +51,7 @@ jobs:
     steps:
       - name: Validate Secrets
         run: |
-          required_secrets=("UNITY_EMAIL" "UNITY_PASSWORD" "UNITY_LICENSE" UNIGAS_AUTH_TOKEN UNIGAS_DEPLOY_ID UNIGAS_SHEET_ID)
+          required_secrets=("UNITY_EMAIL" "UNITY_PASSWORD" "UNITY_LICENSE")
           is_error=false
           for secret in "${required_secrets[@]}"; do
             if [ -z "${!secret}" ]; then
@@ -67,9 +67,6 @@ jobs:
           UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
           UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
-          UNIGAS_DEPLOY_ID: ${{ secrets.UNIGAS_DEPLOY_ID }}
-          UNIGAS_AUTH_TOKEN: ${{ secrets.UNIGAS_AUTH_TOKEN }}
-          UNIGAS_SHEET_ID: ${{ secrets.UNIGAS_SHEET_ID }}
 
       # ビルドターゲットに応じて環境変数を設定
       - name: Set Build Variables
@@ -107,9 +104,6 @@ jobs:
       BUILD_TARGET_NAME: ${{ inputs.build_target_name }}
       BUILD_TARGET: ${{ needs.init.outputs.build_target }}
       REPO_NAME: ${{ github.event.repository.name }}
-      UNIGAS_DEPLOY_ID: ${{ secrets.UNIGAS_DEPLOY_ID }}
-      UNIGAS_AUTH_TOKEN: ${{ secrets.UNIGAS_AUTH_TOKEN }}
-      UNIGAS_SHEET_ID: ${{ secrets.UNIGAS_SHEET_ID }}
 
     steps:
       # 仮想環境にクローン
