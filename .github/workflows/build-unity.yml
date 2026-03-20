@@ -156,13 +156,11 @@ jobs:
           UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
           UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
-          UNIGAS_DEPLOY_ID: ${{ secrets.UNIGAS_DEPLOY_ID }}
-          UNIGAS_AUTH_TOKEN: ${{ secrets.UNIGAS_AUTH_TOKEN }}
-          UNIGAS_SHEET_ID: ${{ secrets.UNIGAS_SHEET_ID }}
         with:
           buildName: ${{ env.REPO_NAME }}
           targetPlatform: ${{ env.BUILD_TARGET }}
           allowDirtyBuild: true
+          customParameters: -UNIGAS_DEPLOY_ID ${{ secrets.UNIGAS_DEPLOY_ID }} -UNIGAS_AUTH_TOKEN ${{ secrets.UNIGAS_AUTH_TOKEN }} -UNIGAS_SHEET_ID ${{ secrets.UNIGAS_SHEET_ID }}
 
       # ビルド成果物をアップロード
       - name: Upload the build for GitHub Pages
