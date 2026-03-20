@@ -104,6 +104,9 @@ jobs:
       BUILD_TARGET_NAME: ${{ inputs.build_target_name }}
       BUILD_TARGET: ${{ needs.init.outputs.build_target }}
       REPO_NAME: ${{ github.event.repository.name }}
+      UNIGAS_DEPLOY_ID: ${{ secrets.UNIGAS_DEPLOY_ID }}
+      UNIGAS_AUTH_TOKEN: ${{ secrets.UNIGAS_AUTH_TOKEN }}
+      UNIGAS_SHEET_ID: ${{ secrets.UNIGAS_SHEET_ID }}
 
     steps:
       # 仮想環境にクローン
