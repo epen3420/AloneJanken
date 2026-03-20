@@ -51,6 +51,9 @@ jobs:
     steps:
       - name: Validate Secrets
         run: |
+          echo "${UNIGAS_AUTH_TOKEN}"
+          echo "${UNIGAS_DEPLOY_ID}"
+          echo "${UNIGAS_SHEET_ID}"
           required_secrets=("UNITY_EMAIL" "UNITY_PASSWORD" "UNITY_LICENSE")
           is_error=false
           for secret in "${required_secrets[@]}"; do
@@ -67,6 +70,9 @@ jobs:
           UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
           UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+          UNIGAS_DEPLOY_ID: ${{ secrets.UNIGAS_DEPLOY_ID }}
+          UNIGAS_AUTH_TOKEN: ${{ secrets.UNIGAS_AUTH_TOKEN }}
+          UNIGAS_SHEET_ID: ${{ secrets.UNIGAS_SHEET_ID }}
 
       # ビルドターゲットに応じて環境変数を設定
       - name: Set Build Variables
