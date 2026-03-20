@@ -7,6 +7,13 @@
       "dependencies": {},
       "hash": "73a63b7f672b88f7e9992f6917eb458a8cbb6fa9"
     },
+    "com.epen3420.unigaslogger": {
+      "version": "https://github.com/epen3420/UniGasLogger.git?path=/Unity/UniGasLogger",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "23c2a1db608ed79bb18932a8b659de253b6505d1"
+    },
     "com.unity.2d.animation": {
       "version": "10.2.1",
       "depth": 1,

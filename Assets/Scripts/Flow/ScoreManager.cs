@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using UniGasLogger;
 using UnityEngine;
 
 public class ScoreManager : MonoBehaviour
@@ -77,6 +78,15 @@ public class ScoreManager : MonoBehaviour
     {
         if (SceneController.CurrentSceneName == "Result")
         {
+            var log = new Dictionary<string, object>
+            {
+                {"SceneName",SceneController.PreviousSceneName},
+                {"Score", score.Value},
+                {"ContinuousWin", maxContinuousCount},
+                {"TotalWin", winCount.Value}
+            };
+            GasServiceManager.Instance?.SendLog(log, "0321_GameCube");
+
             winCount.Value = 0;
             continuousWinCount.Value = 0;
             score.Value = 0;
