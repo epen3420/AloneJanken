@@ -32,7 +32,7 @@ public class LoadingScreen : MonoBehaviour
         SceneController.OnStartLoading += Execute;
     }
 
-    private void Execute()
+    private void Execute(LoadMethodType _)
     {
         canvasGroup.blocksRaycasts = true;
         Fade(1f).Forget();

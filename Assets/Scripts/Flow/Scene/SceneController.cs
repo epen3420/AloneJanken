@@ -26,7 +26,7 @@ public static class SceneController
     }
 
 
-    public static event System.Action OnStartLoading;
+    public static event System.Action<LoadMethodType> OnStartLoading;
     public static event System.Action<float> OnLoadingScene;
     public static event System.Action<string> OnLoadedScene;
     public static string CurrentSceneName { get; private set; } = "";
@@ -60,7 +60,7 @@ public static class SceneController
         PreviousSceneName = CurrentSceneName;
         CurrentSceneName = name;
 
-        OnStartLoading?.Invoke();
+        OnStartLoading?.Invoke(method);
 
         switch (method)
         {
