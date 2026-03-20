@@ -101,3 +101,7 @@ InitTestScene*.unity*
 # VS confg files
 .vscode
 .vsconfig
+
+# UniGasLogger Settings
+/[Aa]ssets/[Pp]lugin[s]/UniGasLogger/Resources/GasSettings.asset
+/[Aa]ssets/[Pp]lugin[s]/UniGasLogger/Resources/GasSettings.asset.meta
