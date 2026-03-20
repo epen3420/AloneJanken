@@ -130,7 +130,7 @@ jobs:
         with:
           path: Library
           # manifest.jsonかlock.jsonが変わったときだけキャッシュを更新
-          key: Library-${{ hashFiles('Packages/manifest.json', 'Packages/packages-lock.json') }}
+          key: Library-${{ env.BUILD_TARGET }}-${{ hashFiles('Packages/manifest.json', 'Packages/packages-lock.json') }}
           restore-keys: |
             Library-
 
@@ -139,7 +139,7 @@ jobs:
         with:
           path: Packages
           # manifest.jsonかlock.jsonが変わったときだけキャッシュを更新
-          key: Packages-${{ hashFiles('Packages/manifest.json', 'Packages/packages-lock.json') }}
+          key: Packages-${{ env.BUILD_TARGET }}-${{ hashFiles('Packages/manifest.json', 'Packages/packages-lock.json') }}
           restore-keys: |
             Packages-
 
@@ -156,13 +156,11 @@ jobs:
           UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
           UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
-          UNIGAS_DEPLOY_ID: ${{ secrets.UNIGAS_DEPLOY_ID }}
-          UNIGAS_AUTH_TOKEN: ${{ secrets.UNIGAS_AUTH_TOKEN }}
-          UNIGAS_SHEET_ID: ${{ secrets.UNIGAS_SHEET_ID }}
         with:
           buildName: ${{ env.REPO_NAME }}
           targetPlatform: ${{ env.BUILD_TARGET }}
           allowDirtyBuild: true
+          customParameters: -UNIGAS_DEPLOY_ID ${{ secrets.UNIGAS_DEPLOY_ID }} -UNIGAS_AUTH_TOKEN ${{ secrets.UNIGAS_AUTH_TOKEN }} -UNIGAS_SHEET_ID ${{ secrets.UNIGAS_SHEET_ID }}
 
       # ビルド成果物をアップロード
       - name: Upload the build for GitHub Pages
