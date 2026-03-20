@@ -130,7 +130,7 @@ jobs:
         with:
           path: Library
           # manifest.jsonかlock.jsonが変わったときだけキャッシュを更新
-          key: Library-${{ hashFiles('Packages/manifest.json', 'Packages/packages-lock.json') }}
+          key: Library-${{ env.BUILD_TARGET }}-${{ hashFiles('Packages/manifest.json', 'Packages/packages-lock.json') }}
           restore-keys: |
             Library-
 
@@ -139,7 +139,7 @@ jobs:
         with:
           path: Packages
           # manifest.jsonかlock.jsonが変わったときだけキャッシュを更新
-          key: Packages-${{ hashFiles('Packages/manifest.json', 'Packages/packages-lock.json') }}
+          key: Packages-${{ env.BUILD_TARGET }}-${{ hashFiles('Packages/manifest.json', 'Packages/packages-lock.json') }}
           restore-keys: |
             Packages-
 
