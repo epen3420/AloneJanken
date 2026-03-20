@@ -51,10 +51,7 @@ jobs:
     steps:
       - name: Validate Secrets
         run: |
-          echo "${UNIGAS_AUTH_TOKEN}"
-          echo "${UNIGAS_DEPLOY_ID}"
-          echo "${UNIGAS_SHEET_ID}"
-          required_secrets=("UNITY_EMAIL" "UNITY_PASSWORD" "UNITY_LICENSE")
+          required_secrets=("UNITY_EMAIL" "UNITY_PASSWORD" "UNITY_LICENSE" UNIGAS_AUTH_TOKEN UNIGAS_DEPLOY_ID UNIGAS_SHEET_ID)
           is_error=false
           for secret in "${required_secrets[@]}"; do
             if [ -z "${!secret}" ]; then
