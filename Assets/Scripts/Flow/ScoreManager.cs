@@ -76,22 +76,21 @@ public class ScoreManager : MonoBehaviour
 
     private void ResetScore(string _)
     {
-        if (SceneController.CurrentSceneName == "Result")
-        {
-            var log = new Dictionary<string, object>
-            {
-                {"SceneName",SceneController.PreviousSceneName},
-                {"Score", score.Value},
-                {"ContinuousWin", maxContinuousCount},
-                {"TotalWin", winCount.Value}
-            };
-            GasServiceManager.Instance?.SendLog(log, "0321_GameCube");
+        if (SceneController.CurrentSceneName != "Result") return;
 
-            winCount.Value = 0;
-            continuousWinCount.Value = 0;
-            score.Value = 0;
-            maxContinuousCount = 0;
-        }
+        var log = new Dictionary<string, object>
+        {
+            {"SceneName",SceneController.PreviousSceneName},
+            {"Score", score.Value},
+            {"ContinuousWin", maxContinuousCount},
+            {"TotalWin", winCount.Value}
+        };
+        GasServiceManager.Instance?.SendLog(log, "0321_GameCube");
+
+        winCount.Value = 0;
+        continuousWinCount.Value = 0;
+        score.Value = 0;
+        maxContinuousCount = 0;
     }
 
     public int GetCurrentWinCount()
