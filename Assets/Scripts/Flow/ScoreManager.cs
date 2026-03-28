@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UniGasLogger;
 using UnityEngine;
+using unityroom.Api;
 
 public class ScoreManager : MonoBehaviour
 {
@@ -86,6 +87,11 @@ public class ScoreManager : MonoBehaviour
             {"TotalWin", winCount.Value}
         };
         GasServiceManager.Instance?.SendLog(log, "0321_GameCube");
+
+        if (SceneController.PreviousSceneName == "NormalLevel")
+        {
+            UnityroomApiClient.Instance?.SendScore(1, score.Value, ScoreboardWriteMode.HighScoreDesc);
+        }
 
         winCount.Value = 0;
         continuousWinCount.Value = 0;
