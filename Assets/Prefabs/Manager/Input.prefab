@@ -47,7 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inputHandsEvent: {fileID: 11400000, guid: d618f751b6ffbb144934e3773bc965a1, type: 2}
   startRoundEvent: {fileID: 11400000, guid: 4a82f8c22b448f5418f24830a5105a0c, type: 2}
-  endJankenEvent: {fileID: 11400000, guid: c66a0c8af2342684388e93dd2cf2e02f, type: 2}
+  endJankenEvent: {fileID: 11400000, guid: 3f43eeaa73cc2824eab02d43a62674d7, type: 2}
   inputProviders:
   - {fileID: 8820303407388400657}
   - {fileID: 0}
