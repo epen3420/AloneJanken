@@ -26,6 +26,8 @@ on:
         required: true
       UNITY_LICENSE:
         required: true
+      UNIGAS_IS_ENABLE:
+        required: false
       UNIGAS_DEPLOY_ID:
         required: false
       UNIGAS_AUTH_TOKEN:
@@ -151,7 +153,7 @@ jobs:
           buildName: ${{ env.REPO_NAME }}
           targetPlatform: ${{ env.BUILD_TARGET }}
           allowDirtyBuild: true
-          customParameters: -UNIGAS_DEPLOY_ID ${{ secrets.UNIGAS_DEPLOY_ID }} -UNIGAS_AUTH_TOKEN ${{ secrets.UNIGAS_AUTH_TOKEN }} -UNIGAS_SHEET_ID ${{ secrets.UNIGAS_SHEET_ID }}
+          customParameters: -UNIGAS_IS_ENABLE ${{ secrets.UNIGAS_IS_ENABLE }} -UNIGAS_DEPLOY_ID ${{ secrets.UNIGAS_DEPLOY_ID }} -UNIGAS_AUTH_TOKEN ${{ secrets.UNIGAS_AUTH_TOKEN }} -UNIGAS_SHEET_ID ${{ secrets.UNIGAS_SHEET_ID }}
 
       # ビルド成果物をアップロード
       - name: Upload the build for GitHub Pages
